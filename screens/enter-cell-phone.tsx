@@ -8,16 +8,16 @@ import {
   Platform,
   Image,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
 } from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export const EnterCellPhoneScreen = () => {
   const [countries, setCountries] = useState([
-    { title: "Egypt", cities: [{ title: "Cairo" }, { title: "Alex" }] },
+    { title: "USA", cities: [{ title: "Cairo" }, { title: "Alex" }] },
     {
-      title: "Canada",
+      title: "JPN",
       cities: [{ title: "Toronto" }, { title: "Quebec City" }],
     },
   ]);
@@ -55,44 +55,46 @@ export const EnterCellPhoneScreen = () => {
           </div>
           <input type="tel" name="phone-number" id="phone-number" autocomplete="tel" class="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
         </div>  */}
+          <View className="flex flex-row">
+            <View className="h-[50] w-[100]">
+              <SelectDropdown
+                data={countries}
+                onSelect={(selectedItem, index) => {
+                  console.log(selectedItem, index);
 
-          <SelectDropdown
-            data={countries}
-            onSelect={(selectedItem, index) => {
-              console.log(selectedItem, index);
+                  setCities([]);
+                  setCities(selectedItem.cities);
+                }}
+                defaultButtonText={"Select country"}
+                buttonTextAfterSelection={(selectedItem, index) => {
+                  return selectedItem.title;
+                }}
+                rowTextForSelection={(item, index) => {
+                  return item.title;
+                }}
+                buttonStyle={styles.dropdown1BtnStyle}
+                buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                renderDropdownIcon={(isOpened) => {
+                  return (
+                    <FontAwesome
+                      name={isOpened ? "chevron-up" : "chevron-down"}
+                      color={"#444"}
+                      size={18}
+                    />
+                  );
+                }}
+                dropdownIconPosition={"right"}
+                dropdownStyle={styles.dropdown1DropdownStyle}
+                rowStyle={styles.dropdown1RowStyle}
+                rowTextStyle={styles.dropdown1RowTxtStyle}
+              />
+            </View>
 
-              setCities([]);
-              setCities(selectedItem.cities);
-            }}
-            defaultButtonText={"Select country"}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              return selectedItem.title;
-            }}
-            rowTextForSelection={(item, index) => {
-              return item.title;
-            }}
-            buttonStyle={styles.dropdown1BtnStyle}
-            buttonTextStyle={styles.dropdown1BtnTxtStyle}
-            renderDropdownIcon={(isOpened) => {
-              return (
-                <FontAwesome
-                  name={isOpened ? "chevron-up" : "chevron-down"}
-                  color={"#444"}
-                  size={18}
-                />
-              );
-            }}
-            dropdownIconPosition={"right"}
-            dropdownStyle={styles.dropdown1DropdownStyle}
-            rowStyle={styles.dropdown1RowStyle}
-            rowTextStyle={styles.dropdown1RowTxtStyle}
-          />
-
-          <TextInput
-            placeholder="Enter your number"
-            keyboardType={"phone-pad"}
-          />
-
+            <TextInput
+              placeholder="Enter your number"
+              keyboardType={"phone-pad"}
+            />
+          </View>
           <View>
             <Text className="w-[330px] text-center text-neutral-400 text-sm font-normal font-['Poppins'] leading-snug">
               By giving your mobile number our server {"\n"} allocate for you
@@ -123,7 +125,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: "row",
-    width: '100%',
+    width: "100%",
     height: 50,
     alignItems: "center",
     justifyContent: "center",
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: { color: "#000", fontWeight: "bold", fontSize: 16 },
   saveAreaViewContainer: { flex: 1, backgroundColor: "#FFF" },
-  viewContainer: { flex: 1, width: '100%', backgroundColor: "#FFF" },
+  viewContainer: { flex: 1, width: "100%", backgroundColor: "#FFF" },
   scrollViewContainer: {
     flexGrow: 1,
     justifyContent: "space-between",
@@ -147,6 +149,7 @@ const styles = StyleSheet.create({
   dropdown1BtnStyle: {
     flex: 1,
     height: 50,
+    width:90,
     backgroundColor: "#FFF",
     borderRadius: 8,
     borderWidth: 1,
