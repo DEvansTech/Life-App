@@ -38,24 +38,10 @@ export const EnterCellPhoneScreen = () => {
           >
             Enter your phone number {"\n"} to continue
           </Text>
-          {/* input */}
-          {/* <div class="relative mt-2.5">
-          <div class="absolute inset-y-0 left-0 flex items-center">
-            <label for="country" class="sr-only">Country</label>
-            <select id="country" name="country" class="h-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
-              <option>US</option>
-              <option>CA</option>
-              <option>EU</option>
-            </select>
-            <svg class="pointer-events-none absolute right-3 top-0 h-full w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-            </svg>
-          </div>
-          <input type="tel" name="phone-number" id="phone-number" autocomplete="tel" class="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-        </div>  */}
-          <View className="px-8">
-            <View className="flex flex-row w-100 h-[50px] bg-stone-50 rounded-lg border border-slate-400">
-              <View className="w-[90]">
+
+          <View className="w-full bg-stone-50 rounded-lg border border-slate-400">
+            <View className="flex flex-row w-100 h-[50px]">
+              <View>
                 <SelectDropdown
                   data={countries}
                   onSelect={(selectedItem, index) => {
@@ -80,13 +66,13 @@ export const EnterCellPhoneScreen = () => {
                     );
                   }}
                   dropdownIconPosition={"right"}
-                  dropdownStyle={styles.dropdown1DropdownStyle}
+                  //   dropdownStyle={styles.dropdown1DropdownStyle}
                   rowStyle={styles.dropdown1RowStyle}
                   rowTextStyle={styles.dropdown1RowTxtStyle}
                 />
               </View>
               <TextInput
-                className=" h-[50px] w-max bg-stone-50 rounded-lg border border-slate-400"
+                className="border-l-2 border-stone-100 pl-2"
                 placeholder="Enter your number"
                 keyboardType={"phone-pad"}
               />
@@ -117,16 +103,15 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 50,
     width: 90,
-    // backgroundColor: "#FFF",
-    // borderRadius: 8,
-    // borderWidth: 1,
-    // borderColor: "#444",
+    backgroundColor: "rgb(248 250 252)",
+    borderRadius: 8,
+    boarderRight: 1,
+    borderColor: "#fff",
   },
   dropdown1BtnTxtStyle: { color: "#444", textAlign: "left" },
-  dropdown1DropdownStyle: { backgroundColor: "#EFEFEF" },
   dropdown1RowStyle: {
-    backgroundColor: "#EFEFEF",
-    borderBottomColor: "#C5C5C5",
+    // backgroundColor: "#EFEFEF",
+    // borderBottomColor: "#C5C5C5",
   },
   dropdown1RowTxtStyle: { color: "#444", textAlign: "left" },
 });
