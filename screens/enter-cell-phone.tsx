@@ -26,7 +26,7 @@ export const EnterCellPhoneScreen = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <SafeAreaView>
-        <View className="w-full h-full flex flex-col items-center justify-center gap-[15] px-8">
+        <View className=" pt-10 w-full h-full flex flex-col items-center justify-center gap-4 px-8">
           <Image
             className="w-[100px] h-[100px]"
             source={require("../assets/images/app-icon.png")}
