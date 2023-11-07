@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -13,7 +13,10 @@ import {
 import SelectDropdown from "react-native-select-dropdown";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-export const EnterCellPhoneScreen = () => {
+export interface EnterCellPhoneScreenParams {}
+
+export const EnterCellPhoneScreen: React.FC<EnterCellPhoneScreenParams> = ({}) => {
+  // country list
   const countries = [
     { title: "USA" },
     {
@@ -98,6 +101,7 @@ export const EnterCellPhoneScreen = () => {
   );
 };
 
+// Library does not supoprt tailwind
 const styles = StyleSheet.create({
   dropdown1BtnStyle: {
     flex: 1,
@@ -109,9 +113,5 @@ const styles = StyleSheet.create({
     borderColor: "#fff",
   },
   dropdown1BtnTxtStyle: { color: "#444", textAlign: "left" },
-  dropdown1RowStyle: {
-    // backgroundColor: "#EFEFEF",
-    // borderBottomColor: "#C5C5C5",
-  },
   dropdown1RowTxtStyle: { color: "#444", textAlign: "left" },
 });

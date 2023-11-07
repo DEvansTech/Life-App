@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -6,33 +6,51 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
-  Image,
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import SelectDropdown from "react-native-select-dropdown";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export const OtpVerify = () => {
-  const countries = [
-    { title: "USA" },
-    {
-      title: "JPN",
-    },
-  ];
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <SafeAreaView>
-        <View className=" pt-10 w-full h-full flex flex-col items-center justify-center gap-4 px-8">
+        <View className="pt-10 w-full h-full flex flex-col items-center justify-center gap-4 px-8">
           <Text
             style={{ fontFamily: "Poppins" }}
             className="mt-7 text-center text-cyan-800 text-[17px] font-semibold leading-snug"
           >
-            Enter your phone number {"\n"} to continue
+            Please Validate the OTP {"\n"} number
           </Text>
+
+          <View className="w-full h-20 flex flex-row justify-center items-center gap-2.5 ">
+            <TextInput
+              keyboardType={"phone-pad"}
+              placeholder="0"
+              className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
+            />
+            <TextInput
+              keyboardType={"phone-pad"}
+              placeholder="0"
+              className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
+            />
+            <TextInput
+              keyboardType={"phone-pad"}
+              placeholder="0"
+              className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
+            />
+            <TextInput
+              keyboardType={"phone-pad"}
+              placeholder="0"
+              className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
+            />
+            <TextInput
+              keyboardType={"phone-pad"}
+              placeholder="0"
+              className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
+            />
+          </View>
 
           <View>
             <Text className="w-[330px] text-center text-neutral-400 text-sm font-normal font-['Poppins'] leading-snug">

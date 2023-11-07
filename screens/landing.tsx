@@ -4,10 +4,8 @@ import {
   Text,
   Image,
   SafeAreaView,
-  Button,
   TouchableOpacity,
 } from "react-native";
-// import img from "../assets/images";
 
 export const LandingScreen = () => {
   return (
