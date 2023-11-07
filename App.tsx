@@ -3,8 +3,10 @@ import { View, Text, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { LandingScreen } from "./screens/landing";
+import { OtpVerify } from "./screens/otp-verify";
+import { EnterCellPhoneScreen } from "./screens/enter-cell-phone";
 
-function HomeScreen({ navigation }) {
+function HomeScreen({ navigation }: { navigation: any }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
@@ -35,7 +37,7 @@ function App() {
         />
         <Stack.Screen
           name="OTP"
-          component={LandingScreen}
+          component={OtpVerify}
           options={{
             title: "OTP Verification",
             headerShadowVisible: false,
@@ -46,7 +48,7 @@ function App() {
         />
         <Stack.Screen
           name="Cell-Phone"
-          component={LandingScreen}
+          component={EnterCellPhoneScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

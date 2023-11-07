@@ -4,10 +4,16 @@ module.exports = {
     "./App.{js,jsx,ts,tsx}",
     "./screens/**/*.{js,jsx,ts,tsx}",
     "./components/**/*.{js,jsx,ts,tsx}",
-
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      // sans: ["Poppins"],
+    },
+    extend: {
+      colors: {
+        "primary-color": "#2A5C81",
+      },
+    },
   },
   plugins: [],
 };
