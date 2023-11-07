@@ -16,7 +16,7 @@ export const OtpVerify = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <SafeAreaView>
-        <View className="pt-10 w-full h-full flex flex-col items-center justify-center gap-4 px-8">
+        <View className="pt-20 w-full h-full flex flex-col items-center justify-center gap-4 px-8">
           <Text
             style={{ fontFamily: "Poppins" }}
             className="mt-7 text-center text-cyan-800 text-[17px] font-semibold leading-snug"

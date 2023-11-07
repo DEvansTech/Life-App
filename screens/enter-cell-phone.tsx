@@ -70,7 +70,7 @@ export const EnterCellPhoneScreen: React.FC<EnterCellPhoneScreenParams> = ({}) =
                   }}
                   dropdownIconPosition={"right"}
                   //   dropdownStyle={styles.dropdown1DropdownStyle}
-                  rowStyle={styles.dropdown1RowStyle}
+                  // rowStyle={styles.dropdown1RowStyle}
                   rowTextStyle={styles.dropdown1RowTxtStyle}
                 />
               </View>
