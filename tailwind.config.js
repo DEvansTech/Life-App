@@ -1,3 +1,5 @@
+const Poppins = require('./assets/fonts/Poppins/Poppins-Regular.ttf');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -6,10 +8,10 @@ module.exports = {
     "./components/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    fontFamily: {
-      // sans: ["Poppins"],
-    },
     extend: {
+      fontFamily: {
+        Poppins: Poppins,
+      },
       colors: {
         "primary-color": "#2A5C81",
       },

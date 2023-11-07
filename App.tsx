@@ -1,12 +1,24 @@
 import * as React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useFonts } from "expo-font";
+import { Poppins_400Regular } from "@expo-google-fonts/poppins";
+
 import { LandingScreen } from "./screens/landing";
 import { OtpVerify } from "./screens/otp-verify";
 import { EnterCellPhoneScreen } from "./screens/enter-cell-phone";
 
 function HomeScreen({ navigation }: { navigation: any }) {
+  const [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    console.log("not loaded");
+    return <StatusBar />;
+  }
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
