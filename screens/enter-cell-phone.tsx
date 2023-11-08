@@ -15,7 +15,9 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export interface EnterCellPhoneScreenParams {}
 
-export const EnterCellPhoneScreen: React.FC<EnterCellPhoneScreenParams> = ({}) => {
+export const EnterCellPhoneScreen: React.FC<
+  EnterCellPhoneScreenParams
+> = ({}) => {
   // country list
   const countries = [
     { title: "USA" },
@@ -29,72 +31,74 @@ export const EnterCellPhoneScreen: React.FC<EnterCellPhoneScreenParams> = ({}) =
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <SafeAreaView>
-        <View className=" pt-10 w-full h-full flex flex-col items-center justify-center gap-4 px-8">
-          <Image
-            className="w-[100px] h-[100px]"
-            source={require("../assets/images/app-icon.png")}
-          />
+        <View className=" pt-20 w-full px-10 h-full">
+          <View className="flex flex-col items-center justify-center gap-4">
+            <Image
+              className="w-[100px] h-[100px]"
+              source={require("../assets/images/app-icon.png")}
+            />
 
-          <Text
-            style={{ fontFamily: "Poppins" }}
-            className="mt-7 text-center text-cyan-800 text-[17px] font-semibold leading-snug"
-          >
-            Enter your phone number {"\n"} to continue
-          </Text>
+            <Text
+              style={{ fontFamily: "Poppins" }}
+              className="mt-7 text-center text-cyan-800 text-[17px] font-semibold leading-snug"
+            >
+              Enter your phone number {"\n"} to continue
+            </Text>
 
-          <View className="w-full bg-stone-50 rounded-lg border border-slate-400">
-            <View className="flex flex-row w-100 h-[50px]">
-              <View>
-                <SelectDropdown
-                  data={countries}
-                  onSelect={(selectedItem, index) => {
-                    console.log(selectedItem, index);
-                  }}
-                  defaultButtonText={"USA"}
-                  buttonTextAfterSelection={(selectedItem, index) => {
-                    return selectedItem.title;
-                  }}
-                  rowTextForSelection={(item, index) => {
-                    return item.title;
-                  }}
-                  buttonStyle={styles.dropdown1BtnStyle}
-                  buttonTextStyle={styles.dropdown1BtnTxtStyle}
-                  renderDropdownIcon={(isOpened) => {
-                    return (
-                      <FontAwesome
-                        name={isOpened ? "chevron-up" : "chevron-down"}
-                        color={"#444"}
-                        size={18}
-                      />
-                    );
-                  }}
-                  dropdownIconPosition={"right"}
-                  //   dropdownStyle={styles.dropdown1DropdownStyle}
-                  // rowStyle={styles.dropdown1RowStyle}
-                  rowTextStyle={styles.dropdown1RowTxtStyle}
+            <View className="w-full bg-stone-50 rounded-lg border border-slate-400">
+              <View className="flex flex-row w-100 h-[50px]">
+                <View>
+                  <SelectDropdown
+                    data={countries}
+                    onSelect={(selectedItem, index) => {
+                      console.log(selectedItem, index);
+                    }}
+                    defaultButtonText={"USA"}
+                    buttonTextAfterSelection={(selectedItem, index) => {
+                      return selectedItem.title;
+                    }}
+                    rowTextForSelection={(item, index) => {
+                      return item.title;
+                    }}
+                    buttonStyle={styles.dropdown1BtnStyle}
+                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                    renderDropdownIcon={(isOpened) => {
+                      return (
+                        <FontAwesome
+                          name={isOpened ? "chevron-up" : "chevron-down"}
+                          color={"#444"}
+                          size={18}
+                        />
+                      );
+                    }}
+                    dropdownIconPosition={"right"}
+                    //   dropdownStyle={styles.dropdown1DropdownStyle}
+                    // rowStyle={styles.dropdown1RowStyle}
+                    rowTextStyle={styles.dropdown1RowTxtStyle}
+                  />
+                </View>
+                <TextInput
+                  className="border-l-2 border-stone-100 pl-2"
+                  placeholder="Enter your number"
+                  keyboardType={"phone-pad"}
                 />
               </View>
-              <TextInput
-                className="border-l-2 border-stone-100 pl-2"
-                placeholder="Enter your number"
-                keyboardType={"phone-pad"}
-              />
             </View>
-          </View>
-          <View>
-            <Text className="w-[330px] text-center text-neutral-400 text-sm font-normal font-['Poppins'] leading-snug">
-              By giving your mobile number our server {"\n"} allocate for you
-              for onetime password
-            </Text>
-          </View>
-
-          <TouchableOpacity>
-            <View className="w-[307px] mt-2 h-[37px] flex items-center justify-center bg-cyan-800 rounded-[5px]">
-              <Text className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug">
-                Get OTP
+            <View>
+              <Text className="w-[330px] text-center text-neutral-400 text-sm font-normal font-['Poppins'] leading-snug">
+                By giving your mobile number our server {"\n"} allocate for you
+                for onetime password
               </Text>
             </View>
-          </TouchableOpacity>
+
+            <TouchableOpacity>
+              <View className="w-[307px] mt-2 h-[37px] flex items-center justify-center bg-cyan-800 rounded-[5px]">
+                <Text className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug">
+                  Get OTP
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </SafeAreaView>
     </KeyboardAvoidingView>

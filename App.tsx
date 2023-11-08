@@ -8,6 +8,7 @@ import { Poppins_400Regular } from "@expo-google-fonts/poppins";
 import { LandingScreen } from "./screens/landing";
 import { OtpVerify } from "./screens/otp-verify";
 import { EnterCellPhoneScreen } from "./screens/enter-cell-phone";
+import { RegisterProcess } from "./screens/register-process";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({
@@ -30,6 +31,10 @@ function HomeScreen({ navigation }: { navigation: any }) {
       <Button
         onPress={() => navigation.navigate("Cell-Phone")}
         title="Go to Cell"
+      />
+      <Button
+        onPress={() => navigation.navigate("Register-Process")}
+        title="Register Process"
       />
     </View>
   );
@@ -61,6 +66,11 @@ function App() {
         <Stack.Screen
           name="Cell-Phone"
           component={EnterCellPhoneScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Register-Process"
+          component={RegisterProcess}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

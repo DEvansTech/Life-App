@@ -16,59 +16,61 @@ export const OtpVerify = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <SafeAreaView>
-        <View className="pt-20 w-full h-full flex flex-col items-center justify-center gap-4 px-8">
-          <Text
-            style={{ fontFamily: "Poppins" }}
-            className="mt-7 text-center text-cyan-800 text-[17px] font-semibold leading-snug"
-          >
-            Please Validate the OTP {"\n"} number
-          </Text>
-
-          <View className="w-full h-20 flex flex-row justify-center items-center gap-2.5 ">
-            <TextInput
-              keyboardType={"phone-pad"}
-              placeholder="0"
-              className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
-            />
-            <TextInput
-              keyboardType={"phone-pad"}
-              placeholder="0"
-              className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
-            />
-            <TextInput
-              keyboardType={"phone-pad"}
-              placeholder="0"
-              className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
-            />
-            <TextInput
-              keyboardType={"phone-pad"}
-              placeholder="0"
-              className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
-            />
-            <TextInput
-              keyboardType={"phone-pad"}
-              placeholder="0"
-              className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
-            />
-          </View>
-
-          <View>
-            <Text className="w-[330px] text-center text-neutral-400 text-sm font-normal font-['Poppins'] leading-snug">
-              12 sec left
+        <View className=" pt-10 w-full px-10 h-full">
+          <View className="flex flex-col items-center justify-center gap-4">
+            <Text
+              style={{ fontFamily: "Poppins" }}
+              className="mt-7 text-center text-cyan-800 text-[17px] font-semibold leading-snug"
+            >
+              Please Validate the OTP {"\n"} number
             </Text>
-          </View>
 
-          <TouchableOpacity>
-            <View className="w-[307px] mt-2 h-[37px] flex items-center justify-center  bg-primary-color rounded-[5px]">
-              <Text className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug">
-                Verify OTP
+            <View className="w-full h-20 flex flex-row justify-center items-center gap-2.5 ">
+              <TextInput
+                keyboardType={"phone-pad"}
+                placeholder="0"
+                className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
+              />
+              <TextInput
+                keyboardType={"phone-pad"}
+                placeholder="0"
+                className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
+              />
+              <TextInput
+                keyboardType={"phone-pad"}
+                placeholder="0"
+                className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
+              />
+              <TextInput
+                keyboardType={"phone-pad"}
+                placeholder="0"
+                className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
+              />
+              <TextInput
+                keyboardType={"phone-pad"}
+                placeholder="0"
+                className="w-14 h-16 text-center text-stone-300 text-base font-normal font-['Poppins'] leading-snug bg-stone-50 rounded-lg border border-stone-300"
+              />
+            </View>
+
+            <View>
+              <Text className="w-[330px] text-center text-neutral-400 text-sm font-normal font-['Poppins'] leading-snug">
+                12 sec left
               </Text>
             </View>
-          </TouchableOpacity>
-          <View>
-            <Text className="ext-center text-slate-400 text-xs font-semibold font-['Poppins'] leading-snug">
-              Resend OTP
-            </Text>
+
+            <TouchableOpacity>
+              <View className="w-[307px] mt-2 h-[37px] flex items-center justify-center  bg-primary-color rounded-[5px]">
+                <Text className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug">
+                  Verify OTP
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <View>
+              <Text className="ext-center text-slate-400 text-xs font-semibold font-['Poppins'] leading-snug">
+                Resend OTP
+              </Text>
+            </View>
           </View>
         </View>
       </SafeAreaView>
