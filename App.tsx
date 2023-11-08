@@ -11,6 +11,7 @@ import { EnterCellPhoneScreen } from "./screens/enter-cell-phone";
 import { RegisterProcess } from "./screens/register-process";
 import { SuccessScreen } from "./screens/success";
 import { RegisterProcessDeviated } from "./screens/registration-pro-deviated";
+import { RegisterProcessDeviatedTwo } from "./screens/registration-pro-deviated2";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({
@@ -25,7 +26,7 @@ function HomeScreen({ navigation }: { navigation: any }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
-      <Button
+      {/* <Button
         onPress={() => navigation.navigate("Landing")}
         title="Go to Landing"
       />
@@ -33,7 +34,7 @@ function HomeScreen({ navigation }: { navigation: any }) {
       <Button
         onPress={() => navigation.navigate("Cell-Phone")}
         title="Go to Cell"
-      />
+      /> */}
       <Button
         onPress={() => navigation.navigate("Register-Process")}
         title="Register Process"
@@ -45,6 +46,10 @@ function HomeScreen({ navigation }: { navigation: any }) {
       <Button
         onPress={() => navigation.navigate("Register-Pro-Deviated")}
         title="Reg Pro Dev"
+      />
+      <Button
+        onPress={() => navigation.navigate("Register-Pro-Deviated-Two")}
+        title="Reg Pro dev 2"
       />
     </View>
   );
@@ -98,6 +103,11 @@ function App() {
         <Stack.Screen
           name="Register-Pro-Deviated"
           component={RegisterProcessDeviated}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Register-Pro-Deviated-Two"
+          component={RegisterProcessDeviatedTwo}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
