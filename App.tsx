@@ -10,6 +10,7 @@ import { OtpVerify } from "./screens/otp-verify";
 import { EnterCellPhoneScreen } from "./screens/enter-cell-phone";
 import { RegisterProcess } from "./screens/register-process";
 import { SuccessScreen } from "./screens/success";
+import { RegisterProcessDeviated } from "./screens/registration-pro-deviated";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({
@@ -40,6 +41,10 @@ function HomeScreen({ navigation }: { navigation: any }) {
       <Button
         onPress={() => navigation.navigate("Success")}
         title="Success Screen"
+      />
+      <Button
+        onPress={() => navigation.navigate("Register-Pro-Deviated")}
+        title="Reg Pro Dev"
       />
     </View>
   );
@@ -89,6 +94,11 @@ function App() {
             },
             headerTintColor: "#52525b",
           }}
+        />
+        <Stack.Screen
+          name="Register-Pro-Deviated"
+          component={RegisterProcessDeviated}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
