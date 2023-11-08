@@ -11,7 +11,7 @@ import { AdjustSettings, ImageBanner } from "../components";
 export const RegisterProcess = ({}) => {
   return (
     // <SafeAreaView className="w-full">
-    <View className=" pt-10 w-full bg-black px-10 h-full">
+    <View className=" pt-10 w-full px-10 h-full">
       <View className="flex flex-col items-center justify-center gap-4">
         <Image
           className="w-[75px] h-[75px]"
