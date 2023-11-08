@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { ImageBannerHeader, FieldInput } from "../components";
 
-export const RegisterProcessDeviated = () => {
+export const RegisterProcessDeviatedTwo = () => {
   const inputValues = [
     {
       label: "Your display name",
@@ -23,26 +23,13 @@ export const RegisterProcessDeviated = () => {
       placeholder: "Enter your email address",
       password: false,
     },
-    {
-      label: "Enter your username",
-      placeholder: "Please select a username",
-      password: false,
-    },
-    {
-      label: "Enter your password",
-      placeholder: " *  *  *  *  *  *  *",
-      password: true,
-    },
-    {
-      label: "retype your password",
-      placeholder: " *  *  *  *  *  *  *",
-      password: true,
-    },
   ];
 
   return (
     <View className="w-full">
-      <ImageBannerHeader title={["Complete your", "profile in life app"]} />
+      <ImageBannerHeader
+        title={["Fill basic details to", "complete registration"]}
+      />
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >

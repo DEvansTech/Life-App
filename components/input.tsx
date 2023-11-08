@@ -1,22 +1,35 @@
 import React from "react";
 import { TextInput, View, Text } from "react-native";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export interface FieldInputParams {
   label?: string;
   placeholder?: string;
+  password?: boolean;
 }
 
-export const FieldInput: React.FC<FieldInputParams> = ({ label, placeholder }) => {
+export const FieldInput: React.FC<FieldInputParams> = ({
+  label,
+  placeholder,
+  password,
+}) => {
   return (
-    <View className="w-full flex">
+    <View key={label} className="w-full flex">
       {label ? (
-        <Text className="ml-1 text-sm text-zinc-600  leading-snug">Label</Text>
+        <Text className="ml-1 pb-2 text-sm text-zinc-600  leading-snug">
+          {label}
+        </Text>
       ) : null}
-      <TextInput
-        style={{ fontSize: 16 }}
-        className="flex items-center py-[14] mt-2 pl-[20] w-full bg-stone-50 rounded-lg border border-slate-400"
-        placeholder={placeholder}
-      />
+      <View className="flex flex-row justify-between py-[14] px-[20] w-full bg-stone-50 rounded-lg border border-slate-400">
+        <TextInput
+          secureTextEntry={password}
+          style={{ fontSize: 16 }}
+          placeholder={placeholder}
+        />
+        {password ? (
+          <FontAwesome name="eye-slash" color={"#444"} size={18} />
+        ) : null}
+      </View>
     </View>
   );
 };
