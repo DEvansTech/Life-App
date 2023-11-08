@@ -11,7 +11,7 @@ import { AdjustSettings, ImageBanner } from "../components";
 export const RegisterProcess = ({}) => {
   return (
     <SafeAreaView className="w-full">
-      <View className=" pt-10 w-full px-10 h-full">
+      <View className=" pt-10 w-full px-5 h-full">
         <View className="flex flex-col items-center justify-center gap-y-4">
           <Image
             className="w-[75px] h-[75px]"
@@ -20,7 +20,7 @@ export const RegisterProcess = ({}) => {
 
           <Text
             //   style={{ fontFamily: "Poppins_400Regular" }}
-            className="text-center mt-4 text-[17px] font-semibold leading-snug"
+            className="text-center mt-4 text-[17px] text-zinc-600 font-semibold leading-snug"
           >
             Registration process
           </Text>

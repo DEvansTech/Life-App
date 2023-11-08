@@ -9,6 +9,7 @@ import { LandingScreen } from "./screens/landing";
 import { OtpVerify } from "./screens/otp-verify";
 import { EnterCellPhoneScreen } from "./screens/enter-cell-phone";
 import { RegisterProcess } from "./screens/register-process";
+import { SuccessScreen } from "./screens/success";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({
@@ -35,6 +36,10 @@ function HomeScreen({ navigation }: { navigation: any }) {
       <Button
         onPress={() => navigation.navigate("Register-Process")}
         title="Register Process"
+      />
+      <Button
+        onPress={() => navigation.navigate("Success")}
+        title="Success Screen"
       />
     </View>
   );
@@ -72,6 +77,18 @@ function App() {
           name="Register-Process"
           component={RegisterProcess}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Success"
+          component={SuccessScreen}
+          options={{
+            title: "Back to edit",
+            headerShadowVisible: false,
+            headerStyle: {
+              backgroundColor: "rgb(242, 242, 242)",
+            },
+            headerTintColor: "#52525b",
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
