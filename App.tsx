@@ -10,8 +10,8 @@ import { OtpVerify } from "./screens/otp-verify";
 import { EnterCellPhoneScreen } from "./screens/enter-cell-phone";
 import { RegisterProcess } from "./screens/register-process";
 import { SuccessScreen } from "./screens/success";
-import { RegisterProcessDeviated } from "./screens/registration-pro-deviated";
-import { RegisterProcessDeviatedTwo } from "./screens/registration-pro-deviated2";
+import { RegisterProcessDeactivated } from "./screens/registration-pro-deactivated";
+import { RegisterProcessDeactivatedTwo } from "./screens/registration-pro-deactivated2";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({
@@ -44,11 +44,11 @@ function HomeScreen({ navigation }: { navigation: any }) {
         title="Success Screen"
       />
       <Button
-        onPress={() => navigation.navigate("Register-Pro-Deviated")}
+        onPress={() => navigation.navigate("Register-Pro-Deactivated")}
         title="Reg Pro Dev"
       />
       <Button
-        onPress={() => navigation.navigate("Register-Pro-Deviated-Two")}
+        onPress={() => navigation.navigate("Register-Pro-Deactivated-Two")}
         title="Reg Pro dev 2"
       />
     </View>
@@ -101,13 +101,13 @@ function App() {
           }}
         />
         <Stack.Screen
-          name="Register-Pro-Deviated"
-          component={RegisterProcessDeviated}
+          name="Register-Pro-Deactivated"
+          component={RegisterProcessDeactivated}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Register-Pro-Deviated-Two"
-          component={RegisterProcessDeviatedTwo}
+          name="Register-Pro-Deactivated-Two"
+          component={RegisterProcessDeactivatedTwo}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
