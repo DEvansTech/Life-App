@@ -13,6 +13,7 @@ import { SuccessScreen } from "./screens/success";
 import { RegisterProcessDeactivated } from "./screens/registration-pro-deactivated";
 import { RegisterProcessDeactivatedTwo } from "./screens/registration-pro-deactivated2";
 import { RegisterProcessDeactivatedThree } from "./screens/registration-pro-deactivated3";
+import { RegistrationSuccess } from "./screens/registration-success";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({
@@ -55,6 +56,10 @@ function HomeScreen({ navigation }: { navigation: any }) {
       <Button
         onPress={() => navigation.navigate("Register-Pro-Deactivated-Three")}
         title="Reg Pro dev 3"
+      />
+      <Button
+        onPress={() => navigation.navigate("Register-Success")}
+        title="Reg Success"
       />
     </View>
   );
@@ -118,6 +123,11 @@ function App() {
         <Stack.Screen
           name="Register-Pro-Deactivated-Three"
           component={RegisterProcessDeactivatedThree}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Register-Success"
+          component={RegistrationSuccess}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
