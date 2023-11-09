@@ -27,7 +27,7 @@ export const FieldInput: React.FC<FieldInputParams> = ({
           placeholder={placeholder}
         />
         {password ? (
-          <FontAwesome name="eye-slash" color={"#444"} size={18} />
+          <FontAwesome name="eye-slash" color={"#2A5C81"} size={18} />
         ) : null}
       </View>
     </View>
