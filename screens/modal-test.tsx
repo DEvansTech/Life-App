@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, SafeAreaView, Button } from "react-native";
 import { EmailAssignModal } from "../components/modals/email-assign";
+import { NameUpdateModal } from "../components/modals/name-update";
 
 export const ModalTest = () => {
   const inputValues = [
@@ -45,6 +46,12 @@ export const ModalTest = () => {
         open={open}
         setOpen={setOpen}
       />
+
+      {/* <NameUpdateModal
+        inputValues={inputValues}
+        open={open}
+        setOpen={setOpen}
+      /> */}
     </SafeAreaView>
   );
 };
