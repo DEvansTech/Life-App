@@ -1,3 +1,3 @@
 export * from "./adjust-settings";
 export * from "./image-banner";
-export * from "./input";
+export * from "./field-input";

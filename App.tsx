@@ -14,6 +14,7 @@ import { RegisterProcessDeactivated } from "./screens/registration-pro-deactivat
 import { RegisterProcessDeactivatedTwo } from "./screens/registration-pro-deactivated2";
 import { RegisterProcessDeactivatedThree } from "./screens/registration-pro-deactivated3";
 import { RegistrationSuccess } from "./screens/registration-success";
+import { ModalTest } from "./screens/modal-test";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({
@@ -60,6 +61,10 @@ function HomeScreen({ navigation }: { navigation: any }) {
       <Button
         onPress={() => navigation.navigate("Register-Success")}
         title="Reg Success"
+      />
+      <Button
+        onPress={() => navigation.navigate("Modal-Test")}
+        title="Modal Test"
       />
     </View>
   );
@@ -128,6 +133,11 @@ function App() {
         <Stack.Screen
           name="Register-Success"
           component={RegistrationSuccess}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Modal-Test"
+          component={ModalTest}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
