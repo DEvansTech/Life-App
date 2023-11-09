@@ -27,7 +27,7 @@ export const SuccessScreen = ({ navigation }: { navigation: any }) => {
 
   return (
     <SafeAreaView className="w-full">
-      <View className=" pt-10 w-full px-5 h-full">
+      <View className=" pt-8 w-full px-5 h-full">
         <View className="flex flex-col items-center justify-center gap-y-4">
           <Image
             className="w-28 h-28"

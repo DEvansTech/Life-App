@@ -35,7 +35,7 @@ export const RegisterProcessDeactivatedTwo = () => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <ScrollView className=" w-full px-8 h-full">
-          <View className="pt-4 flex flex-col items-center justify-center gap-y-5">
+          <View className="pt-6 flex flex-col items-center justify-center gap-y-5">
             {/* input */}
             {inputValues.map((input) => {
               return (

@@ -35,13 +35,13 @@ export const RegisterProcessDeactivatedThree = () => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <View className="pt-4 flex flex-col items-center justify-center gap-y-5">
-          <View className="mb-6 item-start flex flex-row gap-x-[9px]">
+          <View className="mb-4 item-start flex flex-row gap-x-[9px]">
             <View className="w-3 h-3 bg-zinc-400 rounded-full" />
             <View className="w-3 h-3 bg-primary-color rounded-full" />
             <View className="w-3 h-3 bg-zinc-400 rounded-full" />
           </View>
 
-          <Text className="text-center text-black text-base font-semibold font-['Poppins'] leading-relaxed">
+          <Text className="mb-4 text-center text-black text-base font-semibold font-['Poppins'] leading-relaxed">
             Update the authentication {"\n"} details here
           </Text>
 
@@ -71,7 +71,7 @@ export const RegisterProcessDeactivatedThree = () => {
           <TouchableOpacity className="pb-5">
             <View className="w-[307px] h-[37px] flex items-center justify-center bg-primary-color rounded-[5px] mb-1">
               <Text className="text-center text-neutral-50 text-[13px] font-semibold leading-snug">
-                Continue to next screen
+                Confirm Registration
               </Text>
             </View>
           </TouchableOpacity>

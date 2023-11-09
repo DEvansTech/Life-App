@@ -14,7 +14,7 @@ export const RegisterProcess = ({}) => {
       <View className=" pt-10 w-full px-5 h-full">
         <View className="flex flex-col items-center justify-center gap-y-4">
           <Image
-            className="w-[75px] h-[75px]"
+            className="w-[60px] h-[60px]"
             source={require("../assets/images/app-icon.png")}
           />
 
