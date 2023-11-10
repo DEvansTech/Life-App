@@ -14,7 +14,7 @@ export const PasswordUpdateModal: React.FC<NameUpdateModalParams> = ({
   open,
   setOpen,
 }) => {
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(true);
   return (
     <Modal
       style={{ justifyContent: "flex-end", margin: 0 }}
@@ -74,7 +74,7 @@ export const PasswordUpdateModal: React.FC<NameUpdateModalParams> = ({
         <TouchableOpacity className="pb-10 pt-7">
           <View className="w-[307px] h-[37px] flex items-center justify-center bg-primary-color rounded-[5px] mb-1">
             <Text
-              style={{ fontFamily: "Poppins_400Regular" }}
+              style={{ fontFamily: "Poppins_600SemiBold" }}
               className="text-center text-neutral-50 text-[13px] font-semibold leading-snug"
             >
               Save Name

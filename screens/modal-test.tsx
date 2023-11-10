@@ -60,6 +60,12 @@ export const ModalTest = () => {
         setOpen={setOpen}
       /> */}
 
+      {/* <UserNameUpdateModal
+        inputValues={inputValues}
+        open={open}
+        setOpen={setOpen}
+      /> */}
+
       <PasswordUpdateModal
         inputValues={inputValues}
         open={open}

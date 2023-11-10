@@ -15,6 +15,7 @@ export const UserNameUpdateModal: React.FC<NameUpdateModalParams> = ({
   setOpen,
 }) => {
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(true);
 
   return (
     <Modal
@@ -37,9 +38,13 @@ export const UserNameUpdateModal: React.FC<NameUpdateModalParams> = ({
             label={inputValues.at(2)?.label}
             placeholder={inputValues.at(2)?.placeholder}
             password={false}
-            message="This username is already taken"
-            // error
-            success
+            message={
+              error
+                ? "This username is already taken"
+                : "This username is available now"
+            }
+            error={error}
+            success={success}
           />
         </View>
 
@@ -73,19 +78,21 @@ export const UserNameUpdateModal: React.FC<NameUpdateModalParams> = ({
               </View>
             </View>
           </View>
-        ) : (
+        ) : null}
+
+        {!error && !success ? (
           <Text
             style={{ fontFamily: "Poppins_400Regular" }}
             className=" pt-[14] text-zinc-600 text-sm font-normal leading-snug self-start pl-8"
           >
             Don’t use uppercase, special character {"\n"}to create a username
           </Text>
-        )}
+        ) : null}
 
-        <TouchableOpacity className={`pb-10 ${error ? "pt-3" : "pt-5"}`}>
+        <TouchableOpacity className={`pb-10 ${error ? "pt-3" : "pt-5"} ${success && "pt-7"}`}>
           <View className="w-[307px] h-[37px] flex items-center justify-center bg-primary-color rounded-[5px] mb-1">
             <Text
-              style={{ fontFamily: "Poppins_400Regular" }}
+              style={{ fontFamily: "Poppins_600SemiBold" }}
               className="text-center text-neutral-50 text-[13px] font-semibold leading-snug"
             >
               Save Name

@@ -49,7 +49,7 @@ export const FieldInput: React.FC<FieldInputParams> = ({
       {message ? (
         <Text
           style={{ fontFamily: "Poppins_400Regular" }}
-          className={`ml-1 pt-2 text-zinc-600 text-sm font-normal leading-snug ${
+          className={`ml-1 pt-2.5 text-zinc-600 text-sm font-normal leading-snug ${
             error && "text-other-red"
           } ${success && "text-green-600"}`}
         >
