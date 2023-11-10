@@ -27,16 +27,31 @@ export const FieldInput: React.FC<FieldInputParams> = ({
           {label}
         </Text>
       ) : null}
-      <View className="flex flex-row justify-between py-[14] px-[20] w-full bg-stone-50 rounded-lg border border-slate-400">
+      <View
+        className={`flex flex-row justify-between py-[14] px-[20] w-full bg-stone-50 rounded-lg border ${
+          error ? "border-red-600" : "border-slate-400"
+        }`}
+      >
         <TextInput
           secureTextEntry={password}
           style={{ fontSize: 16, fontFamily: "Poppins_400Regular" }}
           placeholder={placeholder}
+          placeholderTextColor={error ? "#ED1F24" : undefined}
+          className={`${error ? "text-other-red" : undefined}`}
         />
         {password ? (
           <FontAwesome name="eye-slash" color={"#2A5C81"} size={18} />
         ) : null}
       </View>
+
+      {errorMessage ? (
+        <Text
+          style={{ fontFamily: "Poppins_400Regular" }}
+          className="ml-1 pt-2 text-other-red text-sm font-normal leading-snug"
+        >
+          {errorMessage}
+        </Text>
+      ) : null}
     </View>
   );
 };

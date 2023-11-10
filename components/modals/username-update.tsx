@@ -14,6 +14,8 @@ export const UserNameUpdateModal: React.FC<NameUpdateModalParams> = ({
   open,
   setOpen,
 }) => {
+  const [error, setError] = useState(true);
+
   return (
     <Modal
       style={{ justifyContent: "flex-end", margin: 0 }}
@@ -35,17 +37,51 @@ export const UserNameUpdateModal: React.FC<NameUpdateModalParams> = ({
             label={inputValues.at(2)?.label}
             placeholder={inputValues.at(2)?.placeholder}
             password={false}
-          
+            // errorMessage="This username is already taken"
+            // error
           />
         </View>
 
-        <Text
-          style={{ fontFamily: "Poppins_400Regular" }}
-          className=" pt-[14] text-zinc-600 text-sm font-normal leading-snug self-start pl-8"
-        >
-          Don’t use uppercase, special character {"\n"}to create a username
-        </Text>
-        <TouchableOpacity className="pb-10 pt-5">
+        {/* if there is an error show suggested names */}
+        {error ? (
+          <View className="self-start pt-3.5 px-9">
+            <Text
+              style={{ fontFamily: "Poppins_400Regular" }}
+              className="text-zinc-600 pb-2.5 text-sm font-normal leading-snug"
+            >
+              Suggested
+            </Text>
+            <View className="flex flex-row gap-1.5 w-3/4 flex-wrap">
+              <View
+                style={{ backgroundColor: "rgba(0, 64, 110, 0.09)" }}
+                className="p-2.5 bg-opacity-10 rounded-[10px] inline-flex"
+              >
+                <Text className="text-zinc-600 text-sm">misbah_himel</Text>
+              </View>
+              <View
+                style={{ backgroundColor: "rgba(0, 64, 110, 0.09)" }}
+                className="p-2.5 bg-opacity-10 rounded-[10px] inline-flex"
+              >
+                <Text className="text-zinc-600 text-sm">misbah001</Text>
+              </View>
+              <View
+                style={{ backgroundColor: "rgba(0, 64, 110, 0.09)" }}
+                className="p-2.5 bg-opacity-10 rounded-[10px] inline-flex"
+              >
+                <Text className="text-zinc-600 text-sm">himelmisbah</Text>
+              </View>
+            </View>
+          </View>
+        ) : (
+          <Text
+            style={{ fontFamily: "Poppins_400Regular" }}
+            className=" pt-[14] text-zinc-600 text-sm font-normal leading-snug self-start pl-8"
+          >
+            Don’t use uppercase, special character {"\n"}to create a username
+          </Text>
+        )}
+
+        <TouchableOpacity className="pb-10 pt-3">
           <View className="w-[307px] h-[37px] flex items-center justify-center bg-primary-color rounded-[5px] mb-1">
             <Text
               style={{ fontFamily: "Poppins_400Regular" }}
