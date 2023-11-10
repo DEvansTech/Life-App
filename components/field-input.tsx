@@ -6,12 +6,16 @@ export interface FieldInputParams {
   label?: string;
   placeholder?: string;
   password?: boolean;
+  error?: boolean;
+  errorMessage?: string;
 }
 
 export const FieldInput: React.FC<FieldInputParams> = ({
   label,
   placeholder,
   password,
+  error,
+  errorMessage,
 }) => {
   return (
     <View key={label} className="w-full flex">

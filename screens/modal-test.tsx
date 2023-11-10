@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, SafeAreaView, Button } from "react-native";
 import { EmailAssignModal } from "../components/modals/email-assign";
 import { NameUpdateModal } from "../components/modals/name-update";
+import { UserNameUpdateModal } from "../components/modals/username-update";
 import { SmallPersonCard, PersonCard, ProfileCard } from "../components/cards";
 
 export const ModalTest = () => {
@@ -46,17 +47,23 @@ export const ModalTest = () => {
       <PersonCard />
       <ProfileCard />
 
-      <EmailAssignModal
+      {/* <EmailAssignModal
         inputValues={inputValues}
         open={open}
         setOpen={setOpen}
-      />
+      /> */}
 
       {/* <NameUpdateModal
         inputValues={inputValues}
         open={open}
         setOpen={setOpen}
       /> */}
+
+      <UserNameUpdateModal
+        inputValues={inputValues}
+        open={open}
+        setOpen={setOpen}
+      />
     </SafeAreaView>
   );
 };
