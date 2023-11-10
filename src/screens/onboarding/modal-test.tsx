@@ -7,6 +7,7 @@ import {
   SmallPersonCard,
   PersonCard,
   ProfileCard,
+  GroupCard,
 } from "../../components/cards";
 import { PasswordUpdateModal } from "../../components/modals/password-update";
 
@@ -48,9 +49,18 @@ export const ModalTest = () => {
         <Button onPress={() => setOpen(true)} title="hellop" />
       </View>
 
-      <SmallPersonCard />
-      <PersonCard />
-      <ProfileCard />
+      <View className="pt-5">
+        <SmallPersonCard />
+      </View>
+      <View className="pt-5">
+        <PersonCard />
+      </View>
+      <View className="pt-5">
+        <ProfileCard />
+      </View>
+      <View className="pt-5">
+        <GroupCard />
+      </View>
 
       {/* <EmailAssignModal
         inputValues={inputValues}

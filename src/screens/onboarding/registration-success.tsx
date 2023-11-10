@@ -12,7 +12,7 @@ export const RegistrationSuccess = () => {
     <SafeAreaView>
       <View className="w-full h-full flex flex-col items-center justify-between">
         <View className="items-center mt-[190]">
-          <Image className="w-[171px] h-[171px]" source={require("../../assets/images/app-icon.png")} />
+          <Image className="w-[171px] h-[171px]" source={require("../../../assets/images/app-icon.png")} />
 
           <Text
             style={{ fontFamily: "Poppins" }}

@@ -15,7 +15,7 @@ export const RegisterProcess = ({}) => {
         <View className="flex flex-col items-center justify-center gap-y-4">
           <Image
             className="w-[60px] h-[60px]"
-            source={require("../../assets/images/app-icon.png")}
+            source={require("../../../assets/images/app-icon.png")}
           />
 
           <Text

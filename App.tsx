@@ -19,7 +19,7 @@ import {
   RegisterProcessDeactivatedThree,
   RegistrationSuccess,
   ModalTest,
-} from "./screens/onboarding";
+} from "./src/screens/onboarding";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({

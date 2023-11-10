@@ -8,7 +8,7 @@ export const SmallPersonCard = () => {
       <View className="flex flex-row items-center">
         <Image
           className="w-[36] h-[36] rounded-full"
-          source={require("../../assets/images/person.png")}
+          source={require("../../../assets/images/person.png")}
         />
         <View className="pl-2.5">
           <Text
