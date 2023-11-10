@@ -7,7 +7,8 @@ export interface FieldInputParams {
   placeholder?: string;
   password?: boolean;
   error?: boolean;
-  errorMessage?: string;
+  success?: boolean;
+  message?: string;
 }
 
 export const FieldInput: React.FC<FieldInputParams> = ({
@@ -15,7 +16,8 @@ export const FieldInput: React.FC<FieldInputParams> = ({
   placeholder,
   password,
   error,
-  errorMessage,
+  success,
+  message,
 }) => {
   return (
     <View key={label} className="w-full flex">
@@ -30,7 +32,7 @@ export const FieldInput: React.FC<FieldInputParams> = ({
       <View
         className={`flex flex-row justify-between py-[14] px-[20] w-full bg-stone-50 rounded-lg border ${
           error ? "border-red-600" : "border-slate-400"
-        }`}
+        } ${success && "border-green-600"}`}
       >
         <TextInput
           secureTextEntry={password}
@@ -44,12 +46,14 @@ export const FieldInput: React.FC<FieldInputParams> = ({
         ) : null}
       </View>
 
-      {errorMessage ? (
+      {message ? (
         <Text
           style={{ fontFamily: "Poppins_400Regular" }}
-          className="ml-1 pt-2 text-other-red text-sm font-normal leading-snug"
+          className={`ml-1 pt-2 text-zinc-600 text-sm font-normal leading-snug ${
+            error && "text-other-red"
+          } ${success && "text-green-600"}`}
         >
-          {errorMessage}
+          {message}
         </Text>
       ) : null}
     </View>

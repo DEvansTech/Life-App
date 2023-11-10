@@ -14,7 +14,7 @@ export const UserNameUpdateModal: React.FC<NameUpdateModalParams> = ({
   open,
   setOpen,
 }) => {
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
 
   return (
     <Modal
@@ -37,8 +37,9 @@ export const UserNameUpdateModal: React.FC<NameUpdateModalParams> = ({
             label={inputValues.at(2)?.label}
             placeholder={inputValues.at(2)?.placeholder}
             password={false}
-            // errorMessage="This username is already taken"
+            message="This username is already taken"
             // error
+            success
           />
         </View>
 
@@ -81,7 +82,7 @@ export const UserNameUpdateModal: React.FC<NameUpdateModalParams> = ({
           </Text>
         )}
 
-        <TouchableOpacity className="pb-10 pt-3">
+        <TouchableOpacity className={`pb-10 ${error ? "pt-3" : "pt-5"}`}>
           <View className="w-[307px] h-[37px] flex items-center justify-center bg-primary-color rounded-[5px] mb-1">
             <Text
               style={{ fontFamily: "Poppins_400Regular" }}
