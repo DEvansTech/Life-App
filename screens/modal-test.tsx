@@ -30,7 +30,7 @@ export const ModalTest = () => {
     },
     {
       label: "Retype your password",
-      placeholder: "Enter passoword",
+      placeholder: " *  *  *  *  *  *  *",
       password: true,
     },
   ];

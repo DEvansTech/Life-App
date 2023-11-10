@@ -14,6 +14,7 @@ export const PasswordUpdateModal: React.FC<NameUpdateModalParams> = ({
   open,
   setOpen,
 }) => {
+  const [error, setError] = useState(false);
   return (
     <Modal
       style={{ justifyContent: "flex-end", margin: 0 }}
@@ -33,25 +34,43 @@ export const PasswordUpdateModal: React.FC<NameUpdateModalParams> = ({
         <View className="w-full px-8">
           <FieldInput
             label={inputValues.at(3)?.label}
-            placeholder={inputValues.at(3)?.placeholder}
-            password={false}
+            placeholder={
+              error
+                ? inputValues.at(4)?.placeholder
+                : inputValues.at(3)?.placeholder
+            }
+            password={true}
           />
         </View>
 
         <View className="w-full px-8 pt-5">
           <FieldInput
             label={inputValues.at(4)?.label}
-            placeholder={inputValues.at(4)?.placeholder}
-            password={false}
+            placeholder={
+              error
+                ? inputValues.at(4)?.placeholder
+                : inputValues.at(3)?.placeholder
+            }
+            password={true}
           />
         </View>
 
-        <Text
-          style={{ fontFamily: "Poppins_400Regular" }}
-          className="ml-1 pt-[14] text-zinc-600 text-sm font-normal leading-snug self-start pl-8"
-        >
-          Use special character to secure your {"\n"}password
-        </Text>
+        {error ? (
+          <Text
+            style={{ fontFamily: "Poppins_400Regular" }}
+            className="ml-1 pr-16 pt-[14] text-other-red text-sm font-normal leading-snug self-start pl-8"
+          >
+            Password doesn't match please check again
+          </Text>
+        ) : (
+          <Text
+            style={{ fontFamily: "Poppins_400Regular" }}
+            className="ml-1 pt-[14] text-zinc-600 text-sm font-normal leading-snug self-start pl-8"
+          >
+            Use special character to secure your {"\n"}password
+          </Text>
+        )}
+
         <TouchableOpacity className="pb-10 pt-7">
           <View className="w-[307px] h-[37px] flex items-center justify-center bg-primary-color rounded-[5px] mb-1">
             <Text
