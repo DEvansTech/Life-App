@@ -26,6 +26,7 @@ interface TabBarIconProps {
 const HomeIcon = ({ focused, color, size }: TabBarIconProps) => (
   <MaterialCommunityIcons
     name={focused ? "home" : "home-outline"}
+    // color={"#2A5C81"}
     color={color}
     size={size}
   />
@@ -45,7 +46,11 @@ export const BottomTabNavigator: React.FC<{}> = () => {
   return (
     <Tabs.Navigator
       initialRouteName="HomeTab"
-      screenOptions={{ tabBarHideOnKeyboard: true }}
+      screenOptions={{
+        tabBarHideOnKeyboard: true,
+        tabBarActiveTintColor: "#2A5C81",
+        tabBarStyle: { paddingTop: 10 },
+      }}
     >
       <Tabs.Screen
         name="HomeTab"
@@ -53,11 +58,13 @@ export const BottomTabNavigator: React.FC<{}> = () => {
         // initialParams={{
         //   initialRouteName: "My-Profile",
         // }}
+
         options={{
           title: "Home",
           headerTitle: "Home",
           headerShown: false,
           tabBarIcon: HomeIcon,
+          //   tabBarLabelStyle: { color: "#2A5C81" },
         }}
       />
 
