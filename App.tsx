@@ -3,23 +3,28 @@ import { View, Text, Button, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
-import { Poppins_400Regular, Poppins_600SemiBold } from "@expo-google-fonts/poppins";
+import {
+  Poppins_400Regular,
+  Poppins_600SemiBold,
+} from "@expo-google-fonts/poppins";
 
-import { LandingScreen } from "./screens/landing";
-import { OtpVerify } from "./screens/otp-verify";
-import { EnterCellPhoneScreen } from "./screens/enter-cell-phone";
-import { RegisterProcess } from "./screens/register-process";
-import { SuccessScreen } from "./screens/success";
-import { RegisterProcessDeactivated } from "./screens/registration-pro-deactivated";
-import { RegisterProcessDeactivatedTwo } from "./screens/registration-pro-deactivated2";
-import { RegisterProcessDeactivatedThree } from "./screens/registration-pro-deactivated3";
-import { RegistrationSuccess } from "./screens/registration-success";
-import { ModalTest } from "./screens/modal-test";
+import {
+  LandingScreen,
+  OtpVerify,
+  EnterCellPhoneScreen,
+  RegisterProcess,
+  SuccessScreen,
+  RegisterProcessDeactivated,
+  RegisterProcessDeactivatedTwo,
+  RegisterProcessDeactivatedThree,
+  RegistrationSuccess,
+  ModalTest,
+} from "./screens/onboarding";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
-    Poppins_600SemiBold
+    Poppins_600SemiBold,
   });
 
   if (!fontsLoaded) {

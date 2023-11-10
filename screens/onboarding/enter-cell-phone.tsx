@@ -35,7 +35,7 @@ export const EnterCellPhoneScreen: React.FC<
           <View className="flex flex-col items-center justify-center gap-4">
             <Image
               className="w-[100px] h-[100px]"
-              source={require("../assets/images/app-icon.png")}
+              source={require("../../assets/images/app-icon.png")}
             />
 
             <Text

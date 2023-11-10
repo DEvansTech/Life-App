@@ -7,7 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import { FieldInput } from "../components";
+import { FieldInput } from "../../components";
 
 export const RegisterProcessDeactivatedThree = () => {
   const inputValues = [

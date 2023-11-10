@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { AdjustSettings, ImageBanner } from "../components";
+import { AdjustSettings, ImageBanner } from "../../components";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export const SuccessScreen = ({ navigation }: { navigation: any }) => {
@@ -31,7 +31,7 @@ export const SuccessScreen = ({ navigation }: { navigation: any }) => {
         <View className="flex flex-col items-center justify-center gap-y-4">
           <Image
             className="w-28 h-28"
-            source={require("../assets/images/success.jpeg")}
+            source={require("../../assets/images/success.jpeg")}
           />
 
           <Text
@@ -44,7 +44,7 @@ export const SuccessScreen = ({ navigation }: { navigation: any }) => {
           <View className="w-full p-5 h-16 flex flex-row items-center justify-start bg-zinc-200 rounded-xl">
             <Image
               className="w-[40] h-[40] rounded-full"
-              source={require("../assets/images/person.png")}
+              source={require("../../assets/images/person.png")}
             />
             <Text className="ext-right text-zinc-600 text-base font-semibold font-['Poppins'] leading-snug">
               Image name.jpg

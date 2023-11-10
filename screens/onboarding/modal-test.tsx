@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { View, Text, SafeAreaView, Button } from "react-native";
-import { EmailAssignModal } from "../components/modals/email-assign";
-import { NameUpdateModal } from "../components/modals/name-update";
-import { UserNameUpdateModal } from "../components/modals/username-update";
-import { SmallPersonCard, PersonCard, ProfileCard } from "../components/cards";
-import { PasswordUpdateModal } from "../components/modals/password-update";
+import { EmailAssignModal } from "../../components/modals/email-assign";
+import { NameUpdateModal } from "../../components/modals/name-update";
+import { UserNameUpdateModal } from "../../components/modals/username-update";
+import {
+  SmallPersonCard,
+  PersonCard,
+  ProfileCard,
+} from "../../components/cards";
+import { PasswordUpdateModal } from "../../components/modals/password-update";
 
 export const ModalTest = () => {
   const inputValues = [

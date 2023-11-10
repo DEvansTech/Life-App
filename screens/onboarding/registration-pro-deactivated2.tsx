@@ -9,7 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import { ImageBannerHeader, FieldInput } from "../components";
+import { ImageBannerHeader, FieldInput } from "../../components";
 
 export const RegisterProcessDeactivatedTwo = () => {
   const inputValues = [

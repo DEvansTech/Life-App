@@ -12,7 +12,7 @@ export const LandingScreen = () => {
     <SafeAreaView>
       <View className="w-full h-full flex flex-col items-center justify-between">
         <View className="mt-[100]">
-          <Image source={require("../assets/images/app-icon.png")} />
+          <Image source={require("../../assets/images/app-icon.png")} />
 
           <Text
             style={{ fontFamily: "Poppins" }}
