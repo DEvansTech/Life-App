@@ -4,6 +4,7 @@ import { EmailAssignModal } from "../components/modals/email-assign";
 import { NameUpdateModal } from "../components/modals/name-update";
 import { UserNameUpdateModal } from "../components/modals/username-update";
 import { SmallPersonCard, PersonCard, ProfileCard } from "../components/cards";
+import { PasswordUpdateModal } from "../components/modals/password-update";
 
 export const ModalTest = () => {
   const inputValues = [
@@ -24,12 +25,12 @@ export const ModalTest = () => {
     },
     {
       label: "Enter your password",
-      placeholder: " *  *  *  *  *  *  *",
+      placeholder: "Enter password",
       password: true,
     },
     {
-      label: "retype your password",
-      placeholder: " *  *  *  *  *  *  *",
+      label: "Retype your password",
+      placeholder: "Enter passoword",
       password: true,
     },
   ];
@@ -59,7 +60,7 @@ export const ModalTest = () => {
         setOpen={setOpen}
       /> */}
 
-      <UserNameUpdateModal
+      <PasswordUpdateModal
         inputValues={inputValues}
         open={open}
         setOpen={setOpen}
