@@ -18,7 +18,7 @@ export const PersonCard = () => {
             Anna Marie .{" "}
             <Text
               style={{ fontFamily: "Poppins_400Regular", fontSize: 12 }}
-              className="text-zinc-600"
+              className="text-zinc-600 "
             >
               32 min ago
             </Text>

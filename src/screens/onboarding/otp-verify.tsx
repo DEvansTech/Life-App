@@ -20,7 +20,7 @@ export const OtpVerify = () => {
           <View className="flex flex-col items-center justify-center gap-4">
             <Text
               style={{ fontFamily: "Poppins" }}
-              className="mt-7 text-center text-cyan-800 text-[17px] font-semibold leading-snug"
+              className="mt-7 text-center text-primary-color text-[17px] font-semibold leading-snug"
             >
               Please Validate the OTP {"\n"} number
             </Text>
@@ -67,7 +67,7 @@ export const OtpVerify = () => {
               </View>
             </TouchableOpacity>
             <View>
-              <Text className="ext-center text-slate-400 text-xs font-semibold font-['Poppins'] leading-snug">
+              <Text className="ext-center text-slate-400 text-xs font-semibold leading-snug">
                 Resend OTP
               </Text>
             </View>

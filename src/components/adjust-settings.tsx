@@ -25,7 +25,7 @@ export const AdjustSettings = () => {
 
             <TouchableOpacity className="flex flex-row items-center">
               <Text
-                className={`pr-2 text-primary-color text-sm font-medium leading-snug ${
+                className={`pr-2 text-primary-color text-sm font-medium  leading-snug ${
                   setting.field === "Phone Number"
                     ? "text-zinc-600"
                     : "text-primary-color"

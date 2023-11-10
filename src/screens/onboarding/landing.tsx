@@ -16,7 +16,7 @@ export const LandingScreen = () => {
 
           <Text
             style={{ fontFamily: "Poppins" }}
-            className="mt-7 text-center text-cyan-800 text-[17px] font-semibold leading-snug"
+            className="mt-7 text-center text-primary-color text-[17px] font-semibold leading-snug"
           >
             East, safe and SECURE
           </Text>
@@ -37,13 +37,13 @@ export const LandingScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity>
             <View className="mt-[11] w-[307px] h-[37px] flex items-center justify-center  rounded-[5px] border border-cyan-800">
-              <Text className="text-center text-cyan-800 text-[13px] font-semibold font-['Poppins'] leading-snug">
+              <Text className="text-center text-primary-color text-[13px] font-semibold font-['Poppins'] leading-snug">
                 Sign up
               </Text>
             </View>
           </TouchableOpacity>
 
-          <Text className="mt-6 text-center text-cyan-800 text-base font-light font-['Poppins'] leading-snug">
+          <Text className="mt-6 text-center text-primary-color text-base font-light font-['Poppins'] leading-snug">
             " END-TO-END ENCRYPTED "
           </Text>
         </View>

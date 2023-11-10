@@ -36,7 +36,7 @@ export const SuccessScreen = ({ navigation }: { navigation: any }) => {
 
           <Text
             //   style={{ fontFamily: "Poppins_400Regular" }}
-            className="text-center text-neutral-500 mt-4 text-[17px] font-semibold leading-snug"
+            className="text-center text-neutral-500 mt-4 text-[17px] font-semibold leading-snug "
           >
             You sucessfully completed {"\n"} the registration
           </Text>

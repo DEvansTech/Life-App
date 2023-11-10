@@ -18,7 +18,7 @@ export const RegistrationSuccess = () => {
             style={{ fontFamily: "Poppins" }}
             className="mt-20 text-center text-zinc-600 text-[17px] font-semibold leading-snug"
           >
-            Hello <Text className="text-primary-color">Jonathan Doe</Text>
+            Hello <Text className="text-primary-color ">Jonathan Doe</Text>
           </Text>
           <Text
             style={{ fontFamily: "Poppins_600SemiBold" }}

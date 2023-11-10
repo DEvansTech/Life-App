@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-export const ProfileCard = () => {
+export const ChatScreen = () => {
   return (
     <View>
-      <Text>Profile Card </Text>
+      <Text>Chat</Text>
     </View>
   );
 };

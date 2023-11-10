@@ -20,7 +20,7 @@ export const RegisterProcess = ({}) => {
 
           <Text
             //   style={{ fontFamily: "Poppins_400Regular" }}
-            className="text-center mt-4 text-[17px] text-zinc-600 font-semibold leading-snug"
+            className="text-center mt-4 text-[17px] text-zinc-600 font-semibold leading-snug "
           >
             Registration process
           </Text>

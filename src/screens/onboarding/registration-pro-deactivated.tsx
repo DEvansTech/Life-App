@@ -63,7 +63,7 @@ export const RegisterProcessDeactivated = () => {
             })}
             <View className="flex flex-row">
               <View className="w-4 h-4 mt-0.5 rounded-full bg-blue-400" />
-              <Text className="w-[282px] pl-3 text-zinc-600 text-sm font-normal font-['Poppins'] leading-snug">
+              <Text className="w-[282px] pl-3 text-zinc-600 text-sm font-normal leading-snug">
                 I agree with the{" "}
                 <Text className="text-primary-color">Terms and Conditions</Text>{" "}
                 and <Text className="text-primary-color">Privacy Policy</Text>

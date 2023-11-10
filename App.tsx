@@ -20,6 +20,7 @@ import {
   RegistrationSuccess,
   ModalTest,
 } from "./src/screens/onboarding";
+import { BottomTabNavigator } from "./src/navigation/bottom-tab";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({
@@ -35,7 +36,7 @@ function HomeScreen({ navigation }: { navigation: any }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
-      {/* <Button
+      <Button
         onPress={() => navigation.navigate("Landing")}
         title="Go to Landing"
       />
@@ -43,7 +44,7 @@ function HomeScreen({ navigation }: { navigation: any }) {
       <Button
         onPress={() => navigation.navigate("Cell-Phone")}
         title="Go to Cell"
-      /> */}
+      />
       <Button
         onPress={() => navigation.navigate("Register-Process")}
         title="Register Process"
@@ -72,6 +73,8 @@ function HomeScreen({ navigation }: { navigation: any }) {
         onPress={() => navigation.navigate("Modal-Test")}
         title="Modal Test"
       />
+
+      <Button onPress={() => navigation.navigate("Tabs")} title="Bottom Tab" />
     </View>
   );
 }
@@ -144,6 +147,11 @@ function App() {
         <Stack.Screen
           name="Modal-Test"
           component={ModalTest}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Tabs"
+          component={BottomTabNavigator}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

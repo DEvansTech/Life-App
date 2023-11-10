@@ -4,7 +4,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export const SmallPersonCard = () => {
   return (
-    <View className="w-full flex flex-row items-center justify-between bg-white">
+    <View className="w-full flex flex-row items-center justify-between bg-white ">
       <View className="flex flex-row items-center">
         <Image
           className="w-[36] h-[36] rounded-full"

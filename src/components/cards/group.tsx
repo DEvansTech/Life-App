@@ -17,7 +17,7 @@ export const GroupCard = () => {
             Animal Lover .{" "}
             <Text
               style={{ fontFamily: "Poppins_400Regular", fontSize: 12 }}
-              className="text-zinc-600"
+              className="text-zinc-600 "
             >
               12 new
             </Text>

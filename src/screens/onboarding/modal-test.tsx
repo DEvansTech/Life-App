@@ -46,7 +46,7 @@ export const ModalTest = () => {
     <SafeAreaView>
       <View>
         <Text>geafwe</Text>
-        <Button onPress={() => setOpen(true)} title="hellop" />
+        <Button onPress={() => setOpen(true)} title="hellop " />
       </View>
 
       <View className="pt-5">

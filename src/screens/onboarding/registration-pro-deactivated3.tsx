@@ -41,7 +41,7 @@ export const RegisterProcessDeactivatedThree = () => {
             <View className="w-3 h-3 bg-zinc-400 rounded-full" />
           </View>
 
-          <Text className="mb-4 text-center text-black text-base font-semibold font-['Poppins'] leading-relaxed">
+          <Text className=" mb-4 text-center text-black text-base font-semibold font-['Poppins'] leading-relaxed">
             Update the authentication {"\n"} details here
           </Text>
 
