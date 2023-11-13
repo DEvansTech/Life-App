@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, Pressable } from "react-native";
 import { SearchComp } from "./search";
 import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -8,24 +8,42 @@ import { Ionicons } from "@expo/vector-icons";
 
 interface BasicHeaderParams {
   name?: string;
-  isClosable?: boolean;
-  leftIcon?: React.ReactNode
+  hasClose?: boolean;
+  leftIcon?: React.ReactNode;
+  hasBack?: boolean;
+  backHandler?: () => void;
 }
 
-export const BasicHeader: React.FC<BasicHeaderParams> = ({ name, isClosable, leftIcon }) => {
+export const BasicHeader: React.FC<BasicHeaderParams> = ({
+  name,
+  hasClose,
+  leftIcon,
+  hasBack,
+  backHandler,
+}) => {
   return (
     <View className="py-4 bg-[#00406E]">
       <View className="px-4">
         <SafeAreaView>
           <View className="flex flex-row justify-center items-center">
-            {leftIcon}
+            <View className="w-8">
+              {hasBack ? (
+                <Pressable onPress={backHandler}>
+                  <Ionicons name="chevron-back" size={28} color="#6B95BB" />
+                </Pressable>
+              ) : (
+                leftIcon
+              )}
+            </View>
             <Text
               className="text-white ml-auto text-base font-semibold text-white mr-auto"
               style={{ fontFamily: "Poppins_600SemiBold" }}
             >
               {name}
             </Text>
-            {isClosable && <Ionicons name="close" size={28} color="#6B95BB" />}
+            <View className="w-8">
+              {hasClose && <Ionicons name="close" size={28} color="#6B95BB" />}
+            </View>
           </View>
         </SafeAreaView>
       </View>
