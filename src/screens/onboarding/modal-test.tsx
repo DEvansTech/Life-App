@@ -13,6 +13,7 @@ import { PasswordUpdateModal } from "../../components/modals/onboarding/password
 import { GroupAssigneModal } from "../../components/modals/home/group-assign";
 import { ScanQRModal } from "../../components/modals/home/scan-qr";
 import { MyQRModal } from "../../components/modals/home/my-qr";
+import { BasicHeader } from "../../components/basic-header";
 
 export const ModalTest = () => {
   const inputValues = [
@@ -46,51 +47,50 @@ export const ModalTest = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <SafeAreaView>
-      <View>
-        <Text>geafwe</Text>
-        <Button onPress={() => setOpen(true)} title="hellop " />
-      </View>
+    <View>
+      <BasicHeader name="Scan Qr" />
 
-      <View className="pt-5">
-        <SmallPersonCard />
-      </View>
-      <View className="pt-5">
-        <PersonCard />
-      </View>
-      <View className="pt-5">
-        <ProfileCard />
-      </View>
-      <View className="pt-5">
-        <GroupCard />
-      </View>
-
-      {/* <EmailAssignModal
+      <SafeAreaView>
+        <View>
+          <Text>geafwe</Text>
+          <Button onPress={() => setOpen(true)} title="hellop " />
+        </View>
+        <View className="pt-5">
+          <SmallPersonCard />
+        </View>
+        <View className="pt-5">
+          <PersonCard />
+        </View>
+        <View className="pt-5">
+          <ProfileCard />
+        </View>
+        <View className="pt-5">
+          <GroupCard />
+        </View>
+        {/* <EmailAssignModal
         inputValues={inputValues}
         open={open}
         setOpen={setOpen}
       /> */}
-
-      {/* <NameUpdateModal
+        {/* <NameUpdateModal
         inputValues={inputValues}
         open={open}
         setOpen={setOpen}
       /> */}
-
-      {/* <UserNameUpdateModal
+        {/* <UserNameUpdateModal
         inputValues={inputValues}
         open={open}
         setOpen={setOpen}
       /> */}
-
-      {/* <PasswordUpdateModal
+        {/* <PasswordUpdateModal
         inputValues={inputValues}
         open={open}
         setOpen={setOpen}
       /> */}
-      {/* <GroupAssigneModal open={open} setOpen={setOpen} /> */}
-      {/* <ScanQRModal open={open} setOpen={setOpen} /> */}
-      <MyQRModal open={open} setOpen={setOpen} />
-    </SafeAreaView>
+        {/* <GroupAssigneModal open={open} setOpen={setOpen} /> */}
+        {/* <ScanQRModal open={open} setOpen={setOpen} /> */}
+        <MyQRModal open={open} setOpen={setOpen} />
+      </SafeAreaView>
+    </View>
   );
 };
