@@ -8,23 +8,24 @@ import { Ionicons } from "@expo/vector-icons";
 
 interface BasicHeaderParams {
   name?: string;
+  isClosable?: boolean;
+  leftIcon?: React.ReactNode
 }
 
-export const BasicHeader: React.FC<BasicHeaderParams> = ({ name }) => {
+export const BasicHeader: React.FC<BasicHeaderParams> = ({ name, isClosable, leftIcon }) => {
   return (
     <View className="py-4 bg-[#00406E]">
-      <View className="px-4 pb-2.5">
+      <View className="px-4">
         <SafeAreaView>
-          <View className="pt-1 flex flex-row justify-between items-center">
-            <Feather name="settings" size={24} color="#6B95BB" />
-
+          <View className="flex flex-row justify-center items-center">
+            {leftIcon}
             <Text
-              className="text-white ml-1"
-              style={{ fontFamily: "Poppins_600SemiBold", fontSize: 17 }}
+              className="text-white ml-auto text-base font-semibold text-white mr-auto"
+              style={{ fontFamily: "Poppins_600SemiBold" }}
             >
               {name}
             </Text>
-            <Ionicons name="close" size={28} color="#6B95BB" />
+            {isClosable && <Ionicons name="close" size={28} color="#6B95BB" />}
           </View>
         </SafeAreaView>
       </View>

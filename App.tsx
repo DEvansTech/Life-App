@@ -24,6 +24,7 @@ import {
   ModalTest,
 } from "./src/screens/onboarding";
 import { BottomTabNavigator } from "./src/navigation/bottom-tab";
+import SidebarView from "./src/screens/sidebar/sidebar";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({
@@ -79,8 +80,8 @@ function HomeScreen({ navigation }: { navigation: any }) {
         onPress={() => navigation.navigate("Modal-Test")}
         title="Modal Test"
       />
-
       <Button onPress={() => navigation.navigate("Tabs")} title="Bottom Tab" />
+      <Button onPress={() => navigation.navigate("sidebar")} title="Sidebar" />
     </View>
   );
 }
@@ -159,6 +160,11 @@ function App() {
           name="Tabs"
           component={BottomTabNavigator}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="sidebar"
+          component={SidebarView}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
