@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, SafeAreaView } from "react-native";
 import { SearchComp } from "./search";
-// import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 

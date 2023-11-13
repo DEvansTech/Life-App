@@ -1,13 +1,19 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { AntDesign } from "@expo/vector-icons";
 
 interface PersonCardParams {
   number?: number;
   name?: string;
+  checked?: boolean;
 }
 
-export const PersonCard: React.FC<PersonCardParams> = ({ number, name }) => {
+export const PersonCard: React.FC<PersonCardParams> = ({
+  number,
+  name,
+  checked,
+}) => {
   return (
     <View className="w-full flex flex-row items-center justify-between bg-white">
       <View className="flex flex-row">
@@ -43,7 +49,11 @@ export const PersonCard: React.FC<PersonCardParams> = ({ number, name }) => {
         </View>
         {/* check */}
       </View>
-      <View className="w-6 h-6 rounded-full border border-neutral-500" />
+      {checked ? (
+        <AntDesign name="checkcircle" size={24} color="#3AAB73" />
+      ) : (
+        <View className="w-6 h-6 rounded-full border border-neutral-500" />
+      )}
     </View>
   );
 };

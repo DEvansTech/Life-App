@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { DefaultSearchComp } from "../../default-search";
 import { GroupCard, PersonCard } from "../../cards";
+import { PersonBubble } from "../../cards/person-bubble";
 
 export interface GroupAssigneModalParams {
   open: boolean;
@@ -71,11 +72,24 @@ export const GroupAssigneModal: React.FC<GroupAssigneModalParams> = ({
           <FlatList
             data={data}
             renderItem={({ item }) => (
-              <PersonCard name={item.name} number={item.number} />
+              <PersonCard name={item.name} number={item.number} checked />
             )}
             keyExtractor={(item) => item.name}
             ItemSeparatorComponent={() => <View style={{ height: 24 }} />}
           />
+        </View>
+      </View>
+      <View className="h-[120] px-4 pt-3 self-start absolute bottom-0 z-10 bg-[#F9F9F9] w-full">
+        <View className="flex flex-row justify-start gap-x-8">
+          <View>
+            <PersonBubble />
+          </View>
+          <View>
+            <PersonBubble />
+          </View>
+          <View>
+            <PersonBubble />
+          </View>
         </View>
       </View>
     </Modal>
