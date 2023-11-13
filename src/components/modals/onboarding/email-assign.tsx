@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Modal from "react-native-modal";
-import { FieldInput } from "../field-input";
+import { FieldInput } from "../../field-input";
 
 export interface EmailAssignModalParams {
   open: boolean;
@@ -39,7 +39,10 @@ export const EmailAssignModal: React.FC<EmailAssignModalParams> = ({
         </View>
         <TouchableOpacity className="pb-6 pt-8">
           <View className="w-[307px] h-[37px] flex items-center justify-center bg-primary-color rounded-[5px] mb-1">
-            <Text style={{ fontFamily: "Poppins_600SemiBold" }} className="text-center text-neutral-50 text-[13px] font-semibold leading-snug">
+            <Text
+              style={{ fontFamily: "Poppins_600SemiBold" }}
+              className="text-center text-neutral-50 text-[13px] font-semibold leading-snug"
+            >
               Save Name
             </Text>
           </View>

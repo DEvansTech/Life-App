@@ -2,30 +2,48 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-export const PersonCard = () => {
+interface PersonCardParams {
+  number?: number;
+  name?: string;
+}
+
+export const PersonCard: React.FC<PersonCardParams> = ({ number, name }) => {
   return (
     <View className="w-full flex flex-row items-center justify-between bg-white">
-      <View className="flex flex-row items-center">
+      <View className="flex flex-row">
         <Image
-          className="w-[36] h-[36] rounded-full"
+          className="w-[48] h-[48] rounded-full"
           source={require("../../../assets/images/person.png")}
         />
-        <View className="pl-2.5">
+        <View
+          className={`${
+            number ? "pl-3.5 flex flex-col justify-evenly" : "pl-2.5"
+          } `}
+        >
           <Text
             style={{ fontFamily: "Poppins_600SemiBold" }}
             className="text-zinc-600 text-sm font-semibold leading-snug"
           >
-            Anna Marie .{" "}
-            <Text
-              style={{ fontFamily: "Poppins_400Regular", fontSize: 12 }}
-              className="text-zinc-600 "
-            >
-              32 min ago
-            </Text>
+            {name}
+            {!number && (
+              <Text
+                style={{ fontFamily: "Poppins_400Regular", fontSize: 12 }}
+                className="text-zinc-600 "
+              >
+                32 min ago
+              </Text>
+            )}
+          </Text>
+          <Text
+            style={{ fontFamily: "Poppins_400Regular", fontSize: 12 }}
+            className="text-zinc-600 "
+          >
+            {number}
           </Text>
         </View>
+        {/* check */}
       </View>
-      {/* <FontAwesome name={"chevron-right"} color={"#A7A7A7"} size={14} /> */}
+      <View className="w-6 h-6 rounded-full border border-neutral-500" />
     </View>
   );
 };

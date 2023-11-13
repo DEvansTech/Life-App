@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeScreen } from "../screens/home/home";
 import { ChatScreen } from "../screens/chat/chat";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, Foundation, Feather } from "@expo/vector-icons";
 
 // export type BottomTabParams = {
 //   HomeTab: HomeStackParams<"Home">;
@@ -12,7 +12,7 @@ import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 export type BottomTabParams = {
   HomeTab: undefined;
-  Chat: undefined;
+  Chats: undefined;
 };
 
 /*
@@ -24,8 +24,8 @@ interface TabBarIconProps {
   size: number;
 }
 const HomeIcon = ({ focused, color, size }: TabBarIconProps) => (
-  <MaterialCommunityIcons
-    name={focused ? "home" : "home-outline"}
+  <Foundation
+    name={focused ? "home" : "home"}
     // color={"#2A5C81"}
     color={color}
     size={size}
@@ -33,11 +33,11 @@ const HomeIcon = ({ focused, color, size }: TabBarIconProps) => (
 );
 
 const ExploreIcon = ({ focused, color, size }: TabBarIconProps) => (
-  <MaterialIcons
-    name={focused ? "search" : "search"}
-    color={color}
-    size={size}
-  />
+  <Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />
+);
+
+const settingsIcon = ({ focused, color, size }: TabBarIconProps) => (
+  <Feather name="settings" size={size} color={color} />
 );
 
 const Tabs = createBottomTabNavigator<BottomTabParams>();
@@ -62,14 +62,17 @@ export const BottomTabNavigator: React.FC<{}> = () => {
         options={{
           title: "Home",
           headerTitle: "Home",
-          headerShown: false,
           tabBarIcon: HomeIcon,
-          //   tabBarLabelStyle: { color: "#2A5C81" },
+          headerShown: false,
+          // headerStyle: {
+          //   backgroundColor: "#00406E",
+          // },
+          // headerTintColor: "white",
         }}
       />
 
       <Tabs.Screen
-        name="Chat"
+        name="Chats"
         component={ChatScreen}
         // initialParams={{
         //   initialRouteName: "Explore-Tabs",

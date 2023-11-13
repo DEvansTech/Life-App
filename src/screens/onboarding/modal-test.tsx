@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { View, Text, SafeAreaView, Button } from "react-native";
-import { EmailAssignModal } from "../../components/modals/email-assign";
-import { NameUpdateModal } from "../../components/modals/name-update";
-import { UserNameUpdateModal } from "../../components/modals/username-update";
+import { EmailAssignModal } from "../../components/modals/onboarding/email-assign";
+import { NameUpdateModal } from "../../components/modals/onboarding/name-update";
+import { UserNameUpdateModal } from "../../components/modals/onboarding/username-update";
 import {
   SmallPersonCard,
   PersonCard,
   ProfileCard,
   GroupCard,
 } from "../../components/cards";
-import { PasswordUpdateModal } from "../../components/modals/password-update";
+import { PasswordUpdateModal } from "../../components/modals/onboarding/password-update";
+import { GroupAssigneModal } from "../../components/modals/home/group-assign";
 
 export const ModalTest = () => {
   const inputValues = [
@@ -80,7 +81,12 @@ export const ModalTest = () => {
         setOpen={setOpen}
       /> */}
 
-      <PasswordUpdateModal
+      {/* <PasswordUpdateModal
+        inputValues={inputValues}
+        open={open}
+        setOpen={setOpen}
+      /> */}
+      <GroupAssigneModal
         inputValues={inputValues}
         open={open}
         setOpen={setOpen}

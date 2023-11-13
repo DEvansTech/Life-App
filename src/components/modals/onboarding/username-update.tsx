@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Modal from "react-native-modal";
-import { FieldInput } from "../field-input";
+import { FieldInput } from "../../field-input";
 
 export interface NameUpdateModalParams {
   open: boolean;
@@ -89,7 +89,9 @@ export const UserNameUpdateModal: React.FC<NameUpdateModalParams> = ({
           </Text>
         ) : null}
 
-        <TouchableOpacity className={`pb-10 ${error ? "pt-3" : "pt-5"} ${success && "pt-7"}`}>
+        <TouchableOpacity
+          className={`pb-10 ${error ? "pt-3" : "pt-5"} ${success && "pt-7"}`}
+        >
           <View className="w-[307px] h-[37px] flex items-center justify-center bg-primary-color rounded-[5px] mb-1">
             <Text
               style={{ fontFamily: "Poppins_600SemiBold" }}

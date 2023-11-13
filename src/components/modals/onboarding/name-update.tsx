@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Modal from "react-native-modal";
-import { FieldInput } from "../field-input";
+import { FieldInput } from "../../field-input";
 
 export interface NameUpdateModalParams {
   open: boolean;
