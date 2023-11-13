@@ -22,9 +22,9 @@ export const GroupAssigneModal: React.FC<GroupAssigneModalParams> = ({
   }
 
   const [participants, setparticipants] = useState<Participants[] | undefined>([
-    { name: "James", number: 9876543210 },
-    { name: "James", number: 9876543210 },
-    { name: "James", number: 9876543210 },
+    // { name: "James", number: 9876543210 },
+    // { name: "James", number: 9876543210 },
+    // { name: "James", number: 9876543210 },
   ]);
 
   const data: Participants[] = [
@@ -82,7 +82,7 @@ export const GroupAssigneModal: React.FC<GroupAssigneModalParams> = ({
           <FlatList
             data={data}
             renderItem={({ item }) => (
-              <PersonCard name={item.name} number={item.number} checked />
+              <PersonCard name={item.name} number={item.number} />
             )}
             keyExtractor={(item) => item.name}
             ItemSeparatorComponent={() => <View style={{ height: 24 }} />}

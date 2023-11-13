@@ -22,7 +22,7 @@ export const MyQRModal: React.FC<EmailAssignModalParams> = ({
       backdropOpacity={0.6}
       onBackdropPress={() => setOpen(false)}
     >
-      <View className="w-full bg-white pb-24 flex items-center rounded-tl-[40px] rounded-tr-[40px]">
+      <View className="w-full bg-white pb-40r flex items-center rounded-tl-[40px] rounded-tr-[40px]">
         <View className="self-end flex-end pt-6 pb-1.5 pr-6">
           <Ionicons name="close" size={24} color="#2A5C81" />
         </View>
