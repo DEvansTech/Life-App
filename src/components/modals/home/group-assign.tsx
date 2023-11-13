@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, FlatList } from "react-native";
 import Modal from "react-native-modal";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { DefaultSearchComp } from "../../default-search";
-import { GroupCard, PersonCard } from "../../cards";
+import { PersonCard } from "../../cards";
 import { PersonBubble } from "../../cards/person-bubble";
 
 export interface GroupAssigneModalParams {
   open: boolean;
   setOpen: (arg: boolean) => void;
-  inputValues: { label?: string; placeholder?: string }[];
 }
 
 export const GroupAssigneModal: React.FC<GroupAssigneModalParams> = ({
-  inputValues,
   open,
   setOpen,
 }) => {
-  const data = [
+  interface Participants {
+    name: string;
+    number: number;
+  }
+
+  const [participants, setparticipants] = useState<Participants[] | undefined>([
+    { name: "James", number: 9876543210 },
+    { name: "James", number: 9876543210 },
+    { name: "James", number: 9876543210 },
+  ]);
+
+  const data: Participants[] = [
     { name: "James", number: 9876543210 },
     { name: "James", number: 9876543210 },
     { name: "James", number: 9876543210 },
@@ -54,7 +63,8 @@ export const GroupAssigneModal: React.FC<GroupAssigneModalParams> = ({
               style={{ fontFamily: "Poppins_700Bold" }}
               className="text-primary-color text-base font-semibold leading-snug"
             >
-              Add Participants
+              Add Participants{" "}
+              {participants?.length ? `(${participants.length})` : undefined}
             </Text>
 
             <Ionicons name="close" size={24} color="#2A5C81" />
