@@ -89,19 +89,21 @@ export const GroupAssigneModal: React.FC<GroupAssigneModalParams> = ({
           />
         </View>
       </View>
-      <View className="h-[120] px-4 pt-3 self-start absolute bottom-0 z-10 bg-[#F9F9F9] w-full">
-        <View className="flex flex-row justify-start gap-x-8">
-          <View>
-            <PersonBubble />
-          </View>
-          <View>
-            <PersonBubble />
-          </View>
-          <View>
-            <PersonBubble />
+      {participants?.length ? (
+        <View className="h-[120] px-4 pt-3 self-start absolute bottom-0 z-10 bg-[#F9F9F9] w-full">
+          <View className="flex flex-row justify-start gap-x-8">
+            <View>
+              <PersonBubble />
+            </View>
+            <View>
+              <PersonBubble />
+            </View>
+            <View>
+              <PersonBubble />
+            </View>
           </View>
         </View>
-      </View>
+      ) : null}
     </Modal>
   );
 };

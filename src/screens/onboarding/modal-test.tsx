@@ -11,6 +11,7 @@ import {
 } from "../../components/cards";
 import { PasswordUpdateModal } from "../../components/modals/onboarding/password-update";
 import { GroupAssigneModal } from "../../components/modals/home/group-assign";
+import { ScanQRModal } from "../../components/modals/home/scan-qr";
 
 export const ModalTest = () => {
   const inputValues = [
@@ -86,11 +87,8 @@ export const ModalTest = () => {
         open={open}
         setOpen={setOpen}
       /> */}
-      <GroupAssigneModal
-        inputValues={inputValues}
-        open={open}
-        setOpen={setOpen}
-      />
+      {/* <GroupAssigneModal open={open} setOpen={setOpen} /> */}
+      <ScanQRModal open={open} setOpen={setOpen} />
     </SafeAreaView>
   );
 };
