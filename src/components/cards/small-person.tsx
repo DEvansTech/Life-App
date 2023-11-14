@@ -2,7 +2,11 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-export const SmallPersonCard = () => {
+interface SmallPersonCardParmas {
+  name?: string;
+}
+
+export const SmallPersonCard: React.FC<SmallPersonCardParmas> = ({ name }) => {
   return (
     <View className="w-full flex flex-row items-center justify-between bg-white ">
       <View className="flex flex-row items-center">
@@ -15,7 +19,7 @@ export const SmallPersonCard = () => {
             style={{ fontFamily: "Poppins_600SemiBold" }}
             className="text-zinc-600 text-sm font-semibold leading-snug"
           >
-            Anna Marie .{" "}
+            {name || "Anna Marie"} .{" "}
             <Text
               style={{ fontFamily: "Poppins_400Regular", fontSize: 12 }}
               className="text-zinc-600"
