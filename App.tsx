@@ -24,6 +24,11 @@ import {
   ModalTest,
 } from "./src/screens/onboarding";
 import { BottomTabNavigator } from "./src/navigation/bottom-tab";
+import SidebarView from "./src/screens/sidebar/sidebar";
+import PrivacyPolicyView from "./src/screens/sidebar/privacy_policy";
+import EulaView from "./src/screens/sidebar/eula";
+import TermsOfUseView from "./src/screens/sidebar/terms_of_use";
+import AccountSettingsView from "./src/screens/sidebar/account_settings";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({
@@ -79,8 +84,8 @@ function HomeScreen({ navigation }: { navigation: any }) {
         onPress={() => navigation.navigate("Modal-Test")}
         title="Modal Test"
       />
-
       <Button onPress={() => navigation.navigate("Tabs")} title="Bottom Tab" />
+      <Button onPress={() => navigation.navigate("sidebar")} title="Sidebar" />
     </View>
   );
 }
@@ -159,6 +164,31 @@ function App() {
           name="Tabs"
           component={BottomTabNavigator}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="sidebar"
+          component={SidebarView}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="privacy_policy"
+          component={PrivacyPolicyView}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="eula"
+          component={EulaView}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="terms_of_use"
+          component={TermsOfUseView}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="account_settings"
+          component={AccountSettingsView}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
