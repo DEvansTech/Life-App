@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+// import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { MaterialIcons } from "@expo/vector-icons";
 
 interface SmallPersonCardParmas {
   name?: string;
@@ -12,6 +13,8 @@ interface SmallPersonCardParmas {
 export const SmallPersonCard: React.FC<SmallPersonCardParmas> = ({
   name,
   time,
+  addIcon,
+  acceptIcon,
 }) => {
   return (
     <View className="w-full flex flex-row items-center justify-between bg-white ">
@@ -37,7 +40,20 @@ export const SmallPersonCard: React.FC<SmallPersonCardParmas> = ({
           </Text>
         </View>
       </View>
-      {/* <FontAwesome name={"chevron-right"} color={"#A7A7A7"} size={14} /> */}
+      {acceptIcon ? (
+        <MaterialIcons
+          name="add-circle-outline"
+          size={24}
+          color="#2A5C81"
+        />
+      ) : null}
+       {addIcon ? (
+        <MaterialIcons
+          name="person-add-alt"
+          size={24}
+          color="#2A5C81"
+        />
+      ) : null}
     </View>
   );
 };

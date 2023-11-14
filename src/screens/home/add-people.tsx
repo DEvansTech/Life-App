@@ -17,25 +17,25 @@ export const HomeAddPeople = () => {
     {
       title: "New Friend requests",
       data: [
-        { type: "group", name: "James", number: 9876543210 },
-        { type: "group", name: "James", number: 9876543210 },
+        { type: "request", name: "James", number: 9876543210 },
+        { type: "request", name: "James", number: 9876543210 },
       ],
     },
     {
       title: "Official Account Recommendations",
       data: [
-        { type: "friend", name: "James", number: 9876543210 },
-        { type: "friend", name: "James", number: 9876543210 },
+        { type: "recommendations", name: "James", number: 9876543210 },
+        { type: "recommendations", name: "James", number: 9876543210 },
       ],
     },
     {
       title: "Friend recomendation",
       data: [
-        { type: "friend", name: "James", number: 9876543210 },
-        { type: "friend", name: "James", number: 9876543210 },
-        { type: "friend", name: "James", number: 9876543210 },
-        { type: "friend", name: "James", number: 9876543210 },
-        { type: "friend", name: "James", number: 9876543210 },
+        { type: "recommendations", name: "James", number: 9876543210 },
+        { type: "recommendations", name: "James", number: 9876543210 },
+        { type: "recommendations", name: "James", number: 9876543210 },
+        { type: "recommendations", name: "James", number: 9876543210 },
+        { type: "recommendations", name: "James", number: 9876543210 },
       ],
     },
   ];
@@ -44,16 +44,16 @@ export const HomeAddPeople = () => {
     console.log("item", item);
 
     switch (item.type) {
-      case "group":
+      case "request":
         return (
           <View className="px-4 pb-1.5">
-            <GroupCard />
+            <SmallPersonCard acceptIcon name={item.name} />
           </View>
         );
-      case "friend":
+      case "recommendations":
         return (
           <View className="px-4 py-1.5">
-            <SmallPersonCard name={item.name} />
+            <SmallPersonCard addIcon name={item.name} />
           </View>
         );
       // Add more cases for other card types as needed
