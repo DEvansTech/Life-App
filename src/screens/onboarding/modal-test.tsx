@@ -56,7 +56,7 @@ export const ModalTest = () => {
           <Button onPress={() => setOpen(true)} title="hellop " />
         </View>
         <View className="pt-5">
-          <SmallPersonCard />
+          <SmallPersonCard time='13 min' />
         </View>
         <View className="pt-5">
           <PersonCard />

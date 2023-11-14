@@ -4,9 +4,15 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 interface SmallPersonCardParmas {
   name?: string;
+  time?: string;
+  addIcon?: boolean;
+  acceptIcon?: boolean;
 }
 
-export const SmallPersonCard: React.FC<SmallPersonCardParmas> = ({ name }) => {
+export const SmallPersonCard: React.FC<SmallPersonCardParmas> = ({
+  name,
+  time,
+}) => {
   return (
     <View className="w-full flex flex-row items-center justify-between bg-white ">
       <View className="flex flex-row items-center">
@@ -19,13 +25,15 @@ export const SmallPersonCard: React.FC<SmallPersonCardParmas> = ({ name }) => {
             style={{ fontFamily: "Poppins_600SemiBold" }}
             className="text-zinc-600 text-sm font-semibold leading-snug"
           >
-            {name || "Anna Marie"} .{" "}
-            <Text
-              style={{ fontFamily: "Poppins_400Regular", fontSize: 12 }}
-              className="text-zinc-600"
-            >
-              32 min ago
-            </Text>
+            {name || "Anna Marie"} {time && ". "}
+            {time ? (
+              <Text
+                style={{ fontFamily: "Poppins_400Regular", fontSize: 12 }}
+                className="text-zinc-600"
+              >
+                32 min ago
+              </Text>
+            ) : null}
           </Text>
         </View>
       </View>

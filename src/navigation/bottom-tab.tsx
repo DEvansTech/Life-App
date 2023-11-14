@@ -25,11 +25,7 @@ interface TabBarIconProps {
   size: number;
 }
 const HomeIcon = ({ focused, color, size }: TabBarIconProps) => (
-  <Foundation
-    name={focused ? "home" : "home"}
-    color={color}
-    size={size}
-  />
+  <Foundation name={focused ? "home" : "home"} color={color} size={size} />
 );
 
 const ExploreIcon = ({ focused, color, size }: TabBarIconProps) => (
@@ -54,7 +50,8 @@ export const BottomTabNavigator: React.FC<{}> = () => {
     >
       <Tabs.Screen
         name="HomeTab"
-        component={HomeScreen}
+        component={HomeAddPeople}
+        // component={HomeScreen}
         // initialParams={{
         //   initialRouteName: "My-Profile",
         // }}
