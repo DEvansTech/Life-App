@@ -1,6 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeScreen } from "../screens/home/home";
+import { HomeAddPeople } from "../screens/home/add-people";
 import { ChatScreen } from "../screens/chat/chat";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Ionicons, Foundation, Feather } from "@expo/vector-icons";
@@ -26,7 +27,6 @@ interface TabBarIconProps {
 const HomeIcon = ({ focused, color, size }: TabBarIconProps) => (
   <Foundation
     name={focused ? "home" : "home"}
-    // color={"#2A5C81"}
     color={color}
     size={size}
   />
