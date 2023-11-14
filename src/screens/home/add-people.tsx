@@ -11,8 +11,12 @@ import { SmallPersonCard, GroupCard } from "../../components/cards";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { AntDesign } from "@expo/vector-icons";
 import { CreateGroupComp } from "../../components/cards/create-group";
+import { StackScreenProps } from "@react-navigation/stack";
+import { HomeStackParams } from "../../navigation/home-stack";
 
-export const HomeAddPeople = () => {
+type HomeAddScreenProps = StackScreenProps<HomeStackParams, "HomeAdd">;
+
+export const HomeAddPeople: React.FC<HomeAddScreenProps> = () => {
   const sections = [
     {
       title: "New Friend requests",

@@ -9,8 +9,12 @@ import {
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { AntDesign } from "@expo/vector-icons";
 import { CreateGroupComp } from "../../components/cards/create-group";
+import { StackScreenProps } from "@react-navigation/stack";
+import { HomeStackParams } from "../../navigation/home-stack";
 
-export const HomeScreen = () => {
+type HomeScreenProps = StackScreenProps<HomeStackParams, "Home">;
+
+export const HomeScreen: React.FC<HomeScreenProps> = () => {
   const sections = [
     {
       title: "My groups",
@@ -50,7 +54,7 @@ export const HomeScreen = () => {
       case "friend":
         return (
           <View className="py-1.5">
-            <SmallPersonCard name={item.name} time='32 min ago' />
+            <SmallPersonCard name={item.name} time="32 min ago" />
           </View>
         );
       // Add more cases for other card types as needed
