@@ -14,6 +14,7 @@ import { GroupAssigneModal } from "../../components/modals/home/group-assign";
 import { ScanQRModal } from "../../components/modals/home/scan-qr";
 import { MyQRModal } from "../../components/modals/home/my-qr";
 import { BasicHeader } from "../../components/basic-header";
+import { FriendSuccesseModal } from "../../components/modals/home/friend-sucess";
 
 export const ModalTest = () => {
   const inputValues = [
@@ -56,7 +57,7 @@ export const ModalTest = () => {
           <Button onPress={() => setOpen(true)} title="hellop " />
         </View>
         <View className="pt-5">
-          <SmallPersonCard time='13 min' />
+          <SmallPersonCard time="13 min" />
         </View>
         <View className="pt-5">
           <PersonCard />
@@ -89,7 +90,9 @@ export const ModalTest = () => {
       /> */}
         {/* <GroupAssigneModal open={open} setOpen={setOpen} /> */}
         {/* <ScanQRModal open={open} setOpen={setOpen} /> */}
-        <MyQRModal open={open} setOpen={setOpen} />
+        {/* <MyQRModal open={open} setOpen={setOpen} /> */}
+
+        <FriendSuccesseModal open={open} setOpen={setOpen} />
       </SafeAreaView>
     </View>
   );
