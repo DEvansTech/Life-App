@@ -15,6 +15,7 @@ import { ScanQRModal } from "../../components/modals/home/scan-qr";
 import { MyQRModal } from "../../components/modals/home/my-qr";
 import { BasicHeader } from "../../components/basic-header";
 import { FriendSuccesseModal } from "../../components/modals/home/friend-sucess";
+import { AddFriendModal } from "../../components/modals/home/add-friend";
 
 export const ModalTest = () => {
   const inputValues = [
@@ -92,7 +93,10 @@ export const ModalTest = () => {
         {/* <ScanQRModal open={open} setOpen={setOpen} /> */}
         {/* <MyQRModal open={open} setOpen={setOpen} /> */}
 
-        <FriendSuccesseModal open={open} setOpen={setOpen} />
+        {/* <FriendSuccesseModal open={open} setOpen={setOpen} /> */}
+        <View className="w-full flex justify-center items-center">
+          <AddFriendModal open={open} setOpen={setOpen} />
+        </View>
       </SafeAreaView>
     </View>
   );
