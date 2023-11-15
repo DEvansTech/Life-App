@@ -5,10 +5,6 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { BasicHeader } from "../../components/basic-header";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { PersonBubble } from "../../components/cards/person-bubble";
-import { AntDesign } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
-import { EvilIcons } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 
 type GroupCreationProps = StackScreenProps<HomeStackParams, "GroupCreation">;
