@@ -29,6 +29,8 @@ import PrivacyPolicyView from "./src/screens/sidebar/privacy_policy";
 import EulaView from "./src/screens/sidebar/eula";
 import TermsOfUseView from "./src/screens/sidebar/terms_of_use";
 import AccountSettingsView from "./src/screens/sidebar/account_settings";
+import ZedPayView from "./src/screens/sidebar/zed_pay";
+import PinUpdateView from "./src/screens/sidebar/pin_update";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({
@@ -168,27 +170,37 @@ function App() {
         <Stack.Screen
           name="sidebar"
           component={SidebarView}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="privacy_policy"
           component={PrivacyPolicyView}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="eula"
           component={EulaView}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="terms_of_use"
           component={TermsOfUseView}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="account_settings"
           component={AccountSettingsView}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="zed_pay"
+          component={ZedPayView}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="pin_update"
+          component={PinUpdateView}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

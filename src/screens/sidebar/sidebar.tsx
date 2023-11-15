@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from "react";
 import {
-  Pressable,
   SafeAreaView,
   ScrollView,
   Text,
@@ -43,7 +42,9 @@ const SidebarView: React.FC<SidebarViewProps> = ({ navigation }) => {
             source={require("../../../assets/images/zedpay.png")}
           />
         ),
-        onPress: () => {},
+        onPress: () => {
+          navigation.push("zed_pay");
+        },
       },
       {
         id: "privacy_policy",
@@ -64,7 +65,9 @@ const SidebarView: React.FC<SidebarViewProps> = ({ navigation }) => {
       {
         id: "how_to_use",
         name: "How to use life app?",
-        onPress: () => {navigation.push("terms_of_use");},
+        onPress: () => {
+          navigation.push("terms_of_use");
+        },
       },
     ],
     []
@@ -72,11 +75,11 @@ const SidebarView: React.FC<SidebarViewProps> = ({ navigation }) => {
 
   const renderItem = useCallback(
     ({ id, name, icon, onPress }: SidebarItemProps) => (
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={onPress} key={id}>
         <View className="flex-row items-center mb-2.5 last: mb-2.5">
           <View className="w-8">{icon && icon}</View>
           <View className="flex-row grow border-b border-b-[#C9C9C9] py-2.5">
-            <Text className="mr-auto">{name}</Text>
+            <Text className="mr-auto font-Poppins_400">{name}</Text>
             <Ionicons name="chevron-forward" size={20} color="#AAA" />
           </View>
         </View>
@@ -86,17 +89,19 @@ const SidebarView: React.FC<SidebarViewProps> = ({ navigation }) => {
   );
 
   return (
-    <SafeAreaView>
+    <View className="h-full bg-white">
       <BasicHeader name="Settings" hasClose={true} />
-      <ScrollView>
-        <View className="p-4 border-b border-b-[#C9C9C9]">
-          <Text className="text-sm font-medium text-[#565656]">
-            General Settings
-          </Text>
-        </View>
-        <View className="p-2.5">{items.map((item) => renderItem(item))}</View>
-      </ScrollView>
-    </SafeAreaView>
+      <SafeAreaView>
+        <ScrollView>
+          <View className="p-4 border-b border-b-[#C9C9C9]">
+            <Text className="text-sm font-medium text-[#565656] font-Poppins_500">
+              General Settings
+            </Text>
+          </View>
+          <View className="p-2.5">{items.map((item) => renderItem(item))}</View>
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 };
 
