@@ -16,6 +16,7 @@ import { MyQRModal } from "../../components/modals/home/my-qr";
 import { BasicHeader } from "../../components/basic-header";
 import { FriendSuccesseModal } from "../../components/modals/home/friend-sucess";
 import { AddFriendModal } from "../../components/modals/home/add-friend";
+import { GroupCompletionModal } from "../../components/modals/home/group-completion";
 
 export const ModalTest = () => {
   const inputValues = [
@@ -94,9 +95,9 @@ export const ModalTest = () => {
         {/* <MyQRModal open={open} setOpen={setOpen} /> */}
 
         {/* <FriendSuccesseModal open={open} setOpen={setOpen} /> */}
-        <View className="w-full flex justify-center items-center">
-          <AddFriendModal open={open} setOpen={setOpen} />
-        </View>
+        {/* <AddFriendModal open={open} setOpen={setOpen} /> */}
+        <GroupCompletionModal open={open} setOpen={setOpen} />
+
       </SafeAreaView>
     </View>
   );

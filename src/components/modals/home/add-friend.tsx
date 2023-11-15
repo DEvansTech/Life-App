@@ -13,7 +13,6 @@ export const AddFriendModal: React.FC<AddFriendsModalParams> = ({
 }) => {
   return (
     <Modal
-      style={{ margin: "auto" }}
       hasBackdrop={true}
       isVisible={open}
       backdropOpacity={0.6}
