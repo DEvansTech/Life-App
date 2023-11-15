@@ -4,7 +4,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // Poppins: Poppins,
+        Poppins_300: 'Poppins_300Light',
+        Poppins_400: 'Poppins_400Regular',
+        Poppins_500: 'Poppins_500Medium',
+        Poppins_600: 'Poppins_600SemiBold',
+        Poppins_700: 'Poppins_700Bold',
       },
       colors: {
         "primary-color": "#2A5C81",

@@ -35,10 +35,7 @@ export const BasicHeader: React.FC<BasicHeaderParams> = ({
                 leftIcon
               )}
             </View>
-            <Text
-              className="text-white ml-auto text-base font-semibold text-white mr-auto"
-              style={{ fontFamily: "Poppins_600SemiBold" }}
-            >
+            <Text className="text-white ml-auto text-base font-semibold text-white mr-auto font-Poppins_600">
               {name}
             </Text>
             <View className="w-8">

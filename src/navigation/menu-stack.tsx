@@ -16,7 +16,6 @@ export /**
 const SideBarStack: React.FC<{}> = () => {
   return (
     <MenuNav.Navigator>
-      {/* <MenuNav.Screen name="Settings" component={SettingsScreen} /> */}
       <MenuNav.Screen
         name="sidebar"
         component={SideBarView}
