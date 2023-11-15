@@ -5,7 +5,7 @@ import { AntDesign } from "@expo/vector-icons";
 interface CreateGroupCompParams {
   // by default blue, we can add more colors if needed but I figued right now we only need 2
   color?: "blue" | "gray";
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 export const CreateGroupComp: React.FC<CreateGroupCompParams> = ({
