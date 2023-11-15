@@ -31,6 +31,7 @@ import TermsOfUseView from "./src/screens/sidebar/terms_of_use";
 import AccountSettingsView from "./src/screens/sidebar/account_settings";
 import ZedPayView from "./src/screens/sidebar/zed_pay";
 import PinUpdateView from "./src/screens/sidebar/pin_update";
+import CreditCardSettingsView from "./src/screens/sidebar/creditcard_settings";
 
 function HomeScreen({ navigation }: { navigation: any }) {
   const [fontsLoaded] = useFonts({
@@ -200,6 +201,11 @@ function App() {
         <Stack.Screen
           name="pin_update"
           component={PinUpdateView}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="credit_settings"
+          component={CreditCardSettingsView}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
