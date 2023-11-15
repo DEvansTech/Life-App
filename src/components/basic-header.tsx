@@ -13,7 +13,18 @@ interface BasicHeaderParams {
   hasBack?: boolean;
   backHandler?: () => void;
 }
-
+/**
+ * Dynamic header that allows for customization
+ *
+ * @param {*} {
+ *   name,
+ *   hasClose,
+ *   leftIcon,
+ *   hasBack,
+ *   backHandler,
+ * }
+ * @return {*}
+ */
 export const BasicHeader: React.FC<BasicHeaderParams> = ({
   name,
   hasClose,
@@ -39,7 +50,14 @@ export const BasicHeader: React.FC<BasicHeaderParams> = ({
               {name}
             </Text>
             <View className="w-8">
-              {hasClose && <Ionicons name="close" size={28} color="#6B95BB" />}
+              {hasClose && (
+                <Ionicons
+                  onPress={backHandler}
+                  name="close"
+                  size={28}
+                  color="#6B95BB"
+                />
+              )}
             </View>
           </View>
         </SafeAreaView>

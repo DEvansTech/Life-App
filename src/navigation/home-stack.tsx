@@ -13,6 +13,7 @@ import { HomeScreen } from "../screens/home/home";
 import { HomeAddPeople } from "../screens/home/add-people";
 import { BottomTabParams } from "./bottom-tab";
 import { SideBarStack } from "./menu-stack";
+import { GroupCreation } from "../screens/home/group-creation";
 
 /**
  * Type for the home stack params
@@ -21,6 +22,7 @@ export type HomeStackParams = {
   Home: undefined;
   HomeAdd: undefined;
   SideBar: undefined;
+  GroupCreation: undefined;
 };
 
 // define the stack navigator
@@ -48,8 +50,7 @@ const HomeStackNav: React.FC<HomeStackTabParams> = ({ navigation, route }) => {
   useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
     if (
-      (routeName === "View-Comp" || routeName === "View-Team") &&
-      Platform.OS !== "ios"
+      (routeName === "GroupCreation" || routeName === "View-Team") 
     )
       navigation.setOptions({ tabBarStyle: { display: "none" } });
     else navigation.setOptions({ tabBarStyle: { display: "flex" } });
@@ -75,6 +76,14 @@ const HomeStackNav: React.FC<HomeStackTabParams> = ({ navigation, route }) => {
       <StackNav.Screen
         name="HomeAdd"
         component={HomeAddPeople}
+        options={{
+          animationTypeForReplace: "pop",
+          headerShown: false,
+        }}
+      />
+      <StackNav.Screen
+        name="GroupCreation"
+        component={GroupCreation}
         options={{
           animationTypeForReplace: "pop",
           headerShown: false,

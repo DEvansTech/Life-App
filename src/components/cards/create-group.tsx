@@ -1,15 +1,19 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 interface CreateGroupCompParams {
   // by default blue, we can add more colors if needed but I figued right now we only need 2
   color?: "blue" | "gray";
+  onPress: () => void;
 }
 
-export const CreateGroupComp: React.FC<CreateGroupCompParams> = ({ color }) => {
+export const CreateGroupComp: React.FC<CreateGroupCompParams> = ({
+  color,
+  onPress,
+}) => {
   return (
-    <View className=" pb-1.5 flex flex-row">
+    <Pressable onPress={onPress} className=" pb-1.5 flex flex-row">
       <View
         className={`h-[48] w-[48] ${
           color === "gray" ? "bg-[#E5E5E5]" : "bg-[#4689BD]"
@@ -35,6 +39,6 @@ export const CreateGroupComp: React.FC<CreateGroupCompParams> = ({ color }) => {
           Create a group for you and your friends
         </Text>
       </View>
-    </View>
+    </Pressable>
   );
 };

@@ -49,7 +49,7 @@ function HomeScreen({ navigation }: { navigation: any }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
-      <Button
+      {/* <Button
         onPress={() => navigation.navigate("Landing")}
         title="Go to Landing"
       />
@@ -81,7 +81,7 @@ function HomeScreen({ navigation }: { navigation: any }) {
       <Button
         onPress={() => navigation.navigate("Register-Success")}
         title="Reg Success"
-      />
+      /> */}
       <Button
         onPress={() => navigation.navigate("Modal-Test")}
         title="Modal Test"

@@ -14,7 +14,7 @@ import { HomeStackParams } from "../../navigation/home-stack";
 
 type HomeScreenProps = StackScreenProps<HomeStackParams, "Home">;
 
-export const HomeScreen: React.FC<HomeScreenProps> = () => {
+export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const sections = [
     {
       title: "My groups",
@@ -63,6 +63,10 @@ export const HomeScreen: React.FC<HomeScreenProps> = () => {
     }
   };
 
+  const handleNavigation = () => {
+    navigation.navigate("GroupCreation");
+  };
+
   return (
     <View className="bg-white h-full pb-40">
       <HomeHeader search />
@@ -94,26 +98,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = () => {
                   />
                 </View>
                 {section.title === "My groups" ? (
-                  // <View className=" pb-1.5 flex flex-row">
-                  //   <View className="h-[48] w-[48] bg-[#4689BD] flex items-center justify-center rounded-full">
-                  //     <AntDesign name="addusergroup" size={24} color="white" />
-                  //   </View>
-                  //   <View className="pl-4 flex justify-evenly">
-                  //     <Text
-                  //       style={{ fontFamily: "Poppins_600SemiBold" }}
-                  //       className="text-primary-color"
-                  //     >
-                  //       Create Group
-                  //     </Text>
-                  //     <Text
-                  //       style={{ fontFamily: "Poppins_300Light" }}
-                  //       className="text-xs text-[#707071]"
-                  //     >
-                  //       Create a group for you and your friends
-                  //     </Text>
-                  //   </View>
-                  // </View>
-                  <CreateGroupComp />
+                  <CreateGroupComp onPress={handleNavigation} />
                 ) : null}
               </View>
             )}
