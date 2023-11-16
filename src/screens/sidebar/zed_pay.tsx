@@ -41,7 +41,7 @@ const ZedPayView: React.FC<ZedPayViewProps> = ({ navigation }) => {
         name: "Credit card Settings",
         icon: <MaterialIcons name="credit-card" size={20} color="#2A5C81" />,
         onPress: () => {
-          navigation.push("account_settings");
+          navigation.push('credit_settings');
         },
       },
       {

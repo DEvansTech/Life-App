@@ -53,10 +53,8 @@ export const BottomTabNavigator: React.FC<{}> = () => {
       <Tabs.Screen
         name="ChatsTab"
         component={MessageStackNav}
-        // initialParams={{
-        //   initialRouteName: "Explore-Tabs",
-        // }}
         options={{
+          title: 'Chats',
           headerTitle: "Chat",
           tabBarIcon: ExploreIcon,
           headerShown: false,

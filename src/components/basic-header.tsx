@@ -1,16 +1,16 @@
 import React from "react";
 import { View, Text, SafeAreaView, Pressable } from "react-native";
-import { SearchComp } from "./search";
-import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import CustomTextInput from "./text-input";
 
 interface BasicHeaderParams {
   name?: string;
   hasClose?: boolean;
   leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
   hasBack?: boolean;
+  hasSearch?: boolean;
   backHandler?: () => void;
 }
 /**
@@ -20,6 +20,7 @@ interface BasicHeaderParams {
  *   name,
  *   hasClose,
  *   leftIcon,
+ *   rightIcon,
  *   hasBack,
  *   backHandler,
  * }
@@ -27,9 +28,11 @@ interface BasicHeaderParams {
  */
 export const BasicHeader: React.FC<BasicHeaderParams> = ({
   name,
-  hasClose,
   leftIcon,
+  rightIcon,
+  hasClose,
   hasBack,
+  hasSearch,
   backHandler,
 }) => {
   return (
@@ -40,7 +43,7 @@ export const BasicHeader: React.FC<BasicHeaderParams> = ({
             <View className="w-8">
               {hasBack ? (
                 <Pressable onPress={backHandler}>
-                  <Ionicons name="chevron-back" size={28} color="#6B95BB" />
+                  <Ionicons name="chevron-back" size={18} color="#6B95BB" />
                 </Pressable>
               ) : (
                 leftIcon
@@ -50,16 +53,31 @@ export const BasicHeader: React.FC<BasicHeaderParams> = ({
               {name}
             </Text>
             <View className="w-8">
-              {hasClose && (
+              {hasClose ? (
                 <Ionicons
                   onPress={backHandler}
                   name="close"
                   size={28}
                   color="#6B95BB"
                 />
+              ) : (
+                rightIcon
               )}
             </View>
           </View>
+          {hasSearch && (
+            <View className="mt-2.5">
+              <CustomTextInput
+                leftIcon={
+                  <MaterialIcons name="search" color="white" size={20} />
+                }
+                containerStyle="rounded bg-[#96B4D137] text-white border border-transparent h-10 items-center"
+                inputStyle="font-Poppins_400 text-white text-sm"
+                placeholder="Search"
+                placeholderTextColor={"#C9C9C9"}
+              />
+            </View>
+          )}
         </SafeAreaView>
       </View>
     </View>

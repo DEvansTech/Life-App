@@ -14,12 +14,14 @@ import { HomeAddPeople } from "../screens/home/add-people";
 import { BottomTabParams } from "./bottom-tab";
 import { SideBarStack } from "./menu-stack";
 import { ChatScreen } from "../screens/chat/chat";
+import ChatDetails from "../screens/chat/chat_details";
 
 /**
  * Type for the home stack params
  */
 export type MessageStackParams = {
   Chat: undefined;
+  "Chat-Details": undefined;
 };
 
 // define the stack navigator
@@ -50,7 +52,7 @@ const MessageStackNav: React.FC<MessageStackTabParams> = ({
   useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
     if (
-      (routeName === "View-Comp" || routeName === "View-Team") &&
+      (routeName === "View-Comp" || routeName === "View-Team" || "Chat-Details") &&
       Platform.OS !== "ios"
     )
       navigation.setOptions({ tabBarStyle: { display: "none" } });
@@ -69,6 +71,14 @@ const MessageStackNav: React.FC<MessageStackTabParams> = ({
       <StackNav.Screen
         name="Chat"
         component={ChatScreen}
+        options={{
+          animationTypeForReplace: "pop",
+          headerShown: false,
+        }}
+      />
+      <StackNav.Screen
+        name="Chat-Details"
+        component={ChatDetails}
         options={{
           animationTypeForReplace: "pop",
           headerShown: false,

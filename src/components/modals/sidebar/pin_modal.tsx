@@ -54,7 +54,7 @@ const AddUpdatePinModal: React.FC<Props> = ({ isShow, onClose }) => {
                     `}
                   />
                 }
-                inputStyle="rounded-lg border border-[#96B4D1] px-2.5 py-1"
+                containerStyle="rounded-lg border border-[#96B4D1] px-2.5 py-1"
                 placeholder="00.00"
               />
             </View>
@@ -72,7 +72,7 @@ const AddUpdatePinModal: React.FC<Props> = ({ isShow, onClose }) => {
                     `}
                   />
                 }
-                inputStyle="rounded-lg border border-[#96B4D1] px-2.5 py-1"
+                containerStyle="rounded-lg border border-[#96B4D1] px-2.5 py-1"
                 placeholder="00.00"
               />
             </View>
