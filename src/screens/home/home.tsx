@@ -69,7 +69,9 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
   return (
     <View className="bg-white h-full pb-40">
-      <HomeHeader search />
+      <HomeHeader search searchPress={() => {
+        navigation.navigate('Search')
+      }} />
       <SafeAreaView className="flex h-full">
         <View className="flex px-4 h-full">
           <SectionList

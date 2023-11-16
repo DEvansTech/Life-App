@@ -1,17 +1,19 @@
 import React from "react";
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, Pressable } from "react-native";
 import { SearchComp } from "./search";
 import { Feather } from "@expo/vector-icons";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 
 interface HomeHeaderParams {
   search?: boolean;
+  searchPress?: () => void;
   backButton?: boolean;
   list?: boolean;
 }
 
 export const HomeHeader: React.FC<HomeHeaderParams> = ({
   search,
+  searchPress,
   backButton,
   list,
 }) => {
@@ -37,7 +39,11 @@ export const HomeHeader: React.FC<HomeHeaderParams> = ({
           </View>
         </SafeAreaView>
 
-        {search ? <SearchComp /> : null}
+        {search ? (
+          <Pressable onPress={searchPress}>
+            <SearchComp />
+          </Pressable>
+        ) : null}
       </View>
       {list ? (
         <View className="w-full flex flex-row justify-between px-20 py-4 border-t border-[#2A5C81]">

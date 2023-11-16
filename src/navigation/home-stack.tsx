@@ -14,6 +14,7 @@ import { HomeAddPeople } from "../screens/home/add-people";
 import { BottomTabParams } from "./bottom-tab";
 import { SideBarStack } from "./menu-stack";
 import { GroupCreation } from "../screens/home/group-creation";
+import { SearchScreen } from "../screens/home/search";
 
 /**
  * Type for the home stack params
@@ -23,6 +24,7 @@ export type HomeStackParams = {
   HomeAdd: undefined;
   SideBar: undefined;
   GroupCreation: undefined;
+  Search: undefined;
 };
 
 // define the stack navigator
@@ -49,9 +51,7 @@ const HomeStackNav: React.FC<HomeStackTabParams> = ({ navigation, route }) => {
   // resource: https://stackoverflow.com/questions/51352081/react-navigation-how-to-hide-tabbar-from-inside-stack-navigation/64789273#64789273
   useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
-    if (
-      (routeName === "GroupCreation" || routeName === "View-Team") 
-    )
+    if (routeName === "GroupCreation" || routeName === "View-Team")
       navigation.setOptions({ tabBarStyle: { display: "none" } });
     else navigation.setOptions({ tabBarStyle: { display: "flex" } });
   }, [navigation, route]);
@@ -92,6 +92,14 @@ const HomeStackNav: React.FC<HomeStackTabParams> = ({ navigation, route }) => {
       <StackNav.Screen
         name="SideBar"
         component={SideBarStack}
+        options={{
+          animationTypeForReplace: "pop",
+          headerShown: false,
+        }}
+      />
+      <StackNav.Screen
+        name="Search"
+        component={SearchScreen}
         options={{
           animationTypeForReplace: "pop",
           headerShown: false,
