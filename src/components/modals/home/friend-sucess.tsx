@@ -36,36 +36,30 @@ export const FriendSuccesseModal: React.FC<GroupAssigneModalParams> = ({
           <Ionicons name="close" size={24} color="#0C4871" />
         </View>
         <View className="w-full pt-3 flex flex-col items-center">
-          <Image
-            className="w-[87] h-[87] rounded-full"
-            source={require("../../../../assets/images/person.png")}
-          />
+          <View className="w-[100px] h-[100px] bg-[#EBEBEB] items-center justify-center rounded-full">
+            <Image
+              className="w-[87] h-[87] rounded-full"
+              source={require("../../../../assets/images/person.png")}
+            />
+          </View>
           <View>
-            <Text
-              className="text-black font-Poppins_600 pt-5 text-[17px]"
-            >
+            <Text className="text-black font-Poppins_600 pt-3.5 text-[17px]">
               Andrea Jones
             </Text>
           </View>
           <View>
-            <Text
-              className="text-[#707071] font-Poppins_600 text-sm"
-            >
+            <Text className="text-[#707071] font-Poppins_600 text-sm">
               9876543210
             </Text>
           </View>
           <View>
-            <Text
-              className="text-[#58575D] pt-10 font-Poppins_600 text-base"
-            >
+            <Text className="text-[#58575D] pt-10 font-Poppins_600 text-base">
               Successfully added to your friend list
             </Text>
           </View>
           <TouchableOpacity className="flex flex-row items-center pt-8">
             <View className=" px-20 py-5 flex items-center justify-center bg-primary-color rounded-md mb-1">
-              <Text
-                className="text-center text-neutral-50 text-[13px] font-semibold leading-snug font-Poppins_600"
-              >
+              <Text className="text-center text-neutral-50 text-[16px] font-semibold leading-snug font-Poppins_600">
                 Start Chat
               </Text>
             </View>

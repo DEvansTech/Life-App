@@ -5,14 +5,14 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { BasicHeader } from "../../components/basic-header";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { PersonBubble } from "../../components/cards/person-bubble";
-import { Octicons } from '@expo/vector-icons';
+import { Octicons } from "@expo/vector-icons";
 
 type GroupCreationProps = StackScreenProps<HomeStackParams, "GroupCreation">;
 
 export const GroupCreation: React.FC<GroupCreationProps> = ({ navigation }) => {
   const tempMmebers = [{ name: "James" }, { name: "James" }, { name: "James" }];
 
-  const [memebers, setMembers] = useState();
+  // const [memebers, setMembers] = useState(tempMmebers);
 
   return (
     <View className="bg-white w-full h-full">
@@ -65,11 +65,13 @@ export const GroupCreation: React.FC<GroupCreationProps> = ({ navigation }) => {
           keyExtractor={(item) => item.name}
           ListFooterComponent={() => {
             return (
-              <View className="flex pl-[25px] flex-col items-center">
+              <View
+                className={`flex ${
+                  tempMmebers.length > 0 ? "pl-[25px]" : ""
+                } flex-col items-center`}
+              >
                 <Octicons name="plus-circle" size={48} color="#96B4D1" />
-                <Text
-                  className="text-[#96B4D1] ont-Poppins_400 pt-1.5 text-xs leading-none"
-                >
+                <Text className="text-[#96B4D1] ont-Poppins_400 pt-1.5 text-xs leading-none">
                   Add
                 </Text>
               </View>
