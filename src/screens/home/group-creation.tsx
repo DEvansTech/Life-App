@@ -71,7 +71,7 @@ export const GroupCreation: React.FC<GroupCreationProps> = ({ navigation }) => {
                 } flex-col items-center`}
               >
                 <Octicons name="plus-circle" size={48} color="#96B4D1" />
-                <Text className="text-[#96B4D1] ont-Poppins_400 pt-1.5 text-xs leading-none">
+                <Text className="text-[#96B4D1] font-Poppins_400 pt-1.5 text-xs leading-none">
                   Add
                 </Text>
               </View>

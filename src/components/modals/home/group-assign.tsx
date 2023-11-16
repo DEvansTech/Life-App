@@ -70,7 +70,9 @@ export const GroupAssigneModal: React.FC<GroupAssigneModalParams> = ({
             <Ionicons name="close" size={24} color="#2A5C81" />
           </View>
 
-          <DefaultSearchComp placeholder="Search friends" />
+          <View className="pb-4 pt-5">
+            <DefaultSearchComp placeholder="Search friends" />
+          </View>
 
           <Text
             style={{ fontFamily: "Poppins_600SemiBold" }}
