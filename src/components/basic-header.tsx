@@ -12,6 +12,10 @@ interface BasicHeaderParams {
   hasBack?: boolean;
   hasSearch?: boolean;
   backHandler?: () => void;
+  backgroundColor?: string;
+  textColor?: string;
+  iconColor?: string;
+  containerParams?: string;
 }
 /**
  * Dynamic header that allows for customization
@@ -34,22 +38,38 @@ export const BasicHeader: React.FC<BasicHeaderParams> = ({
   hasBack,
   hasSearch,
   backHandler,
+  backgroundColor,
+  textColor,
+  iconColor,
+  containerParams,
 }) => {
   return (
-    <View className="py-4 bg-[#00406E]">
+    <View
+      className={`py-4 ${backgroundColor ? backgroundColor : "bg-[#00406E"}] ${
+        containerParams ? containerParams : ""
+      }`}
+    >
       <View className="px-4">
         <SafeAreaView>
           <View className="flex flex-row justify-center items-center">
             <View className="w-8">
               {hasBack ? (
                 <Pressable onPress={backHandler}>
-                  <Ionicons name="chevron-back" size={18} color="#6B95BB" />
+                  <Ionicons
+                    name="chevron-back"
+                    size={24}
+                    color={iconColor ? iconColor : "#6B95BB"}
+                  />
                 </Pressable>
               ) : (
                 leftIcon
               )}
             </View>
-            <Text className="text-white ml-auto text-base font-semibold text-white mr-auto font-Poppins_600">
+            <Text
+              className={` ${
+                textColor ? textColor : "text-white"
+              } ml-auto text-base font-semibold mr-auto font-Poppins_600`}
+            >
               {name}
             </Text>
             <View className="w-8">
@@ -58,7 +78,7 @@ export const BasicHeader: React.FC<BasicHeaderParams> = ({
                   onPress={backHandler}
                   name="close"
                   size={28}
-                  color="#6B95BB"
+                  color={iconColor ? iconColor : "#6B95BB"}
                 />
               ) : (
                 rightIcon
