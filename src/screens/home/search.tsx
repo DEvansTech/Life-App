@@ -1,15 +1,35 @@
 import React, { useState } from "react";
-import { View, Text, Pressable, Image } from "react-native";
+import {
+  View,
+  Text,
+  Pressable,
+  Image,
+  FlatList,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import { HomeStackParams } from "../../navigation/home-stack";
 import { StackScreenProps } from "@react-navigation/stack";
 import { BasicHeader } from "../../components/basic-header";
 import { DefaultSearchComp } from "../../components/default-search";
 import { AntDesign } from "@expo/vector-icons";
+import { PersonCard } from "../../components/cards";
 
 type SearchScreenProps = StackScreenProps<HomeStackParams, "Search">;
 
 export const SearchScreen: React.FC<SearchScreenProps> = ({ navigation }) => {
   const [inputType, setInputType] = useState<"username" | "number">("username");
+
+  const tempResults = [
+    { name: "James", number: 9876543210 },
+    { name: "James", number: 9876543210 },
+    { name: "James", number: 9876543210 },
+    { name: "James", number: 9876543210 },
+  ];
+
+  const [results, setResults] = useState(tempResults);
+  //   will remove this once we add functionality
+  const [inputState, setInputState] = useState("");
 
   return (
     <View className="h-full w-fill bg-white">
@@ -60,16 +80,58 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({ navigation }) => {
           </Pressable>
         </View>
         <View className="py-4">
-          <DefaultSearchComp placeholder="Search friends" />
+          <DefaultSearchComp
+            phone={inputType === "number"}
+            onTextChange={(text: string) => {
+              setInputState(text);
+            }}
+            placeholder="Search friends"
+          />
         </View>
-        <View className="pt-[140px] items-center justify-center ">
-          <Image source={require("../../../assets/images/group.png")} />
-          <View className="pt-6 px-[40px]">
-            <Text className="text-[#707071] text-sm text-center font-Poppins_600">
-              Search friends using their username or phone number
-            </Text>
+        {inputState.length === 0 ? (
+          <View className="pt-[140px] items-center justify-center ">
+            <Image source={require("../../../assets/images/group.png")} />
+            <View className="pt-6 px-[40px]">
+              <Text className="text-[#707071] text-sm text-center font-Poppins_600">
+                Search friends using their username or phone number
+              </Text>
+            </View>
           </View>
-        </View>
+        ) : (
+          <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+          >
+            <FlatList
+              data={results}
+              ListEmptyComponent={() => {
+                return (
+                  <View className="pt-[130px] items-center justify-center ">
+                    <Image
+                      source={require("../../../assets/images/search.png")}
+                    />
+                    <View className="pt-6 px-[40px]">
+                      <Text className="text-[#707071] text-sm text-center font-Poppins_600">
+                        No user is available by that username
+                      </Text>
+                    </View>
+                  </View>
+                );
+              }}
+              ListHeaderComponent={() => {
+                return (
+                  <View className="pb-4">
+                    <Text className="font-sm font-Poppins_600 text-[#707071]">
+                      Showing Results 01
+                    </Text>
+                  </View>
+                );
+              }}
+              renderItem={({ item }) => (
+                <PersonCard name={item.name} number={item.number} />
+              )}
+            />
+          </KeyboardAvoidingView>
+        )}
       </View>
     </View>
   );

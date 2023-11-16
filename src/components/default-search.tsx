@@ -4,9 +4,13 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 interface DefaultSearchCompParams {
   placeholder?: string;
+  onTextChange?: (text: string) => void;
+  phone?: boolean;
 }
 export const DefaultSearchComp: React.FC<DefaultSearchCompParams> = ({
   placeholder,
+  onTextChange,
+  phone,
 }) => {
   return (
     <View className="w-full flex">
@@ -14,6 +18,8 @@ export const DefaultSearchComp: React.FC<DefaultSearchCompParams> = ({
         <FontAwesome name="search" color={"#999"} size={16} />
 
         <TextInput
+          onChangeText={onTextChange}
+          keyboardType={phone ? "phone-pad" : undefined}
           style={{ fontSize: 14, fontFamily: "Poppins_500Medium" }}
           placeholder={placeholder}
           placeholderTextColor={"#999"}
