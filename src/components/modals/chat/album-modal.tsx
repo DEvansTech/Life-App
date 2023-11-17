@@ -15,8 +15,8 @@ const AlbumModal: React.FC<Props> = ({ isShow, onClose }) => {
       onBackdropPress={onClose}
       className="justify-end m-0"
     >
-      <View className="p-4">
-        <View className="bg-white rounded-md mb-1.5 flex-col items-center mb-1.5">
+      <View className="p-4 pb-6">
+        <View className="bg-white rounded-md mb-1.5 flex-col items-center">
           <ScrollView horizontal={true} className="py-4 px-2">
             {Array.from({ length: 10 }).map((_, index) => (
               <Image

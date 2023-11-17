@@ -46,7 +46,9 @@ const IncomingCallView: React.FC<Props> = ({ navigation }) => {
       </View>
       <View className="flex-col mt-auto">
         <View className="flex-row justify-around mt-auto mb-20">
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Chat-Details")}
+          >
             <View className="flex-col items-center">
               <View className="w-[68px] h-[68px] rounded-full bg-[#ED1F24] items-center justify-center">
                 <MaterialIcons name="call-end" size={36} color="#fff" />

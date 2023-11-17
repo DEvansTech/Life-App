@@ -8,9 +8,11 @@ import {
 } from "react-native";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 
-interface Props {}
+interface Props {
+  navigation: any;
+}
 
-const OnCallAudioView: React.FC<Props> = () => {
+const OnCallAudioView: React.FC<Props> = ({ navigation }) => {
   return (
     <View className="h-full bg-white flex-col">
       <View className="bg-[#00406E]">
@@ -91,7 +93,7 @@ const OnCallAudioView: React.FC<Props> = () => {
         </TouchableOpacity>
       </View>
       <View className="flex-row justify-center px-4 py-5 mb-16">
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Chat-Details")}>
           <View className="w-[68px] h-[68px] rounded-full bg-[#ED1F24] items-center justify-center">
             <MaterialIcons name="call-end" size={36} color="#fff" />
           </View>
