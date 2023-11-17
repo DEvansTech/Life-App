@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useReducer, useRef, useState } from "react";
 import {
   Text,
   TouchableOpacity,
@@ -11,12 +11,17 @@ import {
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { BasicHeader } from "../../components/basic-header";
 import { SvgXml } from "react-native-svg";
+import AlbumModal from "../../components/modals/chat/album-modal";
 
 interface Props {
   navigation: any;
 }
 
 const ChatDetails: React.FC<Props> = ({ navigation }) => {
+  const [isAlbumModalShow, setIsAlbumModalShow] = useState<boolean>(false);
+  const [isToolbarShow, setIsToolbarShow] = useState<boolean>(false);
+  const scrollViewRef = useRef<ScrollView>(null);
+
   const messages = useMemo(
     () => [
       {
@@ -101,9 +106,20 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
         currency: "ZSD",
         isRead: true,
       },
+      {
+        id: 9,
+        sender: "Anna Marie",
+        senderAvatar: "anna_marie.png",
+        message: "And remove this backend color, not so nice.",
+        time: "00:32 AM",
+        receiver: "Brandon Walls",
+        type: "message",
+        isRead: true,
+      },
     ],
     []
   );
+
   return (
     <View className="h-full bg-white flex-column">
       <BasicHeader
@@ -112,10 +128,53 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
         backHandler={() => {
           navigation.goBack();
         }}
-        rightIcon={<MaterialIcons name="add" color="white" size={18} />}
+        rightIcon={
+          <TouchableOpacity
+            onPress={() => {
+              setIsToolbarShow(!isToolbarShow);
+            }}
+          >
+            {!isToolbarShow ? (
+              <MaterialIcons name="add" color="white" size={18} />
+            ) : (
+              <MaterialIcons name="close" color="white" size={18} />
+            )}
+          </TouchableOpacity>
+        }
       />
+      {isToolbarShow && (
+        <View className="bg-[#00406E] py-3 px-6 flex-row justify-between border-t border-t-[#2A5C81]">
+          <TouchableOpacity>
+            <Image source={require("../../../assets/images/zedpay_gray.png")} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <SvgXml
+              xml={`
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M9.33333 21C8.96667 21 8.65289 20.8777 8.392 20.6331C8.13067 20.3881 8 20.0938 8 19.75V12.25C8 11.9062 8.13067 11.6121 8.392 11.3675C8.65289 11.1225 8.96667 11 9.33333 11H20C20.3667 11 20.6807 11.1225 20.942 11.3675C21.2029 11.6121 21.3333 11.9062 21.3333 12.25V15.0625L23.4333 13.0938C23.5333 13 23.6529 12.9765 23.792 13.0231C23.9307 13.0702 24 13.1667 24 13.3125V18.6875C24 18.8333 23.9307 18.9296 23.792 18.9762C23.6529 19.0233 23.5333 19 23.4333 18.9062L21.3333 16.9375V19.75C21.3333 20.0938 21.2029 20.3881 20.942 20.6331C20.6807 20.8777 20.3667 21 20 21H9.33333Z" fill="#96B4D1"/>
+              <path d="M11.4 0.666667C12.1556 0.422222 12.9164 0.249778 13.6827 0.149333C14.4498 0.0497778 15.2222 0 16 0C18.0889 0 20.0613 0.372 21.9173 1.116C23.7724 1.86089 25.4169 2.89422 26.8507 4.216C28.2836 5.53867 29.4556 7.09422 30.3667 8.88267C31.2778 10.672 31.8222 12.6 32 14.6667H29.3333C29.1778 13.0667 28.7556 11.572 28.0667 10.1827C27.3778 8.79422 26.4942 7.56667 25.416 6.5C24.3387 5.43333 23.1 4.572 21.7 3.916C20.3 3.26089 18.8 2.86667 17.2 2.73333L19.2667 4.8L17.4 6.66667L11.4 0.666667ZM20.6 31.3333C19.8444 31.5778 19.0836 31.7498 18.3173 31.8493C17.5502 31.9498 16.7778 32 16 32C13.9111 32 11.9387 31.628 10.0827 30.884C8.22756 30.1391 6.58356 29.1053 5.15067 27.7827C3.71689 26.4609 2.54444 24.9053 1.63333 23.116C0.722222 21.3276 0.177778 19.4 0 17.3333H2.66667C2.84444 18.9333 3.27244 20.428 3.95067 21.8173C4.628 23.2058 5.50578 24.4333 6.584 25.5C7.66133 26.5667 8.9 27.4276 10.3 28.0827C11.7 28.7387 13.2 29.1333 14.8 29.2667L12.7333 27.2L14.6 25.3333L20.6 31.3333Z" fill="#96B4D1"/>
+            </svg>
+            `}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.push("Incoming-Call")}>
+            <SvgXml
+              xml={`
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M11.4 0.666667C12.1556 0.422222 12.9164 0.249778 13.6827 0.149333C14.4498 0.0497778 15.2222 0 16 0C18.0889 0 20.0613 0.372 21.9173 1.116C23.7724 1.86089 25.4169 2.89422 26.8507 4.216C28.2836 5.53867 29.4556 7.09422 30.3667 8.88267C31.2778 10.672 31.8222 12.6 32 14.6667H29.3333C29.1778 13.0667 28.7556 11.572 28.0667 10.1827C27.3778 8.79422 26.4942 7.56667 25.416 6.5C24.3387 5.43333 23.1 4.572 21.7 3.916C20.3 3.26089 18.8 2.86667 17.2 2.73333L19.2667 4.8L17.4 6.66667L11.4 0.666667ZM20.6 31.3333C19.8444 31.5778 19.0836 31.7498 18.3173 31.8493C17.5502 31.9498 16.7778 32 16 32C13.9111 32 11.9387 31.628 10.0827 30.884C8.22756 30.1391 6.58356 29.1053 5.15067 27.7827C3.71689 26.4609 2.54444 24.9053 1.63333 23.116C0.722222 21.3276 0.177778 19.4 0 17.3333H2.66667C2.84444 18.9333 3.27244 20.428 3.95067 21.8173C4.628 23.2058 5.50578 24.4333 6.584 25.5C7.66133 26.5667 8.9 27.4276 10.3 28.0827C11.7 28.7387 13.2 29.1333 14.8 29.2667L12.7333 27.2L14.6 25.3333L20.6 31.3333Z" fill="#96B4D1"/>
+              <path d="M21.3 22C19.8667 22 18.4696 21.6804 17.1087 21.0413C15.7473 20.4027 14.5418 19.5582 13.492 18.508C12.4418 17.4582 11.5973 16.2527 10.9587 14.8913C10.3196 13.5304 10 12.1333 10 10.7C10 10.5 10.0667 10.3333 10.2 10.2C10.3333 10.0667 10.5 10 10.7 10H13.4C13.5556 10 13.6944 10.05 13.8167 10.15C13.9389 10.25 14.0111 10.3778 14.0333 10.5333L14.4667 12.8667C14.4889 13.0222 14.4862 13.1638 14.4587 13.2913C14.4307 13.4193 14.3667 13.5333 14.2667 13.6333L12.6667 15.2667C13.1333 16.0667 13.7167 16.8167 14.4167 17.5167C15.1167 18.2167 15.8889 18.8222 16.7333 19.3333L18.3 17.7667C18.4 17.6667 18.5307 17.5916 18.692 17.5413C18.8529 17.4916 19.0111 17.4778 19.1667 17.5L21.4667 17.9667C21.6222 18 21.75 18.0749 21.85 18.1913C21.95 18.3082 22 18.4444 22 18.6V21.3C22 21.5 21.9333 21.6667 21.8 21.8C21.6667 21.9333 21.5 22 21.3 22Z" fill="#96B4D1"/>
+            </svg>
+          `}
+            />
+          </TouchableOpacity>
+        </View>
+      )}
       <SafeAreaView className="flex-column grow">
-        <ScrollView className="bg-[#F4F4F4] px-4 py-2.5 h-4">
+        <ScrollView
+          className="bg-[#F4F4F4] px-4 py-2.5 h-4"
+          ref={scrollViewRef}
+          onContentSizeChange={() => {scrollViewRef.current?.scrollToEnd({ animated: true })}}
+        >
           {messages.map((message) => {
             if (message.type === "message") {
               if (message.sender === "Brandon Walls") {
@@ -181,10 +240,14 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
                   <View className="flex-row mb-6" key={message.id}>
                     <View className="flex-row ml-auto items-end">
                       <View className="flex-column">
-                        <Image
-                          className="mb-2 rounded-3xl w-[200px] h-[160px]"
-                          source={require("../../../assets/images/photo.jpg")}
-                        />
+                        <TouchableOpacity
+                          onPress={() => setIsAlbumModalShow(true)}
+                        >
+                          <Image
+                            className="mb-2 rounded-3xl w-[200px] h-[160px]"
+                            source={require("../../../assets/images/photo.jpg")}
+                          />
+                        </TouchableOpacity>
                         <View className="flex-row">
                           <Text className="text-xs text-[#ACABAE] font-Poppins_400 ml-auto leading-[2.2rem]">
                             {message.time}
@@ -213,10 +276,14 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
                       source={require("../../../assets/images/brandon_walls.png")}
                     />
                     <View className="flex-column">
-                      <Image
-                        source={require("../../../assets/images/photo.jpg")}
-                        className="mb-2 rounded-3xl w-[200px] h-[160px]"
-                      />
+                      <TouchableOpacity
+                        onPress={() => setIsAlbumModalShow(true)}
+                      >
+                        <Image
+                          source={require("../../../assets/images/photo.jpg")}
+                          className="mb-2 rounded-3xl w-[200px] h-[160px]"
+                        />
+                      </TouchableOpacity>
                       <View className="flex-row">
                         <Text className="text-xs text-[#ACABAE] font-Poppins_400 leading-[2.2rem]">
                           {message.time}
@@ -329,6 +396,10 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
+      <AlbumModal
+        isShow={isAlbumModalShow}
+        onClose={() => setIsAlbumModalShow(false)}
+      ></AlbumModal>
     </View>
   );
 };

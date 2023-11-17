@@ -15,6 +15,8 @@ import { BottomTabParams } from "./bottom-tab";
 import { SideBarStack } from "./menu-stack";
 import { ChatScreen } from "../screens/chat/chat";
 import ChatDetails from "../screens/chat/chat_details";
+import IncomingCallView from "../screens/chat/incoming-call";
+import OnCallAudioView from "../screens/chat/on-call";
 
 /**
  * Type for the home stack params
@@ -22,6 +24,8 @@ import ChatDetails from "../screens/chat/chat_details";
 export type MessageStackParams = {
   Chat: undefined;
   "Chat-Details": undefined;
+  "Incoming-Call": undefined;
+  "On-Call-Audio": undefined;
 };
 
 // define the stack navigator
@@ -52,7 +56,11 @@ const MessageStackNav: React.FC<MessageStackTabParams> = ({
   useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
     if (
-      (routeName === "View-Comp" || routeName === "View-Team" || "Chat-Details") &&
+      (routeName === "View-Comp" ||
+        routeName === "View-Team" ||
+        routeName === "Chat-Details" ||
+        routeName === "Incoming-Call" ||
+        routeName === "On-Call-Audio") &&
       Platform.OS !== "ios"
     )
       navigation.setOptions({ tabBarStyle: { display: "none" } });
@@ -79,6 +87,22 @@ const MessageStackNav: React.FC<MessageStackTabParams> = ({
       <StackNav.Screen
         name="Chat-Details"
         component={ChatDetails}
+        options={{
+          animationTypeForReplace: "pop",
+          headerShown: false,
+        }}
+      />
+      <StackNav.Screen
+        name="Incoming-Call"
+        component={IncomingCallView}
+        options={{
+          animationTypeForReplace: "pop",
+          headerShown: false,
+        }}
+      />
+      <StackNav.Screen
+        name="On-Call-Audio"
+        component={OnCallAudioView}
         options={{
           animationTypeForReplace: "pop",
           headerShown: false,
