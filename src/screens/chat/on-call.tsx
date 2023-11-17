@@ -32,8 +32,8 @@ const OnCallAudioView: React.FC<Props> = () => {
             </View>
           </View>
         </View>
-        <View className="mx-4 py-2.5 px-2.5 bg-[#D0D8E4] rounded-bl-3xl rounded-br-3xl justify-center border-t border-t-[#C9C9C9]">
-          <Text className="text-base text-[#707071] font-Poppins_400">
+        <View className="mx-4 py-2.5 px-2.5 bg-[#D0D8E4] rounded-bl-3xl rounded-br-3xl border-t border-t-[#C9C9C9]">
+          <Text className="text-base text-[#707071] font-Poppins_400 text-center">
             3Min : 45 Sec
           </Text>
         </View>
