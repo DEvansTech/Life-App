@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import {
   Text,
   TouchableOpacity,
@@ -11,12 +11,14 @@ import {
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { BasicHeader } from "../../components/basic-header";
 import { SvgXml } from "react-native-svg";
+import AlbumModal from "../../components/modals/chat/album-modal";
 
 interface Props {
   navigation: any;
 }
 
 const ChatDetails: React.FC<Props> = ({ navigation }) => {
+  const [isAlbumModalShow, setIsAlbumModalShow] = useState<boolean>(false);
   const messages = useMemo(
     () => [
       {
@@ -112,7 +114,11 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
         backHandler={() => {
           navigation.goBack();
         }}
-        rightIcon={<MaterialIcons name="add" color="white" size={18} />}
+        rightIcon={
+          <TouchableOpacity onPress={() => navigation.push("Incoming-Call")}>
+            <MaterialIcons name="add" color="white" size={18} />
+          </TouchableOpacity>
+        }
       />
       <SafeAreaView className="flex-column grow">
         <ScrollView className="bg-[#F4F4F4] px-4 py-2.5 h-4">
@@ -181,10 +187,14 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
                   <View className="flex-row mb-6" key={message.id}>
                     <View className="flex-row ml-auto items-end">
                       <View className="flex-column">
-                        <Image
-                          className="mb-2 rounded-3xl w-[200px] h-[160px]"
-                          source={require("../../../assets/images/photo.jpg")}
-                        />
+                        <TouchableOpacity
+                          onPress={() => setIsAlbumModalShow(true)}
+                        >
+                          <Image
+                            className="mb-2 rounded-3xl w-[200px] h-[160px]"
+                            source={require("../../../assets/images/photo.jpg")}
+                          />
+                        </TouchableOpacity>
                         <View className="flex-row">
                           <Text className="text-xs text-[#ACABAE] font-Poppins_400 ml-auto leading-[2.2rem]">
                             {message.time}
@@ -213,10 +223,14 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
                       source={require("../../../assets/images/brandon_walls.png")}
                     />
                     <View className="flex-column">
-                      <Image
-                        source={require("../../../assets/images/photo.jpg")}
-                        className="mb-2 rounded-3xl w-[200px] h-[160px]"
-                      />
+                      <TouchableOpacity
+                        onPress={() => setIsAlbumModalShow(true)}
+                      >
+                        <Image
+                          source={require("../../../assets/images/photo.jpg")}
+                          className="mb-2 rounded-3xl w-[200px] h-[160px]"
+                        />
+                      </TouchableOpacity>
                       <View className="flex-row">
                         <Text className="text-xs text-[#ACABAE] font-Poppins_400 leading-[2.2rem]">
                           {message.time}
@@ -329,6 +343,10 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
+      <AlbumModal
+        isShow={isAlbumModalShow}
+        onClose={() => setIsAlbumModalShow(false)}
+      ></AlbumModal>
     </View>
   );
 };
