@@ -51,7 +51,7 @@ const HomeStackNav: React.FC<HomeStackTabParams> = ({ navigation, route }) => {
   // resource: https://stackoverflow.com/questions/51352081/react-navigation-how-to-hide-tabbar-from-inside-stack-navigation/64789273#64789273
   useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
-    if (routeName === "GroupCreation" || routeName === "View-Team")
+    if (routeName === "GroupCreation" || routeName === "Search")
       navigation.setOptions({ tabBarStyle: { display: "none" } });
     else navigation.setOptions({ tabBarStyle: { display: "flex" } });
   }, [navigation, route]);

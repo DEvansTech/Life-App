@@ -6,13 +6,17 @@ import { AntDesign } from "@expo/vector-icons";
 interface PersonCardParams {
   number?: number;
   name?: string;
+  unChecked?: boolean;
   checked?: boolean;
+  icon?: React.ReactNode;
 }
 
 export const PersonCard: React.FC<PersonCardParams> = ({
   number,
   name,
+  unChecked,
   checked,
+  icon,
 }) => {
   return (
     <View className="w-full flex flex-row items-center justify-between bg-white">
@@ -49,11 +53,16 @@ export const PersonCard: React.FC<PersonCardParams> = ({
         </View>
         {/* check */}
       </View>
+
+      {icon ? icon : null}
+
+      {unChecked ? (
+        <View className="w-6 h-6 rounded-full border border-neutral-500" />
+      ) : null}
+
       {checked ? (
         <AntDesign name="checkcircle" size={24} color="#3AAB73" />
-      ) : (
-        <View className="w-6 h-6 rounded-full border border-neutral-500" />
-      )}
+      ) : null}
     </View>
   );
 };
