@@ -107,14 +107,42 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
         isRead: true,
       },
       {
-        id: 9,
-        sender: "Anna Marie",
-        senderAvatar: "anna_marie.png",
-        message: "And remove this backend color, not so nice.",
-        time: "00:32 AM",
+        id: 10,
+        caller: "Anna Marie",
+        callerAvatar: "anna_marie.png",
         receiver: "Brandon Walls",
-        type: "message",
-        isRead: true,
+        time: "00:27 AM",
+        duration: "27 sec",
+        type: "call",
+        status: "incoming",
+      },
+      {
+        id: 11,
+        caller: "Anna Marie",
+        callerAvatar: "anna_marie.png",
+        receiver: "Brandon Walls",
+        time: "00:27 AM",
+        type: "call",
+        status: "cancelled",
+      },
+      {
+        id: 12,
+        caller: "Anna Marie",
+        callerAvatar: "anna_marie.png",
+        receiver: "Brandon Walls",
+        time: "00:27 AM",
+        duration: "27 sec",
+        type: "call",
+        status: "outgoing",
+      },
+      {
+        id: 13,
+        caller: "Anna Marie",
+        callerAvatar: "anna_marie.png",
+        receiver: "Brandon Walls",
+        time: "00:27 AM",
+        type: "call",
+        status: "missed",
       },
     ],
     []
@@ -147,7 +175,9 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
           <TouchableOpacity>
             <Image source={require("../../../assets/images/zedpay_gray.png")} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.push("Video-Incoming-Call")}
+          >
             <SvgXml
               xml={`
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -173,7 +203,9 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
         <ScrollView
           className="bg-[#F4F4F4] px-4 py-2.5 h-4"
           ref={scrollViewRef}
-          onContentSizeChange={() => {scrollViewRef.current?.scrollToEnd({ animated: true })}}
+          onContentSizeChange={() => {
+            scrollViewRef.current?.scrollToEnd({ animated: true });
+          }}
         >
           {messages.map((message) => {
             if (message.type === "message") {
@@ -199,7 +231,7 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
                         </View>
                       </View>
                       <Image
-                        className="w-10 h-10 rounded-full ml-2.5"
+                        className="w-[52px] h-[52px] rounded-full ml-2.5"
                         source={require("../../../assets/images/brandon_walls.png")}
                       />
                     </View>
@@ -210,7 +242,7 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
                   <View className="flex-row mb-6" key={message.id}>
                     <View className="flex-row items-end">
                       <Image
-                        className="w-10 h-10 rounded-full mr-2.5"
+                        className="w-[52px] h-[52px] rounded-full mr-2.5"
                         source={require("../../../assets/images/brandon_walls.png")}
                       />
                       <View className="bg-white p-2.5 border border-[#E4E4E4] rounded-tl-[10px] rounded-tr-[10px] rounded-br-[10px] max-w-[80%]">
@@ -262,7 +294,7 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
                         </View>
                       </View>
                       <Image
-                        className="w-10 h-10 rounded-full ml-2.5"
+                        className="w-[52px] h-[52px] rounded-full ml-2.5"
                         source={require("../../../assets/images/brandon_walls.png")}
                       />
                     </View>
@@ -272,7 +304,7 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
                 return (
                   <View className="flex-row mb-6 items-end" key={message.id}>
                     <Image
-                      className="w-10 h-10 rounded-full mr-2.5"
+                      className="w-[52px] h-[52px] rounded-full mr-2.5"
                       source={require("../../../assets/images/brandon_walls.png")}
                     />
                     <View className="flex-column">
@@ -361,12 +393,103 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
                         </View>
                       </View>
                       <Image
-                        className="w-10 h-10 rounded-full ml-2.5"
+                        className="w-[52px] h-[52px] rounded-full ml-2.5"
                         source={require("../../../assets/images/brandon_walls.png")}
                       />
                     </View>
                   </View>
                 );
+              }
+            } else if (message.type === "call") {
+              switch (message.status) {
+                case "incoming":
+                  return (
+                    <View
+                      className="flex-row justify-end mb-6 items-center"
+                      key={message.id}
+                    >
+                      <View className="rounded-full border border-[#96B4D1] py-1 px-4 flex-row items-center justify-between -right-[36px] w-[220px] bg-[#F2F1F6]">
+                        <MaterialIcons name="call" size={24} color="#229245" />
+                        <View className="flex-col mr-8">
+                          <Text className="text-sm font-Poppins_400 text-black">
+                            Incoming Call
+                          </Text>
+                          <Text className="text-xs font-Poppins_400 text-[#ACACAC]">{`${message.time}, ${message.duration}`}</Text>
+                        </View>
+                      </View>
+                      <Image
+                        source={require("../../../assets/images/brandon_walls.png")}
+                        className="w-[52px] h-[52px] rounded-full"
+                      />
+                    </View>
+                  );
+                case "outgoing":
+                  return (
+                    <View
+                      className="flex-row justify-end mb-6 items-center"
+                      key={message.id}
+                    >
+                      <View className="rounded-full border border-[#96B4D1] py-1 px-4 flex-row items-center justify-between -right-[36px] w-[220px] bg-[#F2F1F6]">
+                        <MaterialIcons name="call" size={24} color="#229245" />
+                        <View className="flex-col mr-8">
+                          <Text className="text-sm font-Poppins_400 text-[#229245]">
+                            Outgoing Call
+                          </Text>
+                          <Text className="text-xs font-Poppins_400 text-[#ACACAC]">{`${message.time}, ${message.duration}`}</Text>
+                        </View>
+                      </View>
+                      <Image
+                        source={require("../../../assets/images/brandon_walls.png")}
+                        className="w-[52px] h-[52px] rounded-full"
+                      />
+                    </View>
+                  );
+                case "missed":
+                  return (
+                    <View
+                      className="flex-row justify-start mb-6 items-center"
+                      key={message.id}
+                    >
+                      <Image
+                        source={require("../../../assets/images/brandon_walls.png")}
+                        className="w-[52px] h-[52px] rounded-full z-10"
+                      />
+                      <View className="rounded-full border border-[#96B4D1] py-1 px-4 flex-row items-center justify-between -left-[36px] w-[220px] bg-white">
+                        <View className="flex-col ml-8">
+                          <Text className="text-sm font-Poppins_400 text-[#ED1F24]">
+                            Missed Call
+                          </Text>
+                          <Text className="text-xs font-Poppins_400 text-[#ACACAC]">{message.time}</Text>
+                        </View>
+                        <View className="rotate-90">
+                          <MaterialIcons name="phone-disabled" size={24} color="#ED1F24"/>
+                        </View>
+                      </View>
+                    </View>
+                  );
+                case "cancelled":
+                  return (
+                    <View
+                      className="flex-row justify-start mb-6 items-center"
+                      key={message.id}
+                    >
+                      <Image
+                        source={require("../../../assets/images/brandon_walls.png")}
+                        className="w-[52px] h-[52px] rounded-full z-10"
+                      />
+                      <View className="rounded-full border border-[#96B4D1] py-1 px-4 flex-row items-center justify-between -left-[36px] w-[220px] bg-white">
+                        <View className="flex-col ml-8">
+                          <Text className="text-sm font-Poppins_400 text-black">
+                            Cancelled Call
+                          </Text>
+                          <Text className="text-xs font-Poppins_400 text-[#ACACAC]">{message.time}</Text>
+                        </View>
+                        <View className="rotate-90">
+                          <MaterialIcons name="phone-disabled" size={24} color="#ED1F24"/>
+                        </View>
+                      </View>
+                    </View>
+                  );
               }
             }
           })}
