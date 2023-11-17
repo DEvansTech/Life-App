@@ -15,32 +15,36 @@ interface Props {
 
 const IncomingCallView: React.FC<Props> = ({ navigation }) => {
   return (
-    <View className="h-full bg-white">
-      <SafeAreaView className="h-full flex-col">
-        <View className="pt-2.5 px-4 bg-[#00406E]">
-          <View className="px-5 py-5 bg-[#D0D8E4] flex-row justify-center rounded-tl-3xl rounded-tr-3xl">
-            <Image
-              source={require("../../../assets/images/app-icon_1.png")}
-              className="w-20 h-20"
-            />
-          </View>
-        </View>
-        <View className="mx-4 px-5 pb-2.5 bg-[#D0D8E4] flex-row justify-between rounded-bl-3xl rounded-br-3xl">
-          <View className="border-t border-t-[#C9C9C9] pt-2.5 w-full flex-row">
-            <View className="flex-col">
-              <Text className="text-black text-xl font-Poppins_600">
-                Anna Marie
-              </Text>
-              <Text className="text-sm text-[#58575D] font-Poppins_400">
-                incoming call
-              </Text>
+    <View className="h-full bg-white flex-col">
+      <View className="bg-[#00406E]">
+        <SafeAreaView>
+          <View className="pt-2.5 px-4">
+            <View className="px-5 py-5 bg-[#D0D8E4] flex-row justify-center rounded-tl-3xl rounded-tr-3xl">
+              <Image
+                source={require("../../../assets/images/app-icon_1.png")}
+                className="w-20 h-20"
+              />
             </View>
-            <Image
-              source={require("../../../assets/images/anna_marie.png")}
-              className="w-15 h-15 ml-auto"
-            />
           </View>
+        </SafeAreaView>
+      </View>
+      <View className="mx-4 px-5 pb-2.5 bg-[#D0D8E4] flex-row justify-between rounded-bl-3xl rounded-br-3xl">
+        <View className="border-t border-t-[#C9C9C9] pt-2.5 w-full flex-row">
+          <View className="flex-col">
+            <Text className="text-black text-xl font-Poppins_600">
+              Anna Marie
+            </Text>
+            <Text className="text-sm text-[#58575D] font-Poppins_400">
+              incoming call
+            </Text>
+          </View>
+          <Image
+            source={require("../../../assets/images/anna_marie.png")}
+            className="w-15 h-15 ml-auto"
+          />
         </View>
+      </View>
+      <View className="flex-col mt-auto">
         <View className="flex-row justify-around mt-auto mb-20">
           <TouchableOpacity>
             <View className="flex-col items-center">
@@ -61,7 +65,7 @@ const IncomingCallView: React.FC<Props> = ({ navigation }) => {
             </View>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      </View>
     </View>
   );
 };
