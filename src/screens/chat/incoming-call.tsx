@@ -53,7 +53,7 @@ const IncomingCallView: React.FC<Props> = ({ navigation }) => {
               <View className="w-[68px] h-[68px] rounded-full bg-[#ED1F24] items-center justify-center">
                 <MaterialIcons name="call-end" size={36} color="#fff" />
               </View>
-              <Text className="mt-3.5">Decline</Text>
+              <Text className="mt-3.5 text-sm text-[#58575D] font-Poppins_400">Decline</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
@@ -63,7 +63,7 @@ const IncomingCallView: React.FC<Props> = ({ navigation }) => {
               <View className="w-[68px] h-[68px] rounded-full bg-[#229245] items-center justify-center -rotate-90">
                 <MaterialIcons name="call" size={36} color="#fff" />
               </View>
-              <Text className="mt-3.5">Answer</Text>
+              <Text className="mt-3.5 text-sm text-[#58575D] font-Poppins_400">Answer</Text>
             </View>
           </TouchableOpacity>
         </View>

@@ -2,21 +2,18 @@ import React, { useLayoutEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import {
-  RouteProp,
   getFocusedRouteNameFromRoute,
-  useRoute,
 } from "@react-navigation/native";
 
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { Platform } from "react-native";
-import { HomeScreen } from "../screens/home/home";
-import { HomeAddPeople } from "../screens/home/add-people";
 import { BottomTabParams } from "./bottom-tab";
-import { SideBarStack } from "./menu-stack";
 import { ChatScreen } from "../screens/chat/chat";
 import ChatDetails from "../screens/chat/chat_details";
 import IncomingCallView from "../screens/chat/incoming-call";
 import OnCallAudioView from "../screens/chat/on-call";
+import VideoIncomingCallView from "../screens/chat/video-incoming-call";
+import OnCallVideoView from "../screens/chat/video-on-call";
 
 /**
  * Type for the home stack params
@@ -26,6 +23,8 @@ export type MessageStackParams = {
   "Chat-Details": undefined;
   "Incoming-Call": undefined;
   "On-Call-Audio": undefined;
+  "Video-Incoming-Call": undefined;
+  "On-Call-Video": undefined;
 };
 
 // define the stack navigator
@@ -60,7 +59,9 @@ const MessageStackNav: React.FC<MessageStackTabParams> = ({
         routeName === "View-Team" ||
         routeName === "Chat-Details" ||
         routeName === "Incoming-Call" ||
-        routeName === "On-Call-Audio") &&
+        routeName === "On-Call-Audio" ||
+        routeName === "Video-Incoming-Call" ||
+        routeName === "On-Call-Video") &&
       Platform.OS !== "ios"
     )
       navigation.setOptions({ tabBarStyle: { display: "none" } });
@@ -103,6 +104,22 @@ const MessageStackNav: React.FC<MessageStackTabParams> = ({
       <StackNav.Screen
         name="On-Call-Audio"
         component={OnCallAudioView}
+        options={{
+          animationTypeForReplace: "pop",
+          headerShown: false,
+        }}
+      />
+      <StackNav.Screen
+        name="Video-Incoming-Call"
+        component={VideoIncomingCallView}
+        options={{
+          animationTypeForReplace: "pop",
+          headerShown: false,
+        }}
+      />
+      <StackNav.Screen
+        name="On-Call-Video"
+        component={OnCallVideoView}
         options={{
           animationTypeForReplace: "pop",
           headerShown: false,
