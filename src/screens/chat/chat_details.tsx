@@ -12,6 +12,8 @@ import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { BasicHeader } from "../../components/basic-header";
 import { SvgXml } from "react-native-svg";
 import AlbumModal from "../../components/modals/chat/album-modal";
+import CustomTextInput from "../../components/text-input";
+import ZedpayModal from "../../components/modals/zedpay/zedpay-modal";
 
 interface Props {
   navigation: any;
@@ -19,6 +21,7 @@ interface Props {
 
 const ChatDetails: React.FC<Props> = ({ navigation }) => {
   const [isAlbumModalShow, setIsAlbumModalShow] = useState<boolean>(false);
+  const [isZedpayModalShow, setIsZedpayModalShow] = useState<boolean>(false);
   const [isToolbarShow, setIsToolbarShow] = useState<boolean>(false);
   const scrollViewRef = useRef<ScrollView>(null);
 
@@ -170,9 +173,9 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
           </TouchableOpacity>
         }
       />
-      {isToolbarShow && (
+      {isToolbarShow ? (
         <View className="bg-[#00406E] py-3 px-6 flex-row justify-between border-t border-t-[#2A5C81]">
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => setIsZedpayModalShow(true)}>
             <Image source={require("../../../assets/images/zedpay_gray.png")} />
           </TouchableOpacity>
           <TouchableOpacity
@@ -197,6 +200,16 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
           `}
             />
           </TouchableOpacity>
+        </View>
+      ) : (
+        <View className="px-4 pb-4 bg-[#00406E]">
+          <CustomTextInput
+            leftIcon={<MaterialIcons name="search" color="white" size={20} />}
+            containerStyle="rounded bg-[#96B4D137] text-white border border-transparent h-10 items-center"
+            inputStyle="font-Poppins_400 text-white text-sm"
+            placeholder="Search"
+            placeholderTextColor={"#C9C9C9"}
+          />
         </View>
       )}
       <SafeAreaView className="flex-column grow">
@@ -523,6 +536,10 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
         isShow={isAlbumModalShow}
         onClose={() => setIsAlbumModalShow(false)}
       ></AlbumModal>
+      <ZedpayModal
+        isShow={isZedpayModalShow}
+        onClose={() => setIsZedpayModalShow(false)}
+        ></ZedpayModal>
     </View>
   );
 };

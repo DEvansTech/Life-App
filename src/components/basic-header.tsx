@@ -36,7 +36,6 @@ export const BasicHeader: React.FC<BasicHeaderParams> = ({
   rightIcon,
   hasClose,
   hasBack,
-  hasSearch,
   backHandler,
   backgroundColor,
   textColor,
@@ -45,7 +44,7 @@ export const BasicHeader: React.FC<BasicHeaderParams> = ({
 }) => {
   return (
     <View
-      className={`py-4 ${backgroundColor ? backgroundColor : "bg-[#00406E"}] ${
+      className={`py-3 ${backgroundColor ? backgroundColor : "bg-[#00406E]"} ${
         containerParams ? containerParams : ""
       }`}
     >
@@ -85,19 +84,6 @@ export const BasicHeader: React.FC<BasicHeaderParams> = ({
               )}
             </View>
           </View>
-          {hasSearch && (
-            <View className="mt-2.5">
-              <CustomTextInput
-                leftIcon={
-                  <MaterialIcons name="search" color="white" size={20} />
-                }
-                containerStyle="rounded bg-[#96B4D137] text-white border border-transparent h-10 items-center"
-                inputStyle="font-Poppins_400 text-white text-sm"
-                placeholder="Search"
-                placeholderTextColor={"#C9C9C9"}
-              />
-            </View>
-          )}
         </SafeAreaView>
       </View>
     </View>

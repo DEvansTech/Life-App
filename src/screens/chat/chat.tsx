@@ -11,6 +11,8 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { MessageStackParams } from "../../navigation/message-stack";
 import { BasicHeader } from "../../components/basic-header";
 import { SvgXml } from "react-native-svg";
+import CustomTextInput from "../../components/text-input";
+import { MaterialIcons } from "@expo/vector-icons";
 
 type HomeScreenProps = StackScreenProps<MessageStackParams, "Chat">;
 
@@ -80,8 +82,16 @@ export const ChatScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
             />
           </TouchableOpacity>
         }
-        hasSearch
       />
+      <View className="px-4 pb-4 bg-[#00406E]">
+        <CustomTextInput
+          leftIcon={<MaterialIcons name="search" color="white" size={20} />}
+          containerStyle="rounded bg-[#96B4D137] text-white border border-transparent h-10 items-center"
+          inputStyle="font-Poppins_400 text-white text-sm"
+          placeholder="Search"
+          placeholderTextColor={"#C9C9C9"}
+        />
+      </View>
       <SafeAreaView>
         <ScrollView className="py-[11px] px-2.5">
           {contacts.map((contact) => (

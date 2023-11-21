@@ -77,7 +77,7 @@ const HomeStackNav: React.FC<HomeStackTabParams> = ({ navigation, route }) => {
         name="HomeAdd"
         component={HomeAddPeople}
         options={{
-          animationTypeForReplace: "pop",
+          animationTypeForReplace: 'pop',
           headerShown: false,
         }}
       />

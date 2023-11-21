@@ -6,17 +6,16 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
-import { HomeHeader } from "../../components/home-header";
 import { SmallPersonCard, GroupCard } from "../../components/cards";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
 import { CreateGroupComp } from "../../components/cards/create-group";
 import { StackScreenProps } from "@react-navigation/stack";
 import { HomeStackParams } from "../../navigation/home-stack";
+import { BasicHeader } from "../../components/basic-header";
 
 type HomeAddScreenProps = StackScreenProps<HomeStackParams, "HomeAdd">;
 
-export const HomeAddPeople: React.FC<HomeAddScreenProps> = () => {
+export const HomeAddPeople: React.FC<HomeAddScreenProps> = ({ navigation }) => {
   const sections = [
     {
       title: "New Friend requests",
@@ -74,14 +73,11 @@ export const HomeAddPeople: React.FC<HomeAddScreenProps> = () => {
         return (
           <View className="px-4">
             <View className="flex flex-row justify-between items-center pt-4 pb-3">
-              <Text
-                style={{ fontFamily: "Poppins_600SemiBold" }}
-                className="text-[#565656]"
-              >
+              <Text className="text-[#565656] font-Poppins_600">
                 {section.title}
               </Text>
 
-              <Text className="text-primary-color text-xs font-normal font-['Poppins'] leading-none">
+              <Text className="text-primary-color text-xs font-normal font-Poppins_600 leading-none">
                 {section.data.length < 10
                   ? `0${section.data.length}`
                   : section.data.length}
@@ -93,17 +89,11 @@ export const HomeAddPeople: React.FC<HomeAddScreenProps> = () => {
         return (
           <View className="px-4">
             <View className="flex flex-row justify-between pt-4 pb-3 border-t border-neutral-200">
-              <Text
-                style={{ fontFamily: "Poppins_600SemiBold" }}
-                className="text-[#565656]"
-              >
+              <Text className="text-[#565656] font-Poppins_600">
                 {section.title}
               </Text>
               <TouchableOpacity className="rounded-sm justify-center items-center px-3.5 py-1 bg-[#E5E5E5]">
-                <Text
-                  style={{ fontFamily: "Poppins_300Light" }}
-                  className="text-xs text-primary-color"
-                >
+                <Text className="text-xs text-primary-color font-Poppins_300">
                   See All
                 </Text>
               </TouchableOpacity>
@@ -114,17 +104,11 @@ export const HomeAddPeople: React.FC<HomeAddScreenProps> = () => {
         return (
           <View className="px-4">
             <View className="flex flex-row justify-between pt-4 pb-3 border-t border-neutral-200">
-              <Text
-                style={{ fontFamily: "Poppins_600SemiBold" }}
-                className="text-[#565656]"
-              >
+              <Text className="text-[#565656] font-Poppins_600">
                 {section.title}
               </Text>
               <TouchableOpacity className="rounded-sm justify-center items-center px-3.5 py-1 bg-[#E5E5E5]">
-                <Text
-                  style={{ fontFamily: "Poppins_300Light" }}
-                  className="text-xs text-primary-color"
-                >
+                <Text className="text-xs text-primary-color font-Poppins_300">
                   {section.data.length}+ See All
                 </Text>
               </TouchableOpacity>
@@ -139,7 +123,43 @@ export const HomeAddPeople: React.FC<HomeAddScreenProps> = () => {
 
   return (
     <View className="bg-white h-full pb-44">
-      <HomeHeader backButton list />
+      <BasicHeader
+        name="Home"
+        leftIcon={
+          <TouchableOpacity>
+            <Feather name="settings" size={22} color="#6B95BB" />
+          </TouchableOpacity>
+        }
+        rightIcon={
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Home");
+            }}
+          >
+            <MaterialIcons name="close" size={22} color="#6B95BB" />
+          </TouchableOpacity>
+        }
+      />
+      <View className="w-full flex flex-row justify-between px-20 py-4 border-t border-[#2A5C81] bg-[#00406E]">
+        <View className="items-center">
+          <MaterialIcons name="qr-code-2" size={40} color="#96B4D1" />
+          <Text
+            style={{ fontFamily: "Poppins_300Light" }}
+            className="text-slate-400 text-xs font-light font-['Poppins'] leading-snug"
+          >
+            QR Code
+          </Text>
+        </View>
+        <View className="items-center">
+          <MaterialIcons name="search" size={40} color="#96B4D1" />
+          <Text
+            style={{ fontFamily: "Poppins_300Light" }}
+            className="text-slate-400 text-xs font-light font-['Poppins'] leading-snug"
+          >
+            Search
+          </Text>
+        </View>
+      </View>
       <SafeAreaView className="flex h-full">
         <View className="flex h-full">
           <SectionList
@@ -156,25 +176,16 @@ export const HomeAddPeople: React.FC<HomeAddScreenProps> = () => {
                         <AntDesign name="adduser" size={24} color="#2A5C81" />
                       </View>
                       <View className="pl-4 flex justify-evenly">
-                        <Text
-                          style={{ fontFamily: "Poppins_600SemiBold" }}
-                          className="text-primary-color"
-                        >
+                        <Text className="text-primary-color font-Poppins_600 text-sm">
                           Auto-Add Friends
                         </Text>
-                        <Text
-                          style={{ fontFamily: "Poppins_300Light" }}
-                          className="text-xs text-[#707071]"
-                        >
+                        <Text className="text-xs text-[#707071] font-Poppins_300">
                           Auto-add contacts as friend
                         </Text>
                       </View>
                     </View>
                     <TouchableOpacity className="rounded-sm justify-center items-center px-3.5 py-1 bg-primary-color">
-                      <Text
-                        style={{ fontFamily: "Poppins_300Light" }}
-                        className="text-xs text-white"
-                      >
+                      <Text className="text-xs text-white font-Poppins_300">
                         Allow
                       </Text>
                     </TouchableOpacity>

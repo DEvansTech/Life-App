@@ -6,16 +6,15 @@ export const ProfileCard = () => {
     <View className="bg-white flex flex-row items-center">
       <Image
         className="w-[55] h-[55] rounded-full"
-        source={require("../../../assets/images/person.png")}
+        source={require("../../../assets/images/seth_yates.png")}
       />
       <View className="pl-3.5">
         <Text
-          style={{ fontFamily: "Poppins_600SemiBold" }}
-          className="text-black text-base font-semibold leading-snug"
+          className="text-black text-base font-semibold leading-snug font-Poppins_600"
         >
           Michel Lin
         </Text>
-        <Text style={{ fontFamily: "Poppins_400Regular" }} className="text-neutral-500 text-xs font-normal font-['Poppins'] leading-snug">
+        <Text className="text-neutral-500 text-xs font-normal font-Poppins_400 leading-snug">
           Lorem ispum Lorem ispum
         </Text>
       </View>

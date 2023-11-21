@@ -7,17 +7,15 @@ export const GroupCard = () => {
       <View className="flex flex-row items-center">
         <Image
           className="w-[48] h-[48] rounded-full"
-          source={require("../../../assets/images/person.png")}
+          source={require("../../../assets/images/anna_marie.png")}
         />
         <View className="pl-4">
           <Text
-            style={{ fontFamily: "Poppins_600SemiBold" }}
-            className="text-zinc-600 text-sm font-semibold leading-snug"
+            className="text-zinc-600 text-sm font-semibold leading-snug font-Poppins_600"
           >
             Animal Lover .{" "}
             <Text
-              style={{ fontFamily: "Poppins_400Regular", fontSize: 12 }}
-              className="text-zinc-600 "
+              className="text-zinc-600 text-xs font-Poppins_400"
             >
               12 new
             </Text>
