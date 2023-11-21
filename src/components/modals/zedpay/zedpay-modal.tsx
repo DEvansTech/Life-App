@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-native-modal";
-import { ZedPayPage, AddBalancePage } from "./pages";
+import { ZedPayPage, AddBalancePage, TransactionDetailsPage } from "./pages";
 
 interface Props {
   isShow: boolean;
@@ -9,6 +9,11 @@ interface Props {
 
 const ZedpayModal: React.FC<Props> = ({ isShow, onClose }) => {
   const [page, setPage] = useState("main");
+
+  useEffect(() => {
+    setPage("main");
+  }, [isShow]);
+
   return (
     <Modal
       isVisible={isShow}
@@ -17,10 +22,15 @@ const ZedpayModal: React.FC<Props> = ({ isShow, onClose }) => {
       className="justify-end m-0"
     >
       {page === "main" ? (
-        <ZedPayPage onClose={onClose} onPageReplace={setPage} />
-      ) : (
-        <AddBalancePage onClose={onClose} onPageReplace={setPage}/>
-      )}
+        <ZedPayPage onClose={onClose} onPageReplace={(page) => setPage(page)} />
+      ) : page === "add_balance" ? (
+        <AddBalancePage
+          onClose={onClose}
+          onPageReplace={(page) => setPage(page)}
+        />
+      ) : page === "transaction_details" ? (
+        <TransactionDetailsPage onClose={onClose} type="receive" />
+      ) : null}
     </Modal>
   );
 };

@@ -87,7 +87,7 @@ const ZedPayPage: React.FC<Props> = ({ onClose, onPageReplace }) => {
           ¥‎5950
         </Text>
         <View className="flex-row flex-row justify-around">
-          <TouchableOpacity onPress={() => onPageReplace('add_balanace')}>
+          <TouchableOpacity onPress={() => onPageReplace("add_balance")}>
             <View className="py-3 px-4 w-[146] bg-[#2A5C81] rounded-xl">
               <Text className="text-sm font-Poppins_600 text-center text-white">
                 Add Balance
@@ -108,7 +108,10 @@ const ZedPayPage: React.FC<Props> = ({ onClose, onPageReplace }) => {
       </Text>
       <ScrollView className="max-h-80">
         {transactions.map((transaction) => (
-          <TouchableOpacity key={transaction.id}>
+          <TouchableOpacity
+            key={transaction.id}
+            onPress={() => onPageReplace("transaction_details")}
+          >
             <View className="py-2.5 px-4 rounded-md bg-[#E5E5E5] mb-2.5">
               <View className="flex-row items-center">
                 <Image
