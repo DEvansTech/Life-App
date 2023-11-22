@@ -175,7 +175,7 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
       />
       {isToolbarShow ? (
         <View className="bg-[#00406E] py-3 px-6 flex-row justify-between border-t border-t-[#2A5C81]">
-          <TouchableOpacity onPress={() => setIsZedpayModalShow(true)}>
+          <TouchableOpacity onPress={() => {setIsZedpayModalShow(true)}}>
             <Image source={require("../../../assets/images/zedpay_gray.png")} />
           </TouchableOpacity>
           <TouchableOpacity

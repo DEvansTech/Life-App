@@ -94,7 +94,7 @@ const ZedPayPage: React.FC<Props> = ({ onClose, onPageReplace }) => {
               </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => onPageReplace("send_money")}>
             <View className="py-3 px-4 w-[146] bg-[#2A5C81] rounded-xl">
               <Text className="text-sm font-Poppins_600 text-center text-white">
                 Send/Receive

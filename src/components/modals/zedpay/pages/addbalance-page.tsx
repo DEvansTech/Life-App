@@ -5,6 +5,7 @@ import { SvgXml } from "react-native-svg";
 import CustomTextInput from "../../../text-input";
 import {
   CompareIcon,
+  ContrastIcon,
   CurrencyUsdFilledIcon,
   ForwardIcon,
   ZedCoinFilledIcon,
@@ -20,7 +21,7 @@ const AddBalancePage: React.FC<Props> = ({ onClose, onPageReplace }) => {
     <View className="bg-white py-5 px-4 rounded-tl-lg rounded-tr-lg">
       <View className="flex-row justify-between mb-7">
         <TouchableOpacity onPress={() => onPageReplace("main")}>
-          <ForwardIcon width={24} color="#0C4871" />
+          <ForwardIcon size={24} color="#0C4871" />
         </TouchableOpacity>
         <Text className="text-xl text-[#0C4871] font-Poppins_600">
           Add Balance
@@ -40,14 +41,7 @@ const AddBalancePage: React.FC<Props> = ({ onClose, onPageReplace }) => {
         </View>
         <TouchableOpacity>
           <View className="px-4 py-2.5 rounded-full bg-white flex-row items-center">
-            <SvgXml
-              xml={`
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <circle cx="8" cy="8" r="7" stroke="#707071" stroke-width="2"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0V16Z" fill="#707071"/>
-              </svg>
-            `}
-            />
+            <ContrastIcon size={16} color="#707071" />
             <Text className="text-[#707071] text-xs font-Poppins_400 ml-1">
               Change Card
             </Text>
@@ -60,17 +54,19 @@ const AddBalancePage: React.FC<Props> = ({ onClose, onPageReplace }) => {
       <View className="flex-row items-center justify-between w-full mb-4">
         <View className="grow mr-1">
           <CustomTextInput
-            leftIcon={<ZedCoinFilledIcon width={20} color="#2274A3" />}
+            leftIcon={<ZedCoinFilledIcon size={20} color="#2274A3" />}
             placeholder="00.00"
             className="text-base font-Poppins_400 -top-[1]"
+            containerStyle="border-[#96B4D1]"
           />
         </View>
-        <CompareIcon width={34} color="#96B4D1" />
+        <CompareIcon size={34} color="#96B4D1" />
         <View className="w-[128] ml-1">
           <CustomTextInput
-            leftIcon={<CurrencyUsdFilledIcon width={20} color="#2274A3" />}
+            leftIcon={<CurrencyUsdFilledIcon size={20} color="#2274A3" />}
             placeholder="00.00"
             className="text-base font-Poppins_400 -top-[1]"
+            containerStyle="border-[#96B4D1]"
           />
         </View>
       </View>

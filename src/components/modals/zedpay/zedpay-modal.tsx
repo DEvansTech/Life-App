@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-native-modal";
-import { ZedPayPage, AddBalancePage, TransactionDetailsPage } from "./pages";
+import {
+  ZedPayPage,
+  AddBalancePage,
+  TransactionDetailsPage,
+  SendMoneyPage,
+} from "./pages";
 
 interface Props {
   isShow: boolean;
@@ -30,6 +35,11 @@ const ZedpayModal: React.FC<Props> = ({ isShow, onClose }) => {
         />
       ) : page === "transaction_details" ? (
         <TransactionDetailsPage onClose={onClose} type="receive" />
+      ) : page === "send_money" ? (
+        <SendMoneyPage
+          onClose={onClose}
+          onPageReplace={(page) => setPage(page)}
+        />
       ) : null}
     </Modal>
   );
