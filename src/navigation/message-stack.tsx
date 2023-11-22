@@ -1,9 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import {
-  getFocusedRouteNameFromRoute,
-} from "@react-navigation/native";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { Platform } from "react-native";
@@ -14,6 +12,8 @@ import IncomingCallView from "../screens/chat/incoming-call";
 import OnCallAudioView from "../screens/chat/on-call";
 import VideoIncomingCallView from "../screens/chat/video-incoming-call";
 import OnCallVideoView from "../screens/chat/video-on-call";
+import AddBalanceView from "../screens/zedpay/add_balance";
+import AddCardDetailsView from "../screens/zedpay/add_card_details";
 
 /**
  * Type for the home stack params
@@ -25,6 +25,8 @@ export type MessageStackParams = {
   "On-Call-Audio": undefined;
   "Video-Incoming-Call": undefined;
   "On-Call-Video": undefined;
+  "ZedPay-Add-Balance": undefined;
+  "ZedPay-Add-Card-Details": undefined;
 };
 
 // define the stack navigator
@@ -61,7 +63,9 @@ const MessageStackNav: React.FC<MessageStackTabParams> = ({
         routeName === "Incoming-Call" ||
         routeName === "On-Call-Audio" ||
         routeName === "Video-Incoming-Call" ||
-        routeName === "On-Call-Video") &&
+        routeName === "On-Call-Video" ||
+        routeName === "ZedPay-Add-Balance" ||
+        routeName === "ZedPay-Add-Card-Details") &&
       Platform.OS !== "ios"
     )
       navigation.setOptions({ tabBarStyle: { display: "none" } });
@@ -120,6 +124,22 @@ const MessageStackNav: React.FC<MessageStackTabParams> = ({
       <StackNav.Screen
         name="On-Call-Video"
         component={OnCallVideoView}
+        options={{
+          animationTypeForReplace: "pop",
+          headerShown: false,
+        }}
+      />
+      <StackNav.Screen
+        name="ZedPay-Add-Balance"
+        component={AddBalanceView}
+        options={{
+          animationTypeForReplace: "pop",
+          headerShown: false,
+        }}
+      />
+      <StackNav.Screen
+        name="ZedPay-Add-Card-Details"
+        component={AddCardDetailsView}
         options={{
           animationTypeForReplace: "pop",
           headerShown: false,

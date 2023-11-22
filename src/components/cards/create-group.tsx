@@ -13,7 +13,7 @@ export const CreateGroupComp: React.FC<CreateGroupCompParams> = ({
   onPress,
 }) => {
   return (
-    <Pressable onPress={onPress} className=" pb-1.5 flex flex-row">
+    <Pressable onPress={onPress} className="pb-3 flex flex-row">
       <View
         className={`h-[48] w-[48] ${
           color === "gray" ? "bg-[#E5E5E5]" : "bg-[#4689BD]"
@@ -26,16 +26,10 @@ export const CreateGroupComp: React.FC<CreateGroupCompParams> = ({
         />
       </View>
       <View className="pl-4 flex justify-evenly">
-        <Text
-          style={{ fontFamily: "Poppins_600SemiBold" }}
-          className="text-primary-color"
-        >
+        <Text className="text-primary-color font-Poppins_600">
           Create Group
         </Text>
-        <Text
-          style={{ fontFamily: "Poppins_300Light" }}
-          className="text-xs text-[#707071]"
-        >
+        <Text className="text-xs text-[#707071] font-Poppins_300">
           Create a group for you and your friends
         </Text>
       </View>
