@@ -60,16 +60,19 @@ const MessageStackNav: React.FC<MessageStackTabParams> = ({
       (routeName === "View-Comp" ||
         routeName === "View-Team" ||
         routeName === "Chat-Details" ||
-        routeName === "Incoming-Call" ||
-        routeName === "On-Call-Audio" ||
-        routeName === "Video-Incoming-Call" ||
-        routeName === "On-Call-Video" ||
         routeName === "ZedPay-Add-Balance" ||
         routeName === "ZedPay-Add-Card-Details") &&
       Platform.OS !== "ios"
-    )
+    ) {
       navigation.setOptions({ tabBarStyle: { display: "none" } });
-    else navigation.setOptions({ tabBarStyle: { display: "flex" } });
+    } else if ((
+      routeName === "Incoming-Call" ||
+      routeName === "On-Call-Audio" ||
+      routeName === "Video-Incoming-Call" ||
+      routeName === "On-Call-Video"
+    ) && Platform.OS === "ios") {
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else navigation.setOptions({ tabBarStyle: { display: "flex" } });
   }, [navigation, route]);
 
   // get the route params
