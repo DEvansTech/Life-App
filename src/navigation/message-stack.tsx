@@ -65,12 +65,12 @@ const MessageStackNav: React.FC<MessageStackTabParams> = ({
       Platform.OS !== "ios"
     ) {
       navigation.setOptions({ tabBarStyle: { display: "none" } });
-    } else if ((
+    } else if (
       routeName === "Incoming-Call" ||
       routeName === "On-Call-Audio" ||
       routeName === "Video-Incoming-Call" ||
       routeName === "On-Call-Video"
-    ) && Platform.OS === "ios") {
+    ) {
       navigation.setOptions({ tabBarStyle: { display: "none" } });
     } else navigation.setOptions({ tabBarStyle: { display: "flex" } });
   }, [navigation, route]);
