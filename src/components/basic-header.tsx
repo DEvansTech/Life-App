@@ -10,7 +10,6 @@ interface BasicHeaderParams {
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   hasBack?: boolean;
-  hasSearch?: boolean;
   backHandler?: () => void;
   backgroundColor?: string;
   textColor?: string;

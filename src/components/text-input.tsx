@@ -20,7 +20,7 @@ const CustomTextInput: React.FC<Props> = ({
       className={`flex-row items-center border border-gray-400 rounded-lg px-3 py-2 font-Poppins_400 ${containerStyle}`}
     >
       {leftIcon && <View className="mr-2">{leftIcon}</View>}
-      <TextInput className={`text-base ${inputStyle}`} {...rest} />
+      <TextInput className={`text-base ${inputStyle} grow`} {...rest} />
       {rightIcon && <View className="ml-2">{rightIcon}</View>}
     </View>
   );
