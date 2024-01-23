@@ -7,6 +7,8 @@ import {
   Image,
   View,
   TextInput,
+  Share,
+  Alert,
 } from "react-native";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { BasicHeader } from "../../components/basic-header";
@@ -14,6 +16,16 @@ import { SvgXml } from "react-native-svg";
 import AlbumModal from "../../components/modals/chat/album-modal";
 import CustomTextInput from "../../components/text-input";
 import ZedpayModal from "../../components/modals/zedpay/zedpay-modal";
+import * as DocumentPicker from 'expo-document-picker';
+import ImageCropPicker from "react-native-image-crop-picker";
+
+import AudioRecorderPlayer, {
+  AVEncoderAudioQualityIOSType,
+  AVEncodingOption,
+  AudioEncoderAndroidType,
+  AudioSet,
+  AudioSourceAndroidType,
+ } from 'react-native-audio-recorder-player';
 
 interface Props {
   navigation: any;
@@ -24,6 +36,17 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
   const [isZedpayModalShow, setIsZedpayModalShow] = useState<boolean>(false);
   const [isToolbarShow, setIsToolbarShow] = useState<boolean>(false);
   const scrollViewRef = useRef<ScrollView>(null);
+
+  // Audio record states
+  const [recordSecs, setRecordSecs] = useState(0);
+  const [recordTime, setRecordTime] = useState('00:00:00');
+  const [currentPositionSec, setCurrentPositionSec] = useState(0);
+  const [currentDurationSec, setCurrentDurationSec] = useState(0);
+  const [playTime, setPlayTime] = useState('00:00:00');
+  const [duration, setDuration] = useState('00:00:00');
+
+  const [image, setImage] = useState<any>();
+  const [file, setFile] = useState<DocumentPicker.DocumentPickerResult>();
 
   const messages = useMemo(
     () => [
@@ -150,6 +173,36 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
     ],
     []
   );
+
+  const pickDocument = async () => {
+    try {
+      await DocumentPicker.getDocumentAsync({ })
+      .then((file)=>{
+        console.log(file);
+        setFile(file)
+      })
+    } catch (error: unknown) {
+      console.log(error);
+    }
+  }
+
+  const openCamera = () => {
+    try {
+      ImageCropPicker.openCamera({
+        width: 300,
+        height: 400,
+        // cropping: true,
+      }).then(image => {
+        console.log(image);
+        setImage(image)
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+    } catch (error) {
+      console.log("Error: " + error);
+    }
+  }
 
   return (
     <View className="h-full bg-white flex-column">
@@ -508,10 +561,10 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
           })}
         </ScrollView>
         <View className="border-t border-t-[#E5E5E5] bg-white py-3 px-4 flex-row items-center">
-          <TouchableOpacity className="rotate-[225deg]">
+          <TouchableOpacity className="rotate-[225deg]" onPress={pickDocument}>
             <MaterialIcons name="attach-file" color="#9A9A9A" size={24} />
           </TouchableOpacity>
-          <TouchableOpacity className="ml-1.5">
+          <TouchableOpacity className="ml-1.5" onPress={openCamera}>
             <MaterialCommunityIcons
               name="camera-outline"
               color="#16406B"
