@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, SafeAreaView, Pressable } from "react-native";
+import { View, Text, SafeAreaView, Pressable, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import CustomTextInput from "./text-input";
@@ -43,9 +43,8 @@ export const BasicHeader: React.FC<BasicHeaderParams> = ({
 }) => {
   return (
     <View
-      className={`py-3 ${backgroundColor ? backgroundColor : "bg-[#00406E]"} ${
-        containerParams ? containerParams : ""
-      }`}
+      className={`py-3 ${backgroundColor ? backgroundColor : "bg-[#00406E]"} ${containerParams ? containerParams : ""
+        }`}
     >
       <View className="px-4">
         <SafeAreaView>
@@ -64,27 +63,28 @@ export const BasicHeader: React.FC<BasicHeaderParams> = ({
               )}
             </View>
             <Text
-              className={` ${
-                textColor ? textColor : "text-white"
-              } ml-auto text-base font-semibold mr-auto font-Poppins_600`}
+              className={` ${textColor ? textColor : "text-white"
+                } ml-auto text-base font-semibold mr-auto font-Poppins_600`}
             >
               {name}
             </Text>
             <View className="w-8">
               {hasClose ? (
-                <Ionicons
-                  onPress={backHandler}
-                  name="close"
-                  size={28}
-                  color={iconColor ? iconColor : "#6B95BB"}
-                />
+                <TouchableOpacity onPress={backHandler}>
+                  < Ionicons
+                    name="close"
+                    size={28}
+                    color={iconColor ? iconColor : "#96B4D1"}
+                  />
+                </TouchableOpacity>
+
               ) : (
                 rightIcon
               )}
             </View>
           </View>
         </SafeAreaView>
-      </View>
-    </View>
+      </View >
+    </View >
   );
 };
