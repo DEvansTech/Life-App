@@ -29,14 +29,23 @@ export const LandingScreen = ({ navigation }: any) => {
           </Text>
         </View>
         <View>
-          <TouchableOpacity onPress={() => navigation.navigate('Cell-Phone')}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Cell-Phone')
+              global.isRegistered = true;
+            }}
+          >
             <View className="w-[307px] h-[37px] flex items-center justify-center bg-cyan-800 rounded-[5px]">
               <Text className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug">
                 Login
               </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity  onPress={() => navigation.navigate("Register-Process")}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Cell-Phone")
+            }}
+          >
             <View className="mt-[11] w-[307px] h-[37px] flex items-center justify-center  rounded-[5px] border border-cyan-800">
               <Text className="text-center text-primary-color text-[13px] font-semibold font-['Poppins'] leading-snug">
                 Sign up

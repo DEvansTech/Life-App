@@ -62,12 +62,21 @@ export const OtpVerify = ({ navigation }: any) => {
 
             <TouchableOpacity
               onPress={() => {
-                navigation.dispatch(
-                  CommonActions.reset({
-                    index: 0,
-                    routes: [{ name: 'Tabs' }]
-                  })
-                )
+                if(global.isRegistered === true) {
+                  navigation.dispatch(
+                    CommonActions.reset({
+                      index: 0,
+                      routes: [{ name: 'Tabs' }]
+                    })
+                  )
+                } else {
+                  navigation.dispatch(
+                    CommonActions.reset({
+                      index: 0,
+                      routes: [{ name: 'Register-Process' }]
+                    })
+                  )
+                }
               }}
             >
               <View className="w-[307px] mt-2 h-[37px] flex items-center justify-center  bg-primary-color rounded-[5px]">

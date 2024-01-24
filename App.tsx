@@ -95,7 +95,12 @@ function HomeScreen({ navigation }: { navigation: any }) {
 
 const Stack = createNativeStackNavigator();
 
+declare global {
+  var isRegistered: boolean;
+}
+
 function App() {
+  global.isRegistered = false;
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Landing">
