@@ -77,7 +77,11 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       <BasicHeader
         name="Home"
         leftIcon={
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("SideBar")
+            }}
+          >
             <Feather name="settings" size={22} color="#6B95BB" />
           </TouchableOpacity>
         }

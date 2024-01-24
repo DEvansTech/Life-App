@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { AdjustSettings, ImageBanner } from "../../components";
 
-export const RegisterProcess = ({}) => {
+export const RegisterProcess = ({navigation}: any) => {
   return (
     <SafeAreaView className="w-full">
       <View className=" pt-10 w-full px-5 h-full">
@@ -37,7 +37,10 @@ export const RegisterProcess = ({}) => {
 
           <TouchableOpacity>
             <View className="w-[307px] mt-[68] h-[37px] flex items-center justify-center bg-neutral-500 rounded-[5px]">
-              <Text className="text-center text-neutral-50 text-[13px] font-semibold leading-snug">
+              <Text 
+                className="text-center text-neutral-50 text-[13px] font-semibold leading-snug"
+                onPress={() => navigation.navigate("Register-Success")}
+              >
                 Continue Registration
               </Text>
             </View>

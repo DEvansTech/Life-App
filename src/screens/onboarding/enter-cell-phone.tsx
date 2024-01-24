@@ -13,11 +13,11 @@ import {
 import SelectDropdown from "react-native-select-dropdown";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-export interface EnterCellPhoneScreenParams {}
+export interface EnterCellPhoneScreenParams {
+  navigation : any
+}
 
-export const EnterCellPhoneScreen: React.FC<
-  EnterCellPhoneScreenParams
-> = ({}) => {
+export const EnterCellPhoneScreen = ({navigation} : {navigation : any}) => {
   // country list
   const countries = [
     { title: "USA" },
@@ -93,7 +93,10 @@ export const EnterCellPhoneScreen: React.FC<
 
             <TouchableOpacity>
               <View className="w-[307px] mt-2 h-[37px] flex items-center justify-center bg-primary-color rounded-[5px]">
-                <Text className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug">
+                <Text 
+                  className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug"
+                  onPress={() => navigation.navigate("OTP")}
+                >
                   Get OTP
                 </Text>
               </View>

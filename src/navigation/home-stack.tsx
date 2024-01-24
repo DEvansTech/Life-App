@@ -15,7 +15,7 @@ import { BottomTabParams } from "./bottom-tab";
 import { SideBarStack } from "./menu-stack";
 import { GroupCreation } from "../screens/home/group-creation";
 import { SearchScreen } from "../screens/home/search";
-
+import  SidebarView from "../../src/screens/sidebar/sidebar";
 /**
  * Type for the home stack params
  */
