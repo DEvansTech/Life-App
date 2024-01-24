@@ -91,12 +91,9 @@ export const EnterCellPhoneScreen = ({navigation} : {navigation : any}) => {
               </Text>
             </View>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("OTP")}>
               <View className="w-[307px] mt-2 h-[37px] flex items-center justify-center bg-primary-color rounded-[5px]">
-                <Text 
-                  className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug"
-                  onPress={() => navigation.navigate("OTP")}
-                >
+                <Text className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug">
                   Get OTP
                 </Text>
               </View>

@@ -29,22 +29,16 @@ export const LandingScreen = ({ navigation }: any) => {
           </Text>
         </View>
         <View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Cell-Phone')}>
             <View className="w-[307px] h-[37px] flex items-center justify-center bg-cyan-800 rounded-[5px]">
-              <Text 
-                className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug"
-                onPress={() => navigation.navigate('Cell-Phone')}
-              >
+              <Text className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug">
                 Login
               </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity  onPress={() => navigation.navigate("Register-Process")}>
             <View className="mt-[11] w-[307px] h-[37px] flex items-center justify-center  rounded-[5px] border border-cyan-800">
-              <Text 
-                className="text-center text-primary-color text-[13px] font-semibold font-['Poppins'] leading-snug"
-                 onPress={() => {navigation.navigate("Register-Process"); console.log("Cell-Phone")}}
-              >
+              <Text className="text-center text-primary-color text-[13px] font-semibold font-['Poppins'] leading-snug">
                 Sign up
               </Text>
             </View>

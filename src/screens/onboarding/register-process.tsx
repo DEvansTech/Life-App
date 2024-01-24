@@ -35,12 +35,9 @@ export const RegisterProcess = ({navigation}: any) => {
             <AdjustSettings />
           </View>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Register-Success")}>
             <View className="w-[307px] mt-[68] h-[37px] flex items-center justify-center bg-neutral-500 rounded-[5px]">
-              <Text 
-                className="text-center text-neutral-50 text-[13px] font-semibold leading-snug"
-                onPress={() => navigation.navigate("Register-Success")}
-              >
+              <Text className="text-center text-neutral-50 text-[13px] font-semibold leading-snug">
                 Continue Registration
               </Text>
             </View>
