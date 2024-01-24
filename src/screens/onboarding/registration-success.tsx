@@ -1,3 +1,4 @@
+import { CommonActions } from "@react-navigation/native";
 import React from "react";
 import {
   View,
@@ -7,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export const RegistrationSuccess = () => {
+export const RegistrationSuccess = ({ navigation }: any) => {
   return (
     <SafeAreaView>
       <View className="w-full h-full flex flex-col items-center justify-between">
@@ -28,7 +29,16 @@ export const RegistrationSuccess = () => {
           </Text>
         </View>
         <View className="pb-12">
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.dispatch(
+                CommonActions.reset({
+                  index: 0,
+                  routes: [{ name: 'Tabs' }]
+                })
+              )
+            }}
+          >
             <View className="w-[307px] h-[37px] flex items-center justify-center bg-primary-color rounded-[5px]">
               <Text className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug">
                 Continue to the app

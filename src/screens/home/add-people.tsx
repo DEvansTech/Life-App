@@ -155,6 +155,7 @@ export const HomeAddPeople: React.FC<HomeAddScreenProps> = ({ navigation }) => {
           <Text
             style={{ fontFamily: "Poppins_300Light" }}
             className="text-slate-400 text-xs font-light font-['Poppins'] leading-snug"
+            onPress={() => navigation.navigate("Search")}
           >
             Search
           </Text>

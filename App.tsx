@@ -50,7 +50,7 @@ function HomeScreen({ navigation }: { navigation: any }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
-      {/* <Button
+      <Button
         onPress={() => navigation.navigate("Landing")}
         title="Go to Landing"
       />
@@ -82,7 +82,7 @@ function HomeScreen({ navigation }: { navigation: any }) {
       <Button
         onPress={() => navigation.navigate("Register-Success")}
         title="Reg Success"
-      /> */}
+      /> 
       <Button
         onPress={() => navigation.navigate("Modal-Test")}
         title="Modal Test"
@@ -95,17 +95,30 @@ function HomeScreen({ navigation }: { navigation: any }) {
 
 const Stack = createNativeStackNavigator();
 
+declare global {
+  var isRegistered: boolean;
+}
+
 function App() {
+  global.isRegistered = false;
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Navigator initialRouteName="Landing">
         <Stack.Screen
           name="Landing"
-          component={LandingScreen}
-          options={{ headerShown: false }}
+          component={LandingScreen} 
+          options = {{
+            headerShown : false
+          }}
         />
         <Stack.Screen
+          name="Cell-Phone"
+          component={EnterCellPhoneScreen}
+          options={{ 
+            headerShown: false 
+          }}
+        />
+       <Stack.Screen
           name="OTP"
           component={OtpVerify}
           options={{
@@ -117,9 +130,11 @@ function App() {
           }}
         />
         <Stack.Screen
-          name="Cell-Phone"
-          component={EnterCellPhoneScreen}
-          options={{ headerShown: false }}
+          name="Tabs"
+          component={BottomTabNavigator}
+          options={{ 
+            headerShown: false 
+          }}
         />
         <Stack.Screen
           name="Register-Process"
@@ -127,85 +142,8 @@ function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Success"
-          component={SuccessScreen}
-          options={{
-            title: "Back to edit",
-            headerShadowVisible: false,
-            headerStyle: {
-              backgroundColor: "rgb(242, 242, 242)",
-            },
-            headerTintColor: "#52525b",
-          }}
-        />
-        <Stack.Screen
-          name="Register-Pro-Deactivated"
-          component={RegisterProcessDeactivated}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register-Pro-Deactivated-Two"
-          component={RegisterProcessDeactivatedTwo}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register-Pro-Deactivated-Three"
-          component={RegisterProcessDeactivatedThree}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
           name="Register-Success"
           component={RegistrationSuccess}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Modal-Test"
-          component={ModalTest}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Tabs"
-          component={BottomTabNavigator}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="sidebar"
-          component={SidebarView}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="privacy_policy"
-          component={PrivacyPolicyView}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="eula"
-          component={EulaView}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="terms_of_use"
-          component={TermsOfUseView}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="account_settings"
-          component={AccountSettingsView}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="zed_pay"
-          component={ZedPayView}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="pin_update"
-          component={PinUpdateView}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="credit_settings"
-          component={CreditCardSettingsView}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
