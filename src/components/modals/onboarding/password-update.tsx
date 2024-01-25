@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Modal from "react-native-modal";
 import { FieldInput } from "../../field-input";
@@ -7,14 +7,44 @@ export interface NameUpdateModalParams {
   open: boolean;
   setOpen: (arg: boolean) => void;
   inputValues: { label?: string; placeholder?: string }[];
+  password: string;
+  setPassword: (password: string) => void;
 }
 
 export const PasswordUpdateModal: React.FC<NameUpdateModalParams> = ({
   inputValues,
   open,
   setOpen,
+  password,
+  setPassword
 }) => {
-  const [error, setError] = useState(true);
+  const [iPassword, setIPassword] = useState(password);
+  const [confirmPassword, setConfirmPassword] = useState(password);
+  const memoizedPassword = useMemo(() => iPassword, [iPassword]);
+
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    setIPassword(password);
+    setConfirmPassword(password);
+  }, [password]);
+  
+  const handleSavePassword = () => {
+    if (!error) {
+      setPassword(memoizedPassword);
+      setOpen(false);
+    }
+  }
+
+  const handleChangeConfirmPassword = (newPassword: string) => {
+    setConfirmPassword(newPassword);
+    if (newPassword === iPassword) {
+      setError(false);
+    } else {
+      setError(true);
+    }
+  }
+
   return (
     <Modal
       style={{ justifyContent: "flex-end", margin: 0 }}
@@ -33,6 +63,8 @@ export const PasswordUpdateModal: React.FC<NameUpdateModalParams> = ({
 
         <View className="w-full px-8">
           <FieldInput
+            value={memoizedPassword}
+            onChangeText={setIPassword}
             label={inputValues.at(3)?.label}
             placeholder={
               error
@@ -45,6 +77,8 @@ export const PasswordUpdateModal: React.FC<NameUpdateModalParams> = ({
 
         <View className="w-full px-8 pt-5">
           <FieldInput
+            value={confirmPassword}
+            onChangeText={handleChangeConfirmPassword}
             label={inputValues.at(4)?.label}
             placeholder={
               error
@@ -71,13 +105,13 @@ export const PasswordUpdateModal: React.FC<NameUpdateModalParams> = ({
           </Text>
         )}
 
-        <TouchableOpacity className="pb-10 pt-7">
+        <TouchableOpacity className="pb-10 pt-7" onPress={handleSavePassword}>
           <View className="w-[307px] h-[37px] flex items-center justify-center bg-primary-color rounded-[5px] mb-1">
             <Text
               style={{ fontFamily: "Poppins_600SemiBold" }}
               className="text-center text-neutral-50 text-[13px] font-semibold leading-snug"
             >
-              Save Name
+              Save Password
             </Text>
           </View>
         </TouchableOpacity>

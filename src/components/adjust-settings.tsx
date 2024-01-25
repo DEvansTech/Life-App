@@ -2,7 +2,13 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-export const AdjustSettings = () => {
+export interface AdjustSettingsProps {
+  setNumber: (arg: number) => void;
+  setOpen: (arg: boolean) => void;
+  fieldValues: Array<string>;
+}
+
+export const AdjustSettings: React.FC<AdjustSettingsProps> = ({setNumber, setOpen, fieldValues}) => {
   const settingsList = [
     { field: "Name", updateField: "+ Create a name" },
     { field: "Username", updateField: "+ Create a Username" },
@@ -13,7 +19,7 @@ export const AdjustSettings = () => {
 
   return (
     <View className="w-full">
-      {settingsList.map((setting) => {
+      {settingsList.map((setting, i) => {
         return (
           <View
             key={setting.field}
@@ -23,7 +29,19 @@ export const AdjustSettings = () => {
               {setting.field}
             </Text>
 
-            <TouchableOpacity className="flex flex-row items-center">
+            {
+              setting.field !== "Password" && <Text className="text-black text-sm font-normal leading-snug">
+              {fieldValues[i]}
+            </Text>
+            }
+
+            <TouchableOpacity 
+                className="flex flex-row items-center" 
+                onPress={() => {
+                  setNumber(i);
+                  setOpen(true);
+                }}
+            >
               <Text
                 className={`pr-2 text-primary-color text-sm font-medium  leading-snug ${
                   setting.field === "Phone Number"

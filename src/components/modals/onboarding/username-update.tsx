@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Modal from "react-native-modal";
 import { FieldInput } from "../../field-input";
@@ -7,13 +7,29 @@ export interface NameUpdateModalParams {
   open: boolean;
   setOpen: (arg: boolean) => void;
   inputValues: { label?: string; placeholder?: string }[];
+  userName: string;
+  setUserName: (name: string) => void;
 }
 
 export const UserNameUpdateModal: React.FC<NameUpdateModalParams> = ({
   inputValues,
   open,
   setOpen,
+  userName,
+  setUserName
 }) => {
+  const [iUserName, setIUserName] = useState(userName);
+  const memoizedIUserName = useMemo(() => iUserName, [iUserName]);
+
+  useEffect(() => {
+    setIUserName(userName);
+  }, [userName]);
+  
+  const handleSaveName = () => {
+    setUserName(memoizedIUserName);
+    setOpen(false);
+  }
+
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(true);
 
@@ -35,6 +51,8 @@ export const UserNameUpdateModal: React.FC<NameUpdateModalParams> = ({
 
         <View className="w-full px-8">
           <FieldInput
+            value={memoizedIUserName}
+            onChangeText={setIUserName}
             label={inputValues.at(2)?.label}
             placeholder={inputValues.at(2)?.placeholder}
             password={false}
@@ -91,6 +109,7 @@ export const UserNameUpdateModal: React.FC<NameUpdateModalParams> = ({
 
         <TouchableOpacity
           className={`pb-10 ${error ? "pt-3" : "pt-5"} ${success && "pt-7"}`}
+          onPress={handleSaveName}
         >
           <View className="w-[307px] h-[37px] flex items-center justify-center bg-primary-color rounded-[5px] mb-1">
             <Text

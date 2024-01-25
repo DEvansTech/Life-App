@@ -9,6 +9,8 @@ export interface FieldInputParams {
   error?: boolean;
   success?: boolean;
   message?: string;
+  value?: string;
+  onChangeText?: (text: string) => void;
 }
 
 export const FieldInput: React.FC<FieldInputParams> = ({
@@ -18,6 +20,8 @@ export const FieldInput: React.FC<FieldInputParams> = ({
   error,
   success,
   message,
+  value,
+  onChangeText
 }) => {
   return (
     <View key={label} className="w-full flex">
@@ -35,6 +39,8 @@ export const FieldInput: React.FC<FieldInputParams> = ({
         } ${success && "border-green-600"}`}
       >
         <TextInput
+          defaultValue={value || ""}
+          onChangeText={onChangeText}
           secureTextEntry={password}
           style={{ fontSize: 16, fontFamily: "Poppins_400Regular" }}
           placeholder={placeholder}

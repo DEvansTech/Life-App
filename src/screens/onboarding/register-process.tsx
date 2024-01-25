@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import {
   View,
   Text,
@@ -7,8 +7,14 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { AdjustSettings, ImageBanner } from "../../components";
+import { NameUpdateModal } from "../../components/modals/onboarding/name-update";
+import { PasswordUpdateModal } from "../../components/modals/onboarding/password-update";
+import { UserNameUpdateModal } from "../../components/modals/onboarding/username-update";
+import { EmailAssignModal } from "../../components/modals/onboarding/email-assign";
+import { AuthContext, AuthContextType } from "../../context/AuthContext";
 
-export const RegisterProcess = ({navigation}: any) => {
+export const RegisterProcess = ({ navigation }: any) => {
+  const { setUser, user, setUserName, logout } = useContext(AuthContext) as AuthContextType;
   return (
     <SafeAreaView className="w-full">
       <View className=" pt-10 w-full px-5 h-full">
@@ -32,7 +38,7 @@ export const RegisterProcess = ({navigation}: any) => {
 
           {/* adjust settings */}
           <View className="w-full pt-[10]">
-            <AdjustSettings />
+            {/* <AdjustSettings setNumber={setModalNumber} setOpen={setOpen} fieldValues={[name, userName, password, phone, email]} /> */}
           </View>
 
           <TouchableOpacity onPress={() => navigation.navigate("Register-Success")}>
@@ -44,6 +50,34 @@ export const RegisterProcess = ({navigation}: any) => {
           </TouchableOpacity>
         </View>
       </View>
+      <NameUpdateModal
+        inputValues={inputValues}
+        open={open && modalNumber === 0}
+        setOpen={setOpen}
+        name={name}
+        setName={setName}
+      />
+      <UserNameUpdateModal
+        inputValues={inputValues}
+        open={open && modalNumber === 1}
+        setOpen={setOpen}
+        userName={userName}
+        setUserName={setUserName}
+      />
+      <PasswordUpdateModal
+        inputValues={inputValues}
+        open={open && modalNumber === 2}
+        setOpen={setOpen}
+        password={password}
+        setPassword={setPassword}
+      />
+      <EmailAssignModal
+        inputValues={inputValues}
+        open={open && modalNumber === 4}
+        setOpen={setOpen}
+        email={email}
+        setEmail={setEmail}
+      />
     </SafeAreaView>
   );
 };

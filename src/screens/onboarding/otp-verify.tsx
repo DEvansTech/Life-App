@@ -1,5 +1,5 @@
 import { CommonActions } from "@react-navigation/native";
-import React from "react";
+import React, { useContext } from "react";
 import {
   View,
   Text,
@@ -10,8 +10,11 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
+// import { AuthContext, AuthContextType } from "../../context/AuthContext";
 
 export const OtpVerify = ({ navigation }: any) => {
+  // const { phone } = useContext(AuthContext) as AuthContextType;
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -62,7 +65,7 @@ export const OtpVerify = ({ navigation }: any) => {
 
             <TouchableOpacity
               onPress={() => {
-                if(global.isRegistered === true) {
+                if (global.isRegistered === true) {
                   navigation.dispatch(
                     CommonActions.reset({
                       index: 0,

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -12,12 +12,14 @@ import {
 } from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { AuthContext, AuthContextType } from "../../context/AuthContext";
 
 export interface EnterCellPhoneScreenParams {
-  navigation : any
+  navigation: any
 }
 
-export const EnterCellPhoneScreen = ({navigation} : {navigation : any}) => {
+export const EnterCellPhoneScreen = ({ navigation }: { navigation: any }) => {
+  const { setPhone } = useContext(AuthContext) as AuthContextType;
   // country list
   const countries = [
     { title: "USA" },
@@ -25,6 +27,9 @@ export const EnterCellPhoneScreen = ({navigation} : {navigation : any}) => {
       title: "JPN",
     },
   ];
+  const handleInput = (p: string) => {
+    setPhone(p);
+  };
 
   return (
     <KeyboardAvoidingView
@@ -81,6 +86,7 @@ export const EnterCellPhoneScreen = ({navigation} : {navigation : any}) => {
                   className="border-l-2 border-stone-100 pl-2"
                   placeholder="Enter your number"
                   keyboardType={"phone-pad"}
+                  onChangeText={phone => handleInput(phone)}
                 />
               </View>
             </View>
