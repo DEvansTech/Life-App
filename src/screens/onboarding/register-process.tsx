@@ -14,7 +14,42 @@ import { EmailAssignModal } from "../../components/modals/onboarding/email-assig
 import { AuthContext, AuthContextType } from "../../context/AuthContext";
 
 export const RegisterProcess = ({ navigation }: any) => {
-  const { setUser, user, setUserName, logout } = useContext(AuthContext) as AuthContextType;
+  const { setUser, user, userName, setUserName, logout } = useContext(AuthContext) as AuthContextType;
+  const inputValues = [
+    {
+      label: "Your display name",
+      placeholder: "Enter your display name               ",
+      password: false,
+    },
+    {
+      label: "Email address",
+      placeholder: "Enter your email address",
+      password: false,
+    },
+    {
+      label: "Enter your username",
+      placeholder: "Please select a username              ",
+      password: false,
+    },
+    {
+      label: "Enter your password",
+      placeholder: "Enter password",
+      password: true,
+    },
+    {
+      label: "Retype your password",
+      placeholder: " *  *  *  *  *  *  *",
+      password: true,
+    },
+  ];
+
+  const [open, setOpen] = useState(false);
+  const [modalNumber, setModalNumber] = useState(0);
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+
   return (
     <SafeAreaView className="w-full">
       <View className=" pt-10 w-full px-5 h-full">
