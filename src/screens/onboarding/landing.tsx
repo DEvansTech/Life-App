@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import {
   View,
   Text,
@@ -7,9 +7,29 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
+import { CommonActions } from "@react-navigation/native";
+import { AuthContext, AuthContextType } from "../../context/AuthContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 export const LandingScreen = ({ navigation }: any) => {
+  const { phone, setPhone } = useContext(AuthContext) as AuthContextType;
+  useEffect(() => {
+    (async function () {
+      const loggedPhone = await AsyncStorage.getItem("@loggedPhone");
+      console.log(loggedPhone);
+      if (loggedPhone) {
+        setPhone(loggedPhone as string);
+        navigation.dispatch(
+          CommonActions.reset({
+            index: 0,
+            routes: [{ name: 'Tabs' }]
+          })
+        );
+      }
+    })();
+  }, [phone]);
+
   return (
     <SafeAreaView>
       <View className="w-full h-full flex flex-col items-center justify-between">
