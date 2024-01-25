@@ -8,13 +8,13 @@ import { PersonCard } from "../../cards";
 import { PersonBubble } from "../../cards/person-bubble";
 
 export interface GroupAssigneModalParams {
-  open: boolean;
-  setOpen: (arg: boolean) => void;
+  isVisible: boolean;
+  setVisible: () => void;
 }
 
 export const GroupAssigneModal: React.FC<GroupAssigneModalParams> = ({
-  open,
-  setOpen,
+  isVisible,
+  setVisible,
 }) => {
   interface Participants {
     name: string;
@@ -46,9 +46,9 @@ export const GroupAssigneModal: React.FC<GroupAssigneModalParams> = ({
     <Modal
       style={{ justifyContent: "flex-end", margin: 0 }}
       hasBackdrop={true}
-      isVisible={open}
+      isVisible={isVisible}
       backdropOpacity={0.6}
-      onBackdropPress={() => setOpen(false)}
+      onBackdropPress={setVisible}
     >
       <View className="w-full bg-white h-[90%] pb-20 pt-8 flex items-center rounded-tl-[40px] rounded-tr-[40px]">
         <View className="w-full px-4">

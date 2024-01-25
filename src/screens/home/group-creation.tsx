@@ -25,6 +25,9 @@ export const GroupCreation: React.FC<GroupCreationProps> = ({ navigation }) => {
   // const tempMmebers = [{ name: "James" }, { name: "James" }, { name: "James" }];
 
   // const [memebers, setMembers] = useState(tempMmebers);
+
+  const [isGroupAssignModalVisible, setIsGroupAssignModalVisible] = useState<boolean>(false);
+
   const [expanded, setExpanded] = useState(true);
   const handleToggle = () => {
     setExpanded(expanded => { return !expanded; });
@@ -83,20 +86,24 @@ export const GroupCreation: React.FC<GroupCreationProps> = ({ navigation }) => {
           keyExtractor={(item) => item.name}
           ListFooterComponent={() => {
             return (
-              <View
+              <TouchableOpacity
                 className={`flex ${members.length > 0 ? "pl-[25px]" : ""
                   } flex-col items-center`}
+                onPress={() => setIsGroupAssignModalVisible(true)}
               >
                 <Octicons name="plus-circle" size={48} color="#96B4D1" />
                 <Text className="text-[#96B4D1] font-Poppins_400 pt-1.5 text-xs leading-none">
-                  Add
+                  Add 
                 </Text>
-              </View>
+              </TouchableOpacity>
             );
           }}
         />
       </View>}
-      <GroupAssigneModal></GroupAssigneModal>
+      <GroupAssigneModal 
+        isVisible={isGroupAssignModalVisible} 
+        setVisible={() => setIsGroupAssignModalVisible(true)}
+      />
     </View>
   );
 };
