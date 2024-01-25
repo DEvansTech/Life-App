@@ -1,3 +1,4 @@
+import { CommonActions } from "@react-navigation/native";
 import React from "react";
 import {
   View,
@@ -10,7 +11,7 @@ import {
   StyleSheet,
 } from "react-native";
 
-export const OtpVerify = () => {
+export const OtpVerify = ({ navigation }: any) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -59,7 +60,25 @@ export const OtpVerify = () => {
               </Text>
             </View>
 
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                if(global.isRegistered === true) {
+                  navigation.dispatch(
+                    CommonActions.reset({
+                      index: 0,
+                      routes: [{ name: 'Tabs' }]
+                    })
+                  )
+                } else {
+                  navigation.dispatch(
+                    CommonActions.reset({
+                      index: 0,
+                      routes: [{ name: 'Register-Process' }]
+                    })
+                  )
+                }
+              }}
+            >
               <View className="w-[307px] mt-2 h-[37px] flex items-center justify-center  bg-primary-color rounded-[5px]">
                 <Text className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug">
                   Verify OTP

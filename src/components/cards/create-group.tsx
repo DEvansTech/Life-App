@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 interface CreateGroupCompParams {
@@ -13,11 +13,10 @@ export const CreateGroupComp: React.FC<CreateGroupCompParams> = ({
   onPress,
 }) => {
   return (
-    <Pressable onPress={onPress} className="pb-3 flex flex-row">
+    <TouchableOpacity onPress={onPress} className="flex flex-row">
       <View
-        className={`h-[48] w-[48] ${
-          color === "gray" ? "bg-[#E5E5E5]" : "bg-[#4689BD]"
-        } flex items-center justify-center rounded-full`}
+        className={`h-[48] w-[48] ${color === "gray" ? "bg-[#E5E5E5]" : "bg-[#4689BD]"
+          } flex items-center justify-center rounded-full`}
       >
         <AntDesign
           name="addusergroup"
@@ -33,6 +32,6 @@ export const CreateGroupComp: React.FC<CreateGroupCompParams> = ({
           Create a group for you and your friends
         </Text>
       </View>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
