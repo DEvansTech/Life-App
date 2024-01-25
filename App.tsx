@@ -103,7 +103,7 @@ function App() {
   global.isRegistered = false;
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Landing">
+      <Stack.Navigator initialRouteName="Tabs">
         <Stack.Screen
           name="Landing"
           component={LandingScreen} 
