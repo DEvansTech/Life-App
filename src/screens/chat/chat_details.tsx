@@ -388,7 +388,7 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
             <Image source={require("../../../assets/images/zedpay_gray.png")} />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.push("Video-Incoming-Call")}
+            onPress={() => navigation.push("On-Call-Video")}
           >
             <SvgXml
               xml={`
@@ -399,7 +399,7 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
             `}
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.push("Incoming-Call")}>
+          <TouchableOpacity onPress={() => navigation.push("On-Call-Audio")}>
             <SvgXml
               xml={`
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
