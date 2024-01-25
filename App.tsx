@@ -148,6 +148,21 @@ function App() {
             component={RegistrationSuccess}
             options={{ headerShown: false }}
           />
+          <Stack.Screen
+            name="Register-Process-Deactivated-Two"
+            component={RegisterProcessDeactivatedTwo}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Register-Process-Deactivated"
+            component={RegisterProcessDeactivated}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Register-Success-Deactivated"
+            component={SuccessScreen}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthProvider>

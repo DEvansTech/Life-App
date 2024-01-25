@@ -76,7 +76,7 @@ export const OtpVerify = ({ navigation }: any) => {
                   navigation.dispatch(
                     CommonActions.reset({
                       index: 0,
-                      routes: [{ name: 'Register-Process' }]
+                      routes: [{ name: 'Register-Process-Deactivated-Two' }]
                     })
                   )
                 }
