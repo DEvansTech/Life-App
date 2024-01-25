@@ -53,10 +53,12 @@ export const SuccessScreen = ({ navigation }: { navigation: any }) => {
 
           {/* adjust settings */}
           <View className="w-full pt-[10]">
-            <AdjustSettings />
+            {/* {<AdjustSettings />} */}
           </View>
 
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Tabs')}
+          >
             <View className="w-[307px] mt-2.5 h-[37px] flex items-center justify-center bg-primary-color rounded-[5px]">
               <Text className="text-center text-neutral-50 text-[13px] font-semibold leading-snug">
                 Continue Registration
