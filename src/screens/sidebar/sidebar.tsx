@@ -90,7 +90,7 @@ const SidebarView: React.FC<SidebarViewProps> = ({ navigation }) => {
 
   return (
     <View className="h-full bg-white">
-      <BasicHeader name="Settings" hasClose={true} />
+      <BasicHeader name="Settings" hasClose={true} backHandler={() => navigation.goBack()}/>
       <SafeAreaView>
         <ScrollView>
           <View className="p-4 border-b border-b-[#C9C9C9]">
