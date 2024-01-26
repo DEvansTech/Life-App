@@ -32,7 +32,7 @@ export const LandingScreen = ({ navigation }: any) => {
 
   return (
     <SafeAreaView>
-      <View className="w-full h-full flex flex-col items-center justify-between">
+      <View className="w-full h-full flex flex-col items-center justify-between bg-[#FFFFFF]">
         <View className="mt-[100]">
           <Image source={require("../../../assets/images/app-icon.png")} />
           <Text

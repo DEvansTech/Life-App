@@ -36,7 +36,7 @@ export const EnterCellPhoneScreen = ({ navigation }: { navigation: any }) => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <SafeAreaView>
-        <View className=" pt-20 w-full px-10 h-full">
+        <View className=" pt-20 w-full px-10 h-full bg-[#FFFFFF]">
           <View className="flex flex-col items-center justify-center gap-4">
             <Image
               className="w-[100px] h-[100px]"

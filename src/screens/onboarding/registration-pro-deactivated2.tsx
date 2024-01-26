@@ -11,7 +11,7 @@ import {
 } from "react-native";
 //import { ImageBannerHeader, FieldInput } from "../../components";
 import { FieldInput } from "../../components";
-
+import { ImageBanner } from "../../components";
 export const RegisterProcessDeactivatedTwo = ({navigation}: any) => {
   const inputValues = [
     {
@@ -32,6 +32,7 @@ export const RegisterProcessDeactivatedTwo = ({navigation}: any) => {
         title={["Fill basic details to", "complete registration"]}
         progress={1}
       /> */}
+      <ImageBanner />
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
