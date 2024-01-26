@@ -8,3 +8,4 @@ export * from "./registration-pro-deactivated2";
 export * from "./registration-pro-deactivated3";
 export * from "./registration-success";
 export * from "./success";
+export * from "./onboarding-header"

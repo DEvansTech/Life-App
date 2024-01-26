@@ -9,9 +9,10 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import { ImageBannerHeader, FieldInput } from "../../components";
-
-export const RegisterProcessDeactivatedTwo = () => {
+//import { ImageBannerHeader, FieldInput } from "../../components";
+import { FieldInput } from "../../components";
+import { ImageBanner } from "../../components";
+export const RegisterProcessDeactivatedTwo = ({navigation}: any) => {
   const inputValues = [
     {
       label: "Your display name",
@@ -27,10 +28,11 @@ export const RegisterProcessDeactivatedTwo = () => {
 
   return (
     <View className="w-full">
-      <ImageBannerHeader
+      {/*<ImageBannerHeader
         title={["Fill basic details to", "complete registration"]}
         progress={1}
-      />
+      /> */}
+      <ImageBanner />
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
@@ -50,7 +52,10 @@ export const RegisterProcessDeactivatedTwo = () => {
               );
             })}
 
-            <TouchableOpacity className="pb-5">
+            <TouchableOpacity 
+              className="pb-5"
+              onPress={() => navigation.navigate('Register-Process-Deactivated')}
+            >
               <View className="w-[307px] h-[37px] flex items-center justify-center bg-primary-color rounded-[5px] mb-1">
                 <Text className="text-center text-neutral-50 text-[13px] font-semibold leading-snug">
                   Continue to next screen

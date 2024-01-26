@@ -7,23 +7,70 @@ import {
   Image,
   View,
   TextInput,
+  Share,
+  Alert,
+  Keyboard,
+  Platform,
+  StyleSheet
 } from "react-native";
+import Sound from 'react-native-sound';
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { BasicHeader } from "../../components/basic-header";
 import { SvgXml } from "react-native-svg";
 import AlbumModal from "../../components/modals/chat/album-modal";
 import CustomTextInput from "../../components/text-input";
 import ZedpayModal from "../../components/modals/zedpay/zedpay-modal";
+import * as DocumentPicker from 'expo-document-picker';
+import ImageCropPicker from "react-native-image-crop-picker";
+import * as RNFS from 'react-native-fs';
+import { Entypo, Ionicons } from '@expo/vector-icons';
+
+import AudioRecorderPlayer, {
+  AVEncoderAudioQualityIOSType,
+  AVEncodingOption,
+  AudioEncoderAndroidType,
+  AudioSet,
+  AudioSourceAndroidType,
+  OutputFormatAndroidType,
+ } from 'react-native-audio-recorder-player';
+import { useKeyboardVisible } from "../../hooks/useKeyboardVisible";
+import { DEVICE_HEIGHT } from "../../constants/sizes";
+import { formatAudioDuration, requestAudioRecordPermission } from "../../utils/helpers";
+import { PRIMARY_COLOR } from "../../constants/colors";
 
 interface Props {
   navigation: any;
 }
+
+Sound.setCategory('Playback', true);
+const audioRecorderPlayer = new AudioRecorderPlayer();
 
 const ChatDetails: React.FC<Props> = ({ navigation }) => {
   const [isAlbumModalShow, setIsAlbumModalShow] = useState<boolean>(false);
   const [isZedpayModalShow, setIsZedpayModalShow] = useState<boolean>(false);
   const [isToolbarShow, setIsToolbarShow] = useState<boolean>(false);
   const scrollViewRef = useRef<ScrollView>(null);
+
+  // Audio record states
+  const [recordSecs, setRecordSecs] = useState(0);
+  const [recordTime, setRecordTime] = useState('00:00:00');
+  const [currentPositionSec, setCurrentPositionSec] = useState(0);
+  const [currentDurationSec, setCurrentDurationSec] = useState(0);
+  const [playTime, setPlayTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [recording, setRecording] = useState(false);
+  const [recordingPaused, setRecordingPaused] = useState(false);
+  const [recordingStopped, setRecordingStopped] = useState(false);
+  const [recordedAudio, setRecordedAudio] = useState<any>({uri: ''});
+  const [audio, setAudio] = useState<any>(undefined);
+  const [playing, setPlaying] = useState(false);
+
+  const [message, setMessage] = useState('');
+
+  const [image, setImage] = useState<any>();
+  const [file, setFile] = useState<DocumentPicker.DocumentPickerResult>();
+
+  const { isKeyboardVisible, keyboardHeight } = useKeyboardVisible()
 
   const messages = useMemo(
     () => [
@@ -151,6 +198,164 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
     []
   );
 
+  const pickDocument = async () => {
+    try {
+      await DocumentPicker.getDocumentAsync({ })
+      .then((file)=>{
+        console.log(file);
+        setFile(file)
+      })
+    } catch (error: unknown) {
+      console.log(error);
+    }
+  }
+
+  const openCamera = () => {
+    try {
+      ImageCropPicker.openCamera({
+        width: 300,
+        height: 400,
+        // cropping: true,
+      }).then(image => {
+        console.log(image);
+        setImage(image)
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+    } catch (error) {
+      console.log("Error: " + error);
+    }
+  }
+
+  //   These deal with recording of audio.
+  //  ======== Starts here =========
+
+  const setStatesToRecording = () => {
+    setRecording(true);
+    setRecordingPaused(false);
+    setRecordingStopped(false);
+  };
+
+  const setStatesToRecordingPaused = () => {
+    setRecording(true);
+    setRecordingPaused(true);
+  };
+
+  const setStatesToRecordingResume = () => {
+    setRecording(true);
+    setRecordingPaused(false);
+    setRecordingStopped(false);
+  };
+
+  const setStatesToRecordingStopped = () => {
+    setRecording(false);
+    setRecordingPaused(false);
+    setRecordingStopped(true);
+  };
+
+  const onStartRecord =  React.useCallback(async () => {
+    requestAudioRecordPermission();
+    const path = Platform.select({
+      ios: undefined,
+      android: undefined,
+    });
+
+    const audioSet: AudioSet = {
+      AudioEncoderAndroid: AudioEncoderAndroidType.AAC,
+      AudioSourceAndroid: AudioSourceAndroidType.MIC,
+      AVEncoderAudioQualityKeyIOS: AVEncoderAudioQualityIOSType.high,
+      AVNumberOfChannelsKeyIOS: 2,
+      AVFormatIDKeyIOS: AVEncodingOption.aac,
+      OutputFormatAndroid: OutputFormatAndroidType.AAC_ADTS,
+    };
+
+    const result = await audioRecorderPlayer.startRecorder(path, audioSet);
+    setStatesToRecording();
+    audioRecorderPlayer.addRecordBackListener(e => {      
+      setRecordSecs(e.currentPosition);
+      setRecordTime(audioRecorderPlayer.mmssss(Math.floor(e.currentPosition)));
+      setCurrentDurationSec(e.currentPosition)
+      return;
+    });
+  }, []);
+
+  const onPauseRecord = async (): Promise<void> => {
+    try {
+      setStatesToRecordingPaused();
+      const r = await audioRecorderPlayer.pauseRecorder();
+      //console.log(r);
+    } catch (err) {
+      //console.log('pauseRecord', err);
+    }
+  };
+
+  const onResumeRecord = async (): Promise<void> => {
+    setStatesToRecordingResume();
+    await audioRecorderPlayer.resumeRecorder();
+  };
+
+  const onStopRecord = React.useCallback(async () => {
+    setStatesToRecordingStopped();
+    const result = await audioRecorderPlayer.stopRecorder();
+    setRecordedAudio({uri: result});
+    audioRecorderPlayer.removeRecordBackListener();
+    RNFS.stat(result)
+      .then(audioData => {
+        RNFS.readFile(audioData.path, 'base64')
+          .then(base64String => {
+            let audio = {
+              name: audioData.path.split('/').pop(),
+              size: audioData.size,
+              type: 'audio/' + audioData.path.split('/').pop()!.split('.').pop(),
+              data: base64String,
+            };
+            setAudio(audio);
+          })
+          .catch(err => {
+            //console.log(err.message);
+          });
+      })
+      .catch(err => {
+        //console.log(err.message);
+      });
+  }, []);
+
+  const onStartPlay = React.useCallback(async () => {
+    const msg = await audioRecorderPlayer.startPlayer();
+    setPlaying(true);
+    audioRecorderPlayer.addPlayBackListener(e => {
+      if (e.currentPosition === e.duration) {
+          audioRecorderPlayer.stopPlayer();
+          setPlaying(false)
+          setCurrentPositionSec(0)
+      }
+      setCurrentPositionSec(e.currentPosition);
+      setCurrentDurationSec(e.duration);
+      setPlayTime(
+      parseInt(audioRecorderPlayer.mmssss(Math.floor(e.currentPosition))),
+      );
+      setDuration(parseInt(audioRecorderPlayer.mmssss(Math.floor(e.duration))));
+      return;
+    });
+  }, []);
+
+  const onPausePlay = async () => {
+    await audioRecorderPlayer.pausePlayer();
+    setPlaying(false)
+  };
+
+  const onStopPlay = async () => {
+    audioRecorderPlayer.stopPlayer();
+    audioRecorderPlayer.removePlayBackListener();
+  };
+  //  ======== Ends here =========
+  
+
+  const sendMessage = () => {
+    console.log(message);
+  }
+
   return (
     <View className="h-full bg-white flex-column">
       <BasicHeader
@@ -175,11 +380,15 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
       />
       {isToolbarShow ? (
         <View className="bg-[#00406E] py-3 px-6 flex-row justify-between border-t border-t-[#2A5C81]">
-          <TouchableOpacity onPress={() => {setIsZedpayModalShow(true)}}>
+          <TouchableOpacity
+            onPress={() => {
+              setIsZedpayModalShow(true);
+            }}
+          >
             <Image source={require("../../../assets/images/zedpay_gray.png")} />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.push("Video-Incoming-Call")}
+            onPress={() => navigation.push("On-Call-Video")}
           >
             <SvgXml
               xml={`
@@ -190,7 +399,7 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
             `}
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.push("Incoming-Call")}>
+          <TouchableOpacity onPress={() => navigation.push("On-Call-Audio")}>
             <SvgXml
               xml={`
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -472,10 +681,16 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
                           <Text className="text-sm font-Poppins_400 text-[#ED1F24]">
                             Missed Call
                           </Text>
-                          <Text className="text-xs font-Poppins_400 text-[#ACACAC]">{message.time}</Text>
+                          <Text className="text-xs font-Poppins_400 text-[#ACACAC]">
+                            {message.time}
+                          </Text>
                         </View>
                         <View className="rotate-90">
-                          <MaterialIcons name="phone-disabled" size={24} color="#ED1F24"/>
+                          <MaterialIcons
+                            name="phone-disabled"
+                            size={24}
+                            color="#ED1F24"
+                          />
                         </View>
                       </View>
                     </View>
@@ -495,10 +710,16 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
                           <Text className="text-sm font-Poppins_400 text-black">
                             Cancelled Call
                           </Text>
-                          <Text className="text-xs font-Poppins_400 text-[#ACACAC]">{message.time}</Text>
+                          <Text className="text-xs font-Poppins_400 text-[#ACACAC]">
+                            {message.time}
+                          </Text>
                         </View>
                         <View className="rotate-90">
-                          <MaterialIcons name="phone-disabled" size={24} color="#ED1F24"/>
+                          <MaterialIcons
+                            name="phone-disabled"
+                            size={24}
+                            color="#ED1F24"
+                          />
                         </View>
                       </View>
                     </View>
@@ -507,11 +728,19 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
             }
           })}
         </ScrollView>
-        <View className="border-t border-t-[#E5E5E5] bg-white py-3 px-4 flex-row items-center">
-          <TouchableOpacity className="rotate-[225deg]">
+      </SafeAreaView>
+      {!recording && (
+        <View
+          className={`border-t border-t-[#E5E5E5] bg-white py-3 px-4 flex-row items-center`}
+          style={{
+            bottom: isKeyboardVisible ? keyboardHeight : 0,
+            position: "absolute",
+          }}
+        >
+          <TouchableOpacity className="rotate-[225deg]" onPress={pickDocument}>
             <MaterialIcons name="attach-file" color="#9A9A9A" size={24} />
           </TouchableOpacity>
-          <TouchableOpacity className="ml-1.5">
+          <TouchableOpacity className="ml-1.5" onPress={openCamera}>
             <MaterialCommunityIcons
               name="camera-outline"
               color="#16406B"
@@ -519,19 +748,59 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
             />
           </TouchableOpacity>
           <TextInput
-            className="py-3.5 px-4 rounded-full border border-[#E8E8E8] bg-[#F6F6F6] grow font-Poppins_500 text-sm mx-2.5"
+            className="h-10 px-4 rounded-full border border-[#E8E8E8] bg-[#F6F6F6] grow font-Poppins_500 text-sm mx-2.5"
             placeholder="Enter a message"
             placeholderTextColor={"#BDBDBD"}
+            value={message}
+            onChangeText={(text) => setMessage(text)}
           />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={message.length > 0 ? sendMessage : onStartRecord}>
             <MaterialCommunityIcons
-              name="microphone-outline"
+              name={message.length > 0 ? "send" : "microphone-outline"}
               color="#16406B"
               size={24}
             />
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      )}
+      <View style={styles.recording}>
+        {recording && (
+          <>
+            {recordingPaused && (
+              <View style={styles.iconAndText}>
+                <Entypo
+                  name="controller-record"
+                  size={24}
+                  color={PRIMARY_COLOR}
+                  onPress={onResumeRecord}
+                />
+                <Text style={styles.text}>Resume record</Text>
+              </View>
+            )}
+            {!recordingPaused && (
+              <View style={styles.iconAndText}>
+                <Ionicons
+                  name="pause"
+                  size={24}
+                  color={PRIMARY_COLOR}
+                  onPress={onPauseRecord}
+                />
+                <Text style={styles.text}>Pause record</Text>
+              </View>
+            )}
+            <Text>{formatAudioDuration(recordSecs / 1000)}</Text>
+            <View style={styles.iconAndText}>
+              <Ionicons
+                name="stop"
+                size={24}
+                color={PRIMARY_COLOR}
+                onPress={onStopRecord}
+              />
+              <Text style={styles.text}>Stop Record</Text>
+            </View>
+          </>
+        )}
+      </View>
       <AlbumModal
         isShow={isAlbumModalShow}
         onClose={() => setIsAlbumModalShow(false)}
@@ -539,9 +808,28 @@ const ChatDetails: React.FC<Props> = ({ navigation }) => {
       <ZedpayModal
         isShow={isZedpayModalShow}
         onClose={() => setIsZedpayModalShow(false)}
-        ></ZedpayModal>
+      ></ZedpayModal>
     </View>
   );
 };
 
 export default ChatDetails;
+
+const styles = StyleSheet.create({
+  recording: {
+    flexDirection: "row",
+    alignItems: "center",
+    height: 40,
+    width: "95%",
+    borderRadius: 5,
+    justifyContent: "space-around",
+    alignSelf: 'center',
+  },
+  iconAndText: {
+    width: "25%",
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 10,
+  },
+});

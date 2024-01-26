@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   View,
   Text,
@@ -11,8 +11,10 @@ import { NameUpdateModal } from "../../components/modals/onboarding/name-update"
 import { PasswordUpdateModal } from "../../components/modals/onboarding/password-update";
 import { UserNameUpdateModal } from "../../components/modals/onboarding/username-update";
 import { EmailAssignModal } from "../../components/modals/onboarding/email-assign";
+import { AuthContext, AuthContextType } from "../../context/AuthContext";
 
-export const RegisterProcess = () => {
+export const RegisterProcess = ({ navigation }: any) => {
+  const { setUser, user, userName, setUserName, logout } = useContext(AuthContext) as AuthContextType;
   const inputValues = [
     {
       label: "Your display name",
@@ -44,7 +46,6 @@ export const RegisterProcess = () => {
   const [open, setOpen] = useState(false);
   const [modalNumber, setModalNumber] = useState(0);
   const [name, setName] = useState("");
-  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -72,7 +73,7 @@ export const RegisterProcess = () => {
 
           {/* adjust settings */}
           <View className="w-full pt-[10]">
-            <AdjustSettings setNumber={setModalNumber} setOpen={setOpen} fieldValues={[name, userName, password, phone, email]}/>
+            {/* <AdjustSettings setNumber={setModalNumber} setOpen={setOpen} fieldValues={[name, userName, password, phone, email]} /> */}
           </View>
 
           <TouchableOpacity onPress={() => navigation.navigate("Register-Success")}>

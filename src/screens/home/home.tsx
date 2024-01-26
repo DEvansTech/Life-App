@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -18,6 +18,8 @@ import { HomeStackParams } from "../../navigation/home-stack";
 import { BasicHeader } from "../../components/basic-header";
 import { MaterialIcons, Feather, FontAwesome } from "@expo/vector-icons";
 import CustomTextInput from "../../components/text-input";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AuthContext, AuthContextType } from "../../context/AuthContext";
 
 type HomeScreenProps = StackScreenProps<HomeStackParams, "Home">;
 
@@ -69,6 +71,15 @@ const sections = [{
 }];
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
+  const { phone, setPhone } = useContext(AuthContext) as AuthContextType;
+  useEffect(() => {
+    (async function () {
+      const loggedPhone = await AsyncStorage.getItem("@loggedPhone");
+      if (!loggedPhone) AsyncStorage.setItem("@loggedPhone", phone);
+      console.log(phone, await AsyncStorage.getItem("@loggedPhone"));
+    })();
+  }, []);
+
   // const [addFriend, setAddFriend] = React.useState(false);
   const [expandedSections, setExpandedSections] = useState(new Set(sections.map(section => section.title)));
   const renderItem = ({ section: { title }, item }) => {
