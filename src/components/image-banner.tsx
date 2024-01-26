@@ -3,7 +3,15 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import * as ImagePicker from "expo-image-picker";
 
-export const ImageBanner = () => {
+interface ImageBannerProps {
+  hideText?: boolean;
+  bgColor?: string
+}
+
+export const ImageBanner:React.FC<ImageBannerProps> = ({
+  hideText,
+  bgColor
+}) => {
   const [selectedImage, setSelectedImage] = useState("");
 
   const pickImage = async () => {
@@ -20,7 +28,7 @@ export const ImageBanner = () => {
   };
 
   return (
-    <View className="w-full h-[163px] flex flex-col justify-center items-center relative bg-zinc-200 rounded-[11px] ">
+    <View className={`w-full h-[163px] flex flex-col justify-center items-center relative rounded-[11px] ${bgColor || "bg-zinc-200"}`}>
       {selectedImage ? (
         <Image source={{ uri: selectedImage }} style={{ width: 88.74, height: 93, borderRadius: 46.37 }} />
       ) : (
@@ -36,9 +44,12 @@ export const ImageBanner = () => {
           </View>
         </View>
       )}
-      <Text className="mt-[12] text-black text-sm font-normal leading-snug">
-        Upload avatar
-      </Text>
+      {
+        !hideText && 
+        <Text className="mt-[12] text-black text-sm font-normal leading-snug">
+          Upload avatar
+        </Text>
+      }
     </View>
   );
 };

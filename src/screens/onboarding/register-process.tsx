@@ -49,7 +49,6 @@ export const RegisterProcess = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
-export const RegisterProcess = ({navigation}: any) => {
   return (
     <SafeAreaView className="w-full">
       <View className=" pt-10 w-full px-5 h-full">
