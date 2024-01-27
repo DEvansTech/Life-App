@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import { View, Text, ColorValue } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import moment from "moment";
-// import Slider from "@react-native-community/slider";
 import {Slider} from '@miblanchard/react-native-slider';
 
-// import { useSelector } from 'react-redux'
-
 import styles from "./AudioPlayer.style";
-// import { AvatarAbrev } from '../../components'
 
 type IProps = {
   audio: string;
@@ -16,7 +12,6 @@ type IProps = {
 };
 
 const AudioPlayer: React.FC<IProps> = ({ audio, type }) => {
-  //   const user = useSelector(state => state.UserReducer.user)
   const user: any = {};
 
   const [playing, setPlaying] = useState(false);
