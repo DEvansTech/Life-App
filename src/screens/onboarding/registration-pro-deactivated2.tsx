@@ -41,9 +41,8 @@ export const RegisterProcessDeactivatedTwo = ({navigation}: any) => {
             {/* input */}
             {inputValues.map((input) => {
               return (
-                <View className="w-full">
+                <View className="w-full" key={input.label}>
                   <FieldInput
-                    key={input.label}
                     label={input.label}
                     placeholder={input.placeholder}
                     password={input.password}
