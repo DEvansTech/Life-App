@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import {
   AuthContext,
   type AuthContextData,
-} from "../context/Auth";
+} from "@Context/Auth";
 
 const useAuth = () => {
   const context = useContext(AuthContext) as AuthContextData;

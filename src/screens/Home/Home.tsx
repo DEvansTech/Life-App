@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Text, View } from "react-native";
 import styles from "./styles";
-import useAuth from "../../hooks/useAuth";
-import { Routes } from "../../navigators/routes";
+import useAuth from "@Hooks/useAuth";
+import { Routes } from "@Navigators/routes";
 
 const HomeScreen = ({ navigation }: any) => {
   const { signOut } = useAuth();

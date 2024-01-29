@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, View } from "react-native";
-import useAuth from "../../hooks/useAuth";
-import { Routes } from "../../navigators/routes";
+import useAuth from "@Hooks/useAuth";
+import { Routes } from "@Navigators/routes";
 
 const DisplayNameAndAvatarScreen = ({ navigation }: any) => {
   const { register } = useAuth();

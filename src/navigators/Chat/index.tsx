@@ -5,10 +5,10 @@
 
 import React, { PropsWithChildren } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Routes } from "../routes";
-import ContactListScreen from "../../screens/ContactList";
-import ChatroomScreen from "../../screens/Chatroom";
-import { VideoChatScreen, VoiceChatScreen } from "../../screens/Call";
+import { Routes } from "@Navigators/routes";
+import ContactListScreen from "@Screens/ContactList";
+import ChatroomScreen from "@Screens/Chatroom";
+import { VideoChatScreen, VoiceChatScreen } from "@Screens/Call";
 
 const Stack = createNativeStackNavigator();
 

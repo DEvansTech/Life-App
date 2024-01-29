@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, TextInput, View } from "react-native";
-import { Routes } from "../../navigators/routes";
+import { Routes } from "@Navigators/routes";
 
 const EnterEmailAndPassword = ({ navigation }: any) => {
   const [email, setEmail] = useState("");

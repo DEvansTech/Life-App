@@ -6,11 +6,11 @@
 
 import React, { PropsWithChildren } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Routes } from "../routes";
-import HomeScreen from "../../screens/Home";
-import AddPeopleScreen from "../../screens/AddPeople";
-import CreateGroupScreen from "../../screens/CreateGroup";
-import IDScanScreen from "../../screens/IDScan";
+import { Routes } from "@Navigators/routes";
+import HomeScreen from "@Screens/Home";
+import AddPeopleScreen from "@Screens/AddPeople";
+import CreateGroupScreen from "@Screens/CreateGroup";
+import IDScanScreen from "@Screens/IDScan";
 
 const Stack = createNativeStackNavigator();
 

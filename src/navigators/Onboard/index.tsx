@@ -1,19 +1,19 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Routes } from "../routes";
-import LandingScreen from "../../screens/Landing";
-import EnterPhoneScreen from "../../screens/EnterPhone";
-import VerifyOTPScreen from "../../screens/VerifyOTP";
-import EnterEmailAndPassword from "../../screens/EnterEmailAndPassword";
-import RegisterSuccessScreen from "../../screens/RegisterSuccess";
-import DisplayNameAndAvatarScreen from "../../screens/DisplayNameAndAvatar";
-import BottomTabNav from "../BottomTab";
+import { Routes } from "@Navigators/routes";
+import LandingScreen from "@Screens/Landing";
+import EnterPhoneScreen from "@Screens/EnterPhone";
+import VerifyOTPScreen from "@Screens/VerifyOTP";
+import EnterEmailAndPassword from "@Screens/EnterEmailAndPassword";
+import RegisterSuccessScreen from "@Screens/RegisterSuccess";
+import DisplayNameAndAvatarScreen from "@Screens/DisplayNameAndAvatar";
+import BottomTabNav from "@Navigators/BottomTab";
 
 const Stack = createNativeStackNavigator();
 
 const OnboardStackNav: React.FC = () => {
   return (
-    <Stack.Navigator initialRouteName="LandingScreen">
+    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="LandingScreen">
       <Stack.Screen name={Routes.Landing} component={LandingScreen} />
       <Stack.Screen name={Routes.EnterPhone} component={EnterPhoneScreen} />
       <Stack.Screen name={Routes.VerifyOTP} component={VerifyOTPScreen} />
