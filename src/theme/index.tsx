@@ -1,2 +1,3 @@
 import svgs from "./svgs";
-export { svgs };
+import colors from "./colors";
+export { svgs, colors };

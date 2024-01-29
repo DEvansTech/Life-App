@@ -72,7 +72,7 @@ const VerifyOTPScreen = ({ navigation, route }: any) => {
           />
         </View>
 
-        <TouchableOpacity className="mb-2 mx-auto" onPress={() => navigation.navigate(Routes.RegisterSuccess, { phone: phoneNum, code: code })}>
+        <TouchableOpacity className="mb-2 mx-auto" onPress={() => navigation.navigate(Routes.RegisterProcess, { phone: phoneNum, code: code })}>
           <View className="w-[307px] mt-2 h-[37px] flex items-center justify-center bg-primary rounded-[5px]">
             <Text className="text-center text-neutral-50 text-[13px] font-semibold font-poppins leading-snug">
               Verify OTP
