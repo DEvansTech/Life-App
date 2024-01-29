@@ -59,9 +59,12 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       name: "Zachary Hartson",
       displayName: "Zack",
     }
+    onAuthStateChanged(_authData);
+  }
 
-    setAuthData(_authData);
-    await AsyncStorage.setItem("@AuthData", JSON.stringify(_authData));
+  const onAuthStateChanged = async (user: AuthData) => {
+    setAuthData(user);
+    await AsyncStorage.setItem("@AuthData", JSON.stringify(user));
   }
 
   const register = async (
@@ -78,7 +81,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       displayName: "Zack",
     }
 
-    setAuthData(_authData);
+    // setAuthData(_authData);
     await AsyncStorage.setItem("@AuthData", JSON.stringify(_authData));
   }
 
@@ -86,6 +89,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     setAuthData(undefined);
     await AsyncStorage.removeItem("@AuthData");
   }
+
   return (
     <AuthContext.Provider value={{
       authData,

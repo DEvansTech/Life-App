@@ -1,17 +1,8 @@
 import React, { useEffect } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { Routes } from "@Navigators/routes"
-import useAuth from "@Hooks/useAuth";
-
 
 const LandingScreen = ({ navigation }: any) => {
-  const { authData, loading } = useAuth();
-
-  useEffect(() => {
-    console.log(authData);
-    if (authData || authData !== undefined) navigation.navigate(Routes.BottomTabNav);
-  }, [authData]);
-
   return (
     <View className="w-full h-full pb-11 px-11 flex-col justify-between bg-white">
       <View>

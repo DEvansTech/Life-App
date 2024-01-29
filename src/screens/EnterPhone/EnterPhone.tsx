@@ -20,8 +20,7 @@ const countries = [{
 }];
 
 const EnterPhoneScreen = ({ navigation }: any) => {
-  const [phone, setPhone] = useState("");
-
+  const [phoneNum, setPhoneNum] = useState("");
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -71,9 +70,8 @@ const EnterPhoneScreen = ({ navigation }: any) => {
                   className="border-l-2 border-stone-100 pl-2"
                   placeholder="Enter your number"
                   keyboardType={"phone-pad"}
-                  dataDetectorTypes={"phoneNumber"}
-                  textContentType="telephoneNumber"
-                  onChangeText={phone => setPhone(phone)}
+                  onChangeText={number => setPhoneNum(number)}
+                  value={phoneNum}
                 />
               </View>
             </View>
@@ -84,7 +82,7 @@ const EnterPhoneScreen = ({ navigation }: any) => {
               </Text>
             </View>
 
-            <TouchableOpacity onPress={() => navigation.navigate(Routes.VerifyOTP)}>
+            <TouchableOpacity onPress={() => navigation.navigate(Routes.VerifyOTP, { phone: phoneNum })}>
               <View className="w-[307px] mt-2 h-[37px] flex items-center justify-center bg-primary rounded-[5px]">
                 <Text className="text-center text-neutral-50 text-[13px] font-semibold font-poppins leading-snug">
                   Get OTP

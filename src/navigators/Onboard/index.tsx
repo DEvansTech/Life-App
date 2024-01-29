@@ -1,6 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Routes } from "@Navigators/routes";
+import LoadingScreen from "@Screens/Loading";
 import LandingScreen from "@Screens/Landing";
 import EnterPhoneScreen from "@Screens/EnterPhone";
 import VerifyOTPScreen from "@Screens/VerifyOTP";
@@ -13,7 +14,8 @@ const Stack = createNativeStackNavigator();
 
 const OnboardStackNav: React.FC = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="LandingScreen">
+    <Stack.Navigator screenOptions={{ headerShown: false, gestureEnabled: true, animationTypeForReplace: "pop" }} initialRouteName={Routes.Loading}>
+      <Stack.Screen name={Routes.Loading} component={LoadingScreen} />
       <Stack.Screen name={Routes.Landing} component={LandingScreen} />
       <Stack.Screen name={Routes.EnterPhone} component={EnterPhoneScreen} />
       <Stack.Screen name={Routes.VerifyOTP} component={VerifyOTPScreen} />

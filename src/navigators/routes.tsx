@@ -1,5 +1,6 @@
 export const Routes = {
   // OnBoarding Routes
+  Loading: "LoadingScreen",
   Landing: "LandingScreen",
   EnterPhone: "EnterPhoneScreen",
   VerifyOTP: "VerifyOTPScreen",

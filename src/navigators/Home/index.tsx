@@ -16,7 +16,7 @@ const Stack = createNativeStackNavigator();
 
 const HomeStackNav: React.FC = () => {
   return (
-    <Stack.Navigator initialRouteName={Routes.Home} >
+    <Stack.Navigator initialRouteName={Routes.Home} screenOptions={{ gestureEnabled: true, headerShown: false }}>
       <Stack.Screen name={Routes.Home} component={HomeScreen} />
       <Stack.Screen name={Routes.AddPeople} component={AddPeopleScreen} />
       <Stack.Screen name={Routes.CreateGroup} component={CreateGroupScreen} />
