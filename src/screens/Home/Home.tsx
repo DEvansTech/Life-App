@@ -167,7 +167,7 @@ const HomeScreen = ({ navigation }: any) => {
               {
                 (expandedSections.has("My groups") && section.title === "My groups") ? (
                   <View className="mb-2.5">
-                    <CreateGroupComp onPress={handleNavigation} />
+                    {/* <CreateGroupComp onPress={handleNavigation} /> */}
                   </View>
                 ) : null
               }
