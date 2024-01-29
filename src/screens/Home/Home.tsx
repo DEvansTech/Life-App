@@ -11,11 +11,15 @@ import {
 } from "react-native";
 import Feather from "react-native-vector-icons/Feather";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import HeaderComp from "@Components/Header";
 import useAuth from "@Hooks/useAuth";
 import { Routes } from "@Navigators/routes";
 import styles from "./styles";
 import CustomTextInputComp from "@Components/CustomTextInput";
+import GroupCardComp from "@Components/GroupCard";
+import FriendCardComp from "@Components/FriendCard";
+import ProfileCardComp from "@Components/ProfileCard";
 
 const sections = [{
   title: "My groups",
@@ -74,13 +78,13 @@ const HomeScreen = ({ navigation }: any) => {
       case "group":
         return (
           <View className="pb-3">
-            <GroupCard avatar={item.avatar} title={item.title} info={item.info} />
+            <GroupCardComp avatar={item.avatar} title={item.title} info={item.info} />
           </View>
         );
       case "friend":
         return (
           <View className="pb-3">
-            <FriendCard avatar={item.avatar} name={item.name} last_seen="32 min ago" />
+            <FriendCardComp avatar={item.avatar} name={item.name} last_seen="32 min ago" />
           </View>
         );
       // Add more cases for other card types as needed
@@ -137,13 +141,13 @@ const HomeScreen = ({ navigation }: any) => {
           placeholder="Search"
         />
       </View>
-      {/* <SafeAreaView className="flex h-full grow flex-column">
+      <SafeAreaView className="flex h-full grow flex-column">
         <SectionList
           className="mx-4"
           ListHeaderComponent={() => {
             return (
               <View className="pt-5 pb-4">
-                <ProfileCard avatar="https://s3-alpha-sig.figma.com/img/c821/61ec/21f46033e43fc009cdf3e9bf3334b5bc?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=L0QZvmWeHu3A4h0-KqtrL3U3AQN1-IUCNhYxNo0MoaXk75yetkSnUpSH4JTP7WAJdo-R6IvKmU9VuCfPrHBAgByU0AS7JcZ9ZIRwZWZp1RU0Tw9RKskpwmRT0rnU7N0Ft4bY3n1AjAh1QWp-Q5g9FmTRhjpBOjDFyPZ7DSrWtQx5B1yv9-Hin7SjNikzhDoHMXTI8iLZdgP9YxA0QNjcInI-dZxVALqV8OkcCNSPQiwNvealykeblMHj6HURTiqeW49RHyHfVE-yxfLZdf0UBhJZItkTg57MX116O7y1yEm78wzb2FdjwPghXdCew3PYru9nKVIUs-~8lIMhL9lF9g__" name="Michel lin" info="Lorem ispum Lorem ispum" />
+                <ProfileCardComp avatar="https://s3-alpha-sig.figma.com/img/c821/61ec/21f46033e43fc009cdf3e9bf3334b5bc?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=L0QZvmWeHu3A4h0-KqtrL3U3AQN1-IUCNhYxNo0MoaXk75yetkSnUpSH4JTP7WAJdo-R6IvKmU9VuCfPrHBAgByU0AS7JcZ9ZIRwZWZp1RU0Tw9RKskpwmRT0rnU7N0Ft4bY3n1AjAh1QWp-Q5g9FmTRhjpBOjDFyPZ7DSrWtQx5B1yv9-Hin7SjNikzhDoHMXTI8iLZdgP9YxA0QNjcInI-dZxVALqV8OkcCNSPQiwNvealykeblMHj6HURTiqeW49RHyHfVE-yxfLZdf0UBhJZItkTg57MX116O7y1yEm78wzb2FdjwPghXdCew3PYru9nKVIUs-~8lIMhL9lF9g__" name="Michel lin" info="Lorem ispum Lorem ispum" />
               </View>
             );
           }}
@@ -172,7 +176,7 @@ const HomeScreen = ({ navigation }: any) => {
           sections={sections}
           renderItem={renderItem}
         />
-      </SafeAreaView> */}
+      </SafeAreaView>
     </View>
   );
 }
