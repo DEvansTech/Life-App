@@ -41,9 +41,7 @@ const EnterPhoneScreen = ({ navigation }: any) => {
                 <View>
                   <SelectDropdown
                     data={countries}
-                    onSelect={(selectedItem, index) => {
-                      console.log(selectedItem, index);
-                    }}
+                    onSelect={(selectedItem, index) => { }}
                     defaultButtonText={"USA"}
                     buttonTextAfterSelection={(selectedItem, index) => {
                       return selectedItem.title;

@@ -15,7 +15,7 @@ const RegisterSuccessScreen = ({ navigation, route }: any) => {
   return (
     <View>
       <Button
-        onPress={() => { console.log(phoneNum, code); signIn(phoneNum, code) }}
+        onPress={() => { signIn(phoneNum, code) }}
         title="Continue to the app"
         accessibilityLabel="Navigate to Home"
       />

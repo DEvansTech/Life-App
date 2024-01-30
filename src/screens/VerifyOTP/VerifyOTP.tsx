@@ -79,7 +79,7 @@ const VerifyOTPScreen = ({ navigation, route }: any) => {
             </Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity className="mx-auto" onPress={() => { console.log("resent OTP") }}>
+        <TouchableOpacity className="mx-auto" onPress={() => { }}>
           <View className="w-[307px] mt-2 h-[37px] flex items-center justify-center rounded-[5px]">
             <Text className="text-center text-primary text-[13px] font-semibold font-poppins leading-snug">
               Resend OTP

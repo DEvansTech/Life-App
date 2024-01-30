@@ -7,11 +7,13 @@ import {
   TouchableOpacity,
   SectionList,
   SafeAreaView,
-  Image
+  Image,
+  TextInput
 } from "react-native";
 import Feather from "react-native-vector-icons/Feather";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import Modal from "react-native-modal";
 import HeaderComp from "@Components/Header";
 import { Routes } from "@Navigators/routes";
 import CustomTextInputComp from "@Components/CustomTextInput";
@@ -209,7 +211,16 @@ const HomeScreen = ({ navigation, route }: any) => {
       />
       <View className="px-4 pb-4 bg-[#00406E]">
         <CustomTextInputComp
+          bgColor="#96B4D15E"
           leftNode={<MaterialIcons name="search" color="white" size={28} />}
+          centerNode={
+            <TextInput
+              className="text-base w-full text-white"
+              placeholder="Search"
+              placeholderTextColor="#C9C9C9"
+              cursorColor="white"
+            />
+          }
           placeholder="Search"
         />
       </View>

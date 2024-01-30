@@ -9,7 +9,6 @@ const LoadingScreen = ({ navigation }: any) => {
   const { authData, loading } = useAuth();
 
   useEffect(() => {
-    console.log(authData);
     if (!loading) {
       if (authData || authData !== undefined) navigation.navigate(Routes.BottomTabNav);
       else navigation.navigate(Routes.Landing);

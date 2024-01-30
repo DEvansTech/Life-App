@@ -18,9 +18,9 @@ const HeaderComp: React.FC<HeaderCompProps> = ({
   return (
     <View>
       <SafeAreaView className={`py-3 flex flex-row ${bgColor ? bgColor : 'bg-[#00406E]'}`}>
-        <View className="basis-1/4 pl-4 flex flex-row justify-start">{leftNode}</View>
-        <View className="basis-2/4 flex flex-row justify-center">{centerNode}</View>
-        <View className="basis-1/4 pr-4 flex flex-row justify-end">{rightNode}</View>
+        <View className="my-auto basis-1/4 pl-4 flex flex-row justify-start">{leftNode}</View>
+        <View className="my-auto basis-2/4 flex flex-row justify-center">{centerNode}</View>
+        <View className="my-auto basis-1/4 pr-4 flex flex-row justify-end">{rightNode}</View>
       </SafeAreaView>
     </View>
   );

@@ -1,21 +1,28 @@
 import React from "react";
-import { View, Text, ImageBackground, Button, Pressable, Image } from "react-native";
+import {
+  View,
+  Text,
+  Pressable,
+  Image,
+  PressableProps
+} from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-interface PersonBubbleProps {
+interface PersonBubbleProps extends PressableProps {
   avatar?: string,
   name: string
 }
 
 const PersonBubble: React.FC<PersonBubbleProps> = ({
   avatar,
-  name
+  name,
+  ...rest
 }) => {
   return (
     <View className="flex flex-col items-center">
       <Image className="w-[48] h-[48] rounded-full" source={{ uri: avatar }} />
       <View className="left-[30] top-[25] absolute">
-        <Pressable className="w-5 h-5">
+        <Pressable className="w-5 h-5" {...rest}>
           <View className="w-5 h-5 flex justify-center items-center bg-rose-600 rounded-full border-2 border-white">
             <Text className="z-5">
               <FontAwesome name={"times"} color={"#fff"} size={10} />
