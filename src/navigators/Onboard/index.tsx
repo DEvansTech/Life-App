@@ -24,7 +24,7 @@ const OnboardStackNav: React.FC = () => {
       <Stack.Screen name={Routes.DisplayNameAndAvatar} component={DisplayNameAndAvatarScreen} />
       <Stack.Screen name={Routes.RegisterProcess} component={RegisterProcessScreen} />
       <Stack.Screen name={Routes.RegisterSuccess} component={RegisterSuccessScreen} />
-      <Stack.Screen name={Routes.BottomTabNav} component={RegisterProcessScreen} />
+      <Stack.Screen name={Routes.BottomTabNav} component={BottomTabNav} />
     </Stack.Navigator>
   );
 }

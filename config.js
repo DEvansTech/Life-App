@@ -13,7 +13,7 @@ import {
   FIREBASE_MESSAGING_SENDER_ID, 
   FIREBASE_APPID, 
   FIREBASE_MEASUREMENT_ID
- } from 'react-native-dotenv'
+ } from '@env'
 
 const firebaseEnv = {
   apiKey: FIREBASE_API_KEY || "",

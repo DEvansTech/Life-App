@@ -13,7 +13,7 @@ export const AdjustSettings: React.FC<AdjustSettingsProps> = ({setNumber, setOpe
     { field: "Name", updateField: "+ Create a name" },
     { field: "Username", updateField: "+ Create a Username" },
     { field: "Password", updateField: "Update now" },
-    { field: "Phone Number", updateField: "+81-8765434567" },
+    { field: "Phone Number", updateField: fieldValues[3] },
     { field: "Email Address", updateField: "+ Add email" },
   ];
 
@@ -30,7 +30,7 @@ export const AdjustSettings: React.FC<AdjustSettingsProps> = ({setNumber, setOpe
             </Text>
 
             {
-              setting.field !== "Password" && <Text className="text-black text-sm font-normal leading-snug">
+              setting.field !== "Password" && setting.field !== "Phone Number" && <Text className="text-black text-sm font-normal leading-snug">
               {fieldValues[i]}
             </Text>
             }

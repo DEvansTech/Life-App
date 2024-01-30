@@ -13,7 +13,7 @@ const LandingScreen = ({ navigation }: any) => {
       <View>
         <TouchableOpacity
           className="w-full rounded-md py-2 mb-2 bg-primary border border-primary"
-          onPress={() => navigation.navigate(Routes.EnterPhone)}
+          onPress={() => navigation.navigate(Routes.Landing)}
         >
           <Text className="font-poppins text-white font-semibold mx-auto text-[13px]">Log In</Text>
         </TouchableOpacity>

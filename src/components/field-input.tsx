@@ -45,7 +45,7 @@ export const FieldInput: React.FC<FieldInputParams> = ({
           style={{ fontSize: 16, fontFamily: "Poppins_400Regular" }}
           placeholder={placeholder}
           placeholderTextColor={error ? "#ED1F24" : undefined}
-          className={`${error ? "text-other-red" : undefined}`}
+          className={`${error ? "text-red-600" : undefined}`}
         />
         {password ? (
           <FontAwesome name="eye-slash" color={"#2A5C81"} size={18} />
@@ -56,7 +56,7 @@ export const FieldInput: React.FC<FieldInputParams> = ({
         <Text
           style={{ fontFamily: "Poppins_400Regular" }}
           className={`ml-1 pt-2.5 text-zinc-600 text-sm font-normal leading-snug  ${
-            error && "text-other-red"
+            error && "text-red-600"
           } ${success && "text-green-600"}`}
         >
           {message}

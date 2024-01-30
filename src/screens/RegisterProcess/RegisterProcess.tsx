@@ -21,10 +21,10 @@ const RegisterProcessScreen = ({ navigation, route }: any) => {
   const { register, authData } = useAuth();
 
   useEffect(() => {
-    if (authData !== undefined) {
-      navigation.navigate(Routes.BottomTabNav);
+    if (!authData) {
+      navigation.navigate(Routes.Landing);
     }
-  }, [authData])
+  }, [authData]);
 
   const inputValues = [
     {
@@ -56,17 +56,18 @@ const RegisterProcessScreen = ({ navigation, route }: any) => {
 
   const [open, setOpen] = useState(false);
   const [modalNumber, setModalNumber] = useState(0);
-  const [name, setName] = useState("");
-  const [userName, setUserName] = useState("");
+  const [name, setName] = useState(authData?.displayName || "");
+  const [userName, setUserName] = useState(authData?.name || "");
   const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const [phone, setPhone] = useState(authData?.phone || "");
+  const [email, setEmail] = useState(authData?.email || "");
+  const [avatar, setAvatar] = useState(authData?.avatar || "");
 
   const handleRegistration = async() => {
+    if (!email || !password || !phone) return;
     try {
       await register(phone, email, password, name, userName, avatar);
-      navigation.navigate("Register-Success");
+      navigation.navigate(Routes.RegisterSuccess);
     } catch(error) {
       console.log(error);
     }

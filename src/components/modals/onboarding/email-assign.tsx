@@ -20,14 +20,31 @@ export const EmailAssignModal: React.FC<EmailAssignModalParams> = ({
 }) => {
   const [iEmail, setIEmail] = useState(email);
   const memoizedIEmail = useMemo(() => iEmail, [iEmail]);
+  const [error, setError] = useState(true);
 
   useEffect(() => {
     setIEmail(email);
   }, [email]);
+
+  const validateEmail = (email: string) => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
   
   const handleSaveEmail = () => {
-    setEmail(memoizedIEmail);
-    setOpen(false);
+    if (!error) {
+      setEmail(memoizedIEmail);
+      setOpen(false);
+    }
+  }
+
+  const handleChangeEmail = (newEmail: string) => {
+    setIEmail(newEmail);
+    if (validateEmail(newEmail)) {
+      setError(false);
+    } else {
+      setError(true);
+    }
   }
 
   return (
@@ -49,12 +66,21 @@ export const EmailAssignModal: React.FC<EmailAssignModalParams> = ({
         <View className="w-full px-8">
           <FieldInput
             value={memoizedIEmail}
-            onChangeText={setIEmail}
+            onChangeText={handleChangeEmail}
             label={inputValues.at(1)?.label}
             placeholder={inputValues.at(1)?.placeholder}
             password={false}
           />
         </View>
+
+        {error && 
+          <Text
+            style={{ fontFamily: "Poppins_400Regular" }}
+            className="ml-1 pr-16 pt-[14] text-red-600 text-sm font-normal leading-snug self-start pl-8"
+          >
+            Wrong email format
+          </Text>
+        }
         <TouchableOpacity className="pb-6 pt-8" onPress={handleSaveEmail}>
           <View className="w-[307px] h-[37px] flex items-center justify-center bg-blue-900 rounded-[5px] mb-1">
             <Text

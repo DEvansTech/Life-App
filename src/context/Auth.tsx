@@ -14,6 +14,7 @@ export type AuthContextData = {
   authData?: AuthData;
   loading: boolean;
   signInWithPhoneNumber: (phone: string) => void;
+  signInWithEmailPassword: (email: string, password: string) => void;
   confirmCode: (code: string) => void;
   register: (
     phone: string,
@@ -32,6 +33,7 @@ export type AuthData = {
   name: string;
   displayName: string;
   avatar?: string;
+  phone?: string;
 };
 
 export const AuthContext = React.createContext<AuthContextData>({} as AuthContextData);
@@ -59,7 +61,9 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
             email: user.email || "",
             name: user.displayName || _profile?.fullName || "",
             displayName: _profile?.username || "",
-            avatar: user.photoURL || ""
+            avatar: user.photoURL || "",
+            phone: user.phoneNumber || "",
+
           };
           setAuthData(_authData);
           await AsyncStorage.setItem("@AuthData", JSON.stringify(_authData));
@@ -89,10 +93,16 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     setConfirm(confirmation);
   }
 
+  const signInWithEmailPassword = async (email: string, password: string) => {
+    await auth().signInWithEmailAndPassword(email, password);
+  }
+
   const confirmCode = async (code: string) => {
     try {
       await confirm?.confirm(code);
-    } catch (error) { }
+    } catch (error) { 
+      console.log(error);
+     }
   }
 
   const register = async (
@@ -103,15 +113,20 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     userName: string,
     avatar: string
   ) => {
-    const newUser = (await auth().createUserWithEmailAndPassword(email, password)).user;
+    const newUser = await auth().currentUser;
     if (newUser) {
-      const update = {
-        displayName: fullName,
-        photoURL: avatar,
-      };
       try {
-        await auth().currentUser?.updateProfile(update);
+        const emailCredential = auth.EmailAuthProvider.credential(email, password);
+        await newUser.linkWithCredential(emailCredential);
+
+        const update = {
+          displayName: fullName,
+          photoURL: avatar,
+        };
+        await newUser?.updateProfile(update);
+        
         const payload = {
+          id: newUser.uid, 
           fullName,
           email,
           username: userName,
@@ -135,6 +150,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       authData,
       loading,
       signInWithPhoneNumber,
+      signInWithEmailPassword,
       confirmCode,
       register,
       signOut

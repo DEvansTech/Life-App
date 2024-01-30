@@ -33,12 +33,15 @@ export const UserNameUpdateModal: React.FC<NameUpdateModalParams> = ({
   }, [userName]);
   
   const handleSaveName = async() => {
+    if (!memoizedIUserName) return;
     setUserName(memoizedIUserName);
     const isDoubled = (await allUsers).some(user => user.username === memoizedIUserName);
     if (isDoubled) {
       setError(true);
+      setSuccess(false);
     } else {
       setError(false);
+      setSuccess(true);
       setOpen(false);
     }
   }

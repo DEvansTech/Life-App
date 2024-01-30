@@ -92,7 +92,7 @@ export const PasswordUpdateModal: React.FC<NameUpdateModalParams> = ({
         {error ? (
           <Text
             style={{ fontFamily: "Poppins_400Regular" }}
-            className="ml-1 pr-16 pt-[14] text-other-red text-sm font-normal leading-snug self-start pl-8"
+            className="ml-1 pr-16 pt-[14] text-red-600 text-sm font-normal leading-snug self-start pl-8"
           >
             Password doesn't match please check again
           </Text>
