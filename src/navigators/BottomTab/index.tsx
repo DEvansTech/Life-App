@@ -1,5 +1,6 @@
 // HomeNav
 // ChatNav
+import { View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Foundation from "react-native-vector-icons/Foundation";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -26,6 +27,7 @@ const BottomTabNav: React.FC = () => {
       screenOptions={{
         tabBarHideOnKeyboard: true,
         tabBarActiveTintColor: "#2A5C81",
+        tabBarBackground: () => (<View className="bg-[#FAFAFA] w-full h-full"></View>),
         tabBarStyle: { paddingTop: 10 }
       }}
       initialRouteName={Routes.HomeStackNav}

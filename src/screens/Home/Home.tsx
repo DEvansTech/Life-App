@@ -1,5 +1,4 @@
 import React, {
-  useEffect,
   useState
 } from "react";
 import {
@@ -124,7 +123,13 @@ const HomeScreen = ({ navigation, route }: any) => {
   const renderListHeader = () => {
     return (
       <View className="py-4">
-        <CardComp size={56} icon="https://s3-alpha-sig.figma.com/img/c821/61ec/21f46033e43fc009cdf3e9bf3334b5bc?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=L0QZvmWeHu3A4h0-KqtrL3U3AQN1-IUCNhYxNo0MoaXk75yetkSnUpSH4JTP7WAJdo-R6IvKmU9VuCfPrHBAgByU0AS7JcZ9ZIRwZWZp1RU0Tw9RKskpwmRT0rnU7N0Ft4bY3n1AjAh1QWp-Q5g9FmTRhjpBOjDFyPZ7DSrWtQx5B1yv9-Hin7SjNikzhDoHMXTI8iLZdgP9YxA0QNjcInI-dZxVALqV8OkcCNSPQiwNvealykeblMHj6HURTiqeW49RHyHfVE-yxfLZdf0UBhJZItkTg57MX116O7y1yEm78wzb2FdjwPghXdCew3PYru9nKVIUs-~8lIMhL9lF9g__" title="Michel lin" titleSize={16} comment="Lorem ispum Lorem ispum" />
+        <CardComp
+          size={56}
+          icon={<View><Image className="rounded-full" width={56} height={56} source={{ uri: "https://s3-alpha-sig.figma.com/img/c821/61ec/21f46033e43fc009cdf3e9bf3334b5bc?Expires=1707696000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=XQULIF6H-dtrC4OeczVEvVM4UENGAXWcRPVv55cBVS1IZek2UXCCQ2kU70HwKuJOp8HcvX9OErg9rKNZTCu1tlSovb4i3fvmPatGt~3d6HLaBsvMox2kpD338~dIjUKNQjXglUDTtN855-pMueOXM97Gf4V8i-bXDpmj5VsKdpmq3jeeup6TZ1ND~WFCUOs6EZ3AeBQ6Kd36Tgoia8FkaFTHx5gtkWTNcI6QZJ3vE3AHMUECDIhLaBBoLbPRsN13zqrj9nHBufF2uOVkvHiKf8QQpkQB767ruTmKCf2bYRFSZFbmL6MWuBqIEzsASBtALe-A8O84dJXSkQquCTVBow__" }} /></View>}
+          title="Michel lin"
+          titleSize={16}
+          comment="Lorem ispum Lorem ispum"
+        />
       </View>
     );
   }
@@ -143,7 +148,13 @@ const HomeScreen = ({ navigation, route }: any) => {
           </TouchableOpacity>
           <View className="-mx-4 mb-4 px-1">
             {(expandedSections.has("My groups") && section.title === "My groups")
-              ? <CardComp onPress={() => navigation.navigate(Routes.CreateGroup)} icon="" size={48} title="Create group" titleSize={14} comment="Create group for you and friends" />
+              ? <CardComp
+                onPress={() => navigation.navigate(Routes.CreateGroup)}
+                icon={<View><Image width={48} height={48} source={require("@Assets/img/create_group.png")}></Image></View>}
+                size={48}
+                title="Create group"
+                titleColor="#2A5C81"
+                titleSize={14} comment="Create group for you and friends" />
               : null}
           </View>
 
@@ -157,7 +168,14 @@ const HomeScreen = ({ navigation, route }: any) => {
     if (!isExpanded) return null;
     return (
       <View className="pb-3">
-        <CardComp size={item.size} icon={item.icon} title={item.title} titleSize={14} info={item.info} comment={item.comment} />
+        <CardComp
+          size={item.size}
+          icon={<View><Image className="rounded-full" width={item.size} height={item.size} source={{ uri: item.icon }} /></View>}
+          title={item.title}
+          titleSize={14}
+          info={item.info}
+          comment={item.comment}
+        />
       </View>
     )
   };
@@ -176,7 +194,7 @@ const HomeScreen = ({ navigation, route }: any) => {
           </TouchableOpacity>
         }
         centerNode={
-          <Text className="font-poppins text-white text-[17px] font-semibold leading-[26px]">Home</Text>
+          <Text className="font-poppins text-white text-[17px] font-bold leading-[26px]">Home</Text>
         }
         rightNode={
           <TouchableOpacity
@@ -201,8 +219,7 @@ const HomeScreen = ({ navigation, route }: any) => {
         sections={sections}
         renderSectionHeader={renderSectionHeader}
         renderItem={renderItem}
-      >
-      </SectionList>
+      />
     </SafeAreaView>
   );
 }
