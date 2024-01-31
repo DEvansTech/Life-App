@@ -6,7 +6,8 @@ import {
   View,
   SafeAreaView,
   KeyboardAvoidingView,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
 import { Routes } from "@Navigators/routes";
@@ -36,7 +37,7 @@ const EnterPhoneScreen = ({ navigation }: any) => {
       try {
         await signInWithPhoneNumber(totalNumber);
         navigation.navigate(Routes.VerifyOTP, { phone: totalNumber });
-      } catch (error) {}
+      } catch (error) { }
     } else {
 
     }

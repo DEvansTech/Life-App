@@ -9,7 +9,6 @@ const LoadingScreen = ({ navigation }: any) => {
   const { authData, loading } = useAuth();
 
   useEffect(() => {
-    console.log(authData);
     if (!loading) {
       if (authData) {
         if (authData.email) navigation.navigate(Routes.BottomTabNav);

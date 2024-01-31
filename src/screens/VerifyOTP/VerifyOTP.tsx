@@ -19,9 +19,9 @@ const cellCount = 6;
 
 const VerifyOTPScreen = ({ navigation, route }: any) => {
   const phoneNum = route.params?.phone;
-  
+
   const { confirmCode, signInWithPhoneNumber } = useAuth();
-  
+
   const [code, setCode] = useState("");
   const ref = useBlurOnFulfill({ value: code, cellCount: cellCount });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -29,7 +29,7 @@ const VerifyOTPScreen = ({ navigation, route }: any) => {
     setValue: setCode
   });
 
-  const handleConfirmCode = async() => {
+  const handleConfirmCode = async () => {
     if (code.length != cellCount) return;
     try {
       await confirmCode(code);
@@ -39,7 +39,7 @@ const VerifyOTPScreen = ({ navigation, route }: any) => {
     }
   }
 
-  const handleResendOTP = async() => {
+  const handleResendOTP = async () => {
     try {
       await signInWithPhoneNumber(phoneNum);
     } catch (error) {
@@ -53,22 +53,10 @@ const VerifyOTPScreen = ({ navigation, route }: any) => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <HeaderComp
-        bgColor={"white"}
-        left={(
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons
-              name="chevron-back-outline"
-              size={28}
-              color="#58575D"
-            />
-          </TouchableOpacity>
-        )}
-        center={
-          <Text className="font-poppins text-[#58575D] text-[17px] font-semibold leading-[26px]">OTP Verification</Text>
-        }
-        right={(
-          <></>
-        )}
+        bgColor="white"
+        color="black"
+        leftIcon="return"
+        title="OTP Verification"
       />
       <SafeAreaView className="w-full h-full">
         <View
