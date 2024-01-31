@@ -7,15 +7,12 @@ import {
   Image,
   SectionList
 } from "react-native";
-import Modal from "react-native-modal";
-import Feather from "react-native-vector-icons/Feather";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import HeaderComp from "@Components/Header";
 import { Routes } from "@Navigators/routes";
 import CardComp from "@Components/Card";
 import styles from "./styles";
 import PersonCardComp from "@Components/PersonCard";
-import FriendAcceptComp from "@Components/FriendAcceptModal";
 import FriendAcceptModalComp from "@Components/FriendAcceptModal";
 import FriendSuccessModalComp from "@Components/FriendSuccessModal";
 

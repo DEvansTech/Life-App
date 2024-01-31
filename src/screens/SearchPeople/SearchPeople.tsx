@@ -1,11 +1,34 @@
 import React, { useState } from "react";
-import { Image, StatusBar, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Image, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import Octicons from "react-native-vector-icons/Octicons";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import HeaderComp from "@Components/Header";
+import PersonCardComp from "@Components/PersonCard";
 import styles from "./styles";
 
 const SearchPeopleScreen = ({ navigation, route }: any) => {
   const [searchBy, setSearchBy] = useState<"username" | "phone">("username");
+  const [searchKey, setSearchKey] = useState("");
+  const [people, setPeople] = useState([]);
+
+  const renderListHeader = () => {
+    return (
+      <Text style={{ fontSize: 14, fontWeight: "600", lineHeight: 22, color: "#707071" }}>Showing Results “{searchKey}”</Text>
+    );
+  }
+
+  const renderItem = ({ section: { title }, item }: any) => {
+    return (
+      <PersonCardComp
+        avatar={item.avatar}
+        name={item.name}
+        rightNode={
+          <MaterialIcons name="person-add-alt" size={22} color="#6B95BB" />
+        }
+      />
+    );
+  }
+
   return (
     <View className="h-full bg-white">
       <StatusBar backgroundColor="white" barStyle="dark-content" />
@@ -41,11 +64,31 @@ const SearchPeopleScreen = ({ navigation, route }: any) => {
         searchBarBgColor="#E5E5E5"
         searchBarPhColor="#565656"
         searchBarCrColor="#707071"
+        value={searchKey}
+        setValue={setSearchKey}
       />
-      <View>
-        <Image className="mx-auto mt-[131]" source={require("@Assets/img/search.png")} />
-        <Text style={{ fontSize: 14, fontWeight: "600", lineHeight: 22 }} className="mt-6 mx-auto w-3/5 text-center">Search friends using their username or phone number</Text>
+      <View className="px-4">
+        {
+          searchKey.length > 0
+            ? (
+              <View>
+                <FlatList ListHeaderComponent={renderListHeader} data={[]} renderItem={renderItem} />
+                {!people.length && (
+                  <View>
+                    <Image className="mx-auto mt-[131]" source={require("@Assets/img/empty.png")} />
+                    <Text style={{ fontSize: 14, fontWeight: "600", lineHeight: 22 }} className="mt-6 mx-auto w-3/5 text-center">No user is available by that username</Text>
+                  </View>
+                )}
+              </View>
+            ) : (
+              <View>
+                <Image className="mx-auto mt-[131]" source={require("@Assets/img/search.png")} />
+                <Text style={{ fontSize: 14, fontWeight: "600", lineHeight: 22 }} className="mt-6 mx-auto w-3/5 text-center">Search friends using their username or phone number</Text>
+              </View>
+            )
+        }
       </View>
+
     </View>
   );
 }

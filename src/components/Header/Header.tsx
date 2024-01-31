@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Text, TouchableOpacity, View, ViewProps } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
@@ -18,6 +18,8 @@ interface HeaderProps extends ViewProps {
   searchBarBgColor?: string;
   searchBarPhColor?: string;
   searchBarCrColor?: string;
+  value?: string;
+  setValue?: Dispatch<SetStateAction<string>>;
 }
 
 const HeaderComp: React.FC<HeaderProps> = ({
@@ -33,6 +35,8 @@ const HeaderComp: React.FC<HeaderProps> = ({
   searchBarBgColor = "#075985",
   searchBarPhColor = "#eee",
   searchBarCrColor = "white",
+  value,
+  setValue,
   ...rest
 }) => {
   const HeaderStyles = styles(bgColor, color);
@@ -60,7 +64,7 @@ const HeaderComp: React.FC<HeaderProps> = ({
         </View>
       </View>
       {middleLayer}
-      {hasSearchBar && <View className="mt-3"><SearchBoxComp bgColor={searchBarBgColor} phColor={searchBarPhColor} crColor={searchBarCrColor} /></View>}
+      {hasSearchBar && <View className="mt-3"><SearchBoxComp value={value} setValue={setValue} bgColor={searchBarBgColor} phColor={searchBarPhColor} crColor={searchBarCrColor} /></View>}
     </View>
 
   );

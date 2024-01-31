@@ -1,6 +1,4 @@
-import React, {
-  useState
-} from "react";
+import React from "react";
 import {
   Text,
   View,
@@ -8,22 +6,15 @@ import {
   SectionList,
   SafeAreaView,
   Image,
-  TextInput,
   StatusBar
 } from "react-native";
-import Feather from "react-native-vector-icons/Feather";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import Modal from "react-native-modal";
 import HeaderComp from "@Components/Header";
 import { Routes } from "@Navigators/routes";
-import CustomTextInputComp from "@Components/CustomTextInput";
 import CardComp from "@Components/Card";
 import ProfileCardComp from "@Components/ProfileCard";
 import { DATA } from "@Theme/constants";
 import useAuth from "@Hooks/useAuth";
-import { Group, Person } from "src/types";
 import GroupCardComp from "@Components/GroupCard";
 import PersonCardComp from "@Components/PersonCard";
 

@@ -7,26 +7,15 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
-  Image,
   TextInput,
-  FlatList,
-  Button,
-  Pressable,
-  KeyboardAvoidingView,
   StatusBar,
   Platform
 } from "react-native";
-import Modal from "react-native-modal";
-import Feather from "react-native-vector-icons/Feather";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Octicons from "react-native-vector-icons/Octicons";
 import HeaderComp from "@Components/Header";
 import PersonBubble from "@Components/PersonBubble";
 import styles from "./styles";
-import CustomTextInputComp from "@Components/CustomTextInput";
-import CardComp from "@Components/Card";
 import { Routes } from "@Navigators/routes";
 import TakePhotoComp from "@Components/TakePhoto";
 import ParticipantsModalComp from "@Components/ParticipantsModal/ParticipantsModal";
@@ -160,149 +149,6 @@ const CreateGroupScreen = ({ navigation, route }: any) => {
         <ParticipantsModalComp data={allFriends} visible={isParticipantsModalVisible} setVisible={setParticipantsModalVisible} />
         <SuccessModalComp visible={isSuccessModalVisible} setVisible={setSuccessModalVisible} onOK={() => navigation.navigate(Routes.Home)} />
       </View>
-      {/* <View className="w-full px-4 py-6">
-        <View className="flex flex-row gap-x-4 ">
-          <TouchableOpacity className="h-[74px] w-[74px] bg-[#F4F4F4] items-center justify-center rounded-full">
-            <FontAwesome name={"camera"} color={"#2A5C81"} size={37} />
-          </TouchableOpacity>
-
-          <View className="flex flex-col flex-grow">
-            <View className="flex flex-row justify-between mb-3">
-              <Text className="font-poppins text-[#C9C9C9] text-xs">
-                Group Name
-              </Text>
-              <TouchableOpacity onPress={handleSave} className="my-auto">
-                <Text className="font-poppins text-primary text-xs">
-                  Save
-                </Text>
-              </TouchableOpacity >
-            </View>
-            <View className="flex rounded pl-3.5 bg-[#F4F4F4]">
-              <TextInput
-                style={{ fontSize: 14, fontFamily: "poppins", lineHeight: 22, paddingVertical: 6 }}
-                placeholder="EG: fish"
-                placeholderTextColor="#707071"
-                value={groupName}
-                onChangeText={setGroupName}
-              />
-            </View>
-          </View>
-        </View>
-      </View>
-
-      <TouchableOpacity
-        className="flex flex-row justify-between items-center py-3 px-4 board border-y border-[#E5E5E5]"
-        onPress={handleToggle}>
-        <Text className=" font-poppins leading-[22px]">Members</Text>
-        <FontAwesome name={expanded ? "chevron-up" : "chevron-down"} color={"#AAAAAA"} size={14} />
-      </TouchableOpacity>
-      {expanded && <View className="px-4 py-6 w-full">
-        <FlatList
-          ItemSeparatorComponent={() => <View className="w-[25px]" />}
-          horizontal
-          data={members}
-          renderItem={({ item }: any) => <PersonBubble avatar={item.icon} name={item.name} />}
-          keyExtractor={(item: any) => item.id}
-          ListFooterComponent={() => {
-            return (
-              <TouchableOpacity
-                className={`flex ${members.length > 0 ? "pl-[25px]" : ""
-                  } flex-col items-center`}
-                onPress={() => setParticipantsModalVisible(true)}
-              >
-                <Octicons name="plus-circle" size={48} color="#96B4D1" />
-                <Text className="text-[#96B4D1] font-Poppins_400 pt-1.5 text-xs leading-none">
-                  Add
-                </Text>
-              </TouchableOpacity>
-            );
-          }}
-        />
-      </View>}
-      <View style={styles.container}>
-        <Modal
-          style={styles.bottomSheet}
-          isVisible={isParticipantsModalVisible}
-          onBackdropPress={handleClose}
-          swipeDirection="down"
-          animationIn="slideInUp"
-          useNativeDriver
-        >
-          <SafeAreaView style={styles.contentSheet}>
-            <View className="mt-4 px-3 mb-2">
-              <HeaderComp
-                bgColor="white"
-                leftNode={<TouchableOpacity onPress={() => handleClose(true)}><Feather name="check" size={28} color="#2A5C81" /></TouchableOpacity>}
-                centerNode={<Text className="text-primary font-bold text-lg">Add Participants</Text>}
-                rightNode={<TouchableOpacity onPress={() => handleClose(false)}><Ionicons name="close" size={28} color="#2A5C81" /></TouchableOpacity>}
-              />
-            </View>
-
-            <View className="px-4 pb-4 bg-white w-full">
-              <CustomTextInputComp
-                bgColor="#F2F2F2"
-                leftNode={<MaterialIcons name="search" color="#999" size={28} />}
-                centerNode={
-                  <TextInput
-                    className="text-base w-full text-black"
-                    placeholder="Search friends"
-                    placeholderTextColor="#999"
-                    cursorColor="black"
-                  />
-                }
-                placeholder="Search"
-              />
-            </View>
-            <FlatList
-              className="w-full"
-              data={allFriends}
-              renderItem={renderItem}
-              ListHeaderComponent={<Text className="font-bold font-poppins px-4 mb-4">Existing Friends</Text>}
-              keyExtractor={item => item.id}
-              ItemSeparatorComponent={() => <View className="pb-4"></View>}
-              ListFooterComponent={() => <View className="pb-4"></View>}
-            />
-            {participants.length > 0 && (<FlatList
-              className="bg-gray-50 w-full"
-              contentContainerStyle={{
-                padding: 20,
-                height: 200,
-                backgroundColor: "#f9f9f9"
-              }}
-              ItemSeparatorComponent={() => <View className="w-[25px]" />}
-              horizontal
-              data={participants}
-              renderItem={(participant: any) => {
-                const index = allFriends.findIndex((item) => item.id === participant.item);
-                console.log(index);
-                return (index > -1
-                  ? <View><PersonBubble avatar={allFriends[index].icon} name={allFriends[index].name} /></View>
-                  : null);
-              }}
-            />)}
-          </SafeAreaView>
-        </Modal>
-        <Modal
-          isVisible={isSuccessModalVisible}
-          style={styles.centerModal}
-          onBackdropPress={() => setSuccessModalVisible(false)}
-          useNativeDriver
-        >
-          <View style={styles.contentModal}>
-            <Image
-              className="rounded-full mx-auto my-6"
-              width={70} height={70}
-              source={{ uri: "https://s3-alpha-sig.figma.com/img/2231/0b72/d7312466aa2182a44495c5eb5a621bcd?Expires=1707696000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NrWtarSwfSidNdtvI9cFOO-Sx2qPwHvA0Xxyn-2pc7FfiDyvhGhve7fYVr7XbknVEl8Q3TptLJfDXrP2nF5ishGQsWwXdWCcS4wZ~kU4eBdn~5XYw0RhKyykIXLomE~~zAy-1D56I5bAAy2EVOXMuaav1ReKK2H9zYLBj3MBsa34kYmLOQfzVoPnopRvu7YcpH1D7vP5dPhvbOalXtltJdZGbXwyLnVhU1IWuhhSKDkdKZNF7vD~4sOTF58RHo93D2-xRQ-SjGQvTVzxVX8-Fao9jxjPEl-vLB9bUCvnyBbgMUMc7BH0XcN0YaL6sbMh6QNrp0acyIy-IpPbXwRdPg__" }} />
-            <Text className="mb-4 font-poppins font-bold text-center text-lg text-[#333]">Group {groupName} has been successfully created</Text>
-            <TouchableOpacity
-              className="w-full py-4 border-t border-gray-200"
-              onPress={() => navigation.navigate(Routes.Home)}
-            >
-              <Text className="mx-auto text-primary text-lg font-bold">OKAY</Text>
-            </TouchableOpacity>
-          </View>
-        </Modal>
-      </View> */}
     </SafeAreaView>
   );
 }

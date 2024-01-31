@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View } from "react-native";
 import styles from "./styles";
 
-const AccountScreen = () => {
+const AccountSettingsScreen = () => {
   return (
     <View>
       <Text>Account</Text>
@@ -10,4 +10,4 @@ const AccountScreen = () => {
   );
 }
 
-export default AccountScreen;
+export default AccountSettingsScreen;
