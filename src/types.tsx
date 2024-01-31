@@ -1,11 +1,24 @@
-export type Card = {
-  type?: "person" | "group",
-  size?: number,
-  icon?: React.ReactNode,
+export interface Card {
+  leftNode?: React.ReactNode;
+  icon?: React.ReactNode;
+  title?: React.ReactNode;
+  summary?: React.ReactNode;
+  rightNode?: React.ReactNode;
+  onClick?: () => void;
+}
+
+export type Group = {
+  id: string,
+  icon?: string;
   title?: string,
-  titleColor?: string,
-  titleSize?: number,
   info?: string,
-  comment?: string,
-  rightNode?: React.ReactNode,
+  summary?: string
+}
+
+export type Person = {
+  id: string;
+  avatar?: string;
+  name?: string;
+  info?: string;
+  summary?: string;
 }

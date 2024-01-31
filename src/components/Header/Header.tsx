@@ -1,28 +1,65 @@
 import React from "react";
-import { Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Text, TouchableOpacity, View, ViewProps } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import styles from "./styles";
+import SearchBoxComp from "@Components/SearchBox";
 
-interface HeaderCompProps {
-  bgColor?: string;
-  centerNode?: React.ReactNode;
-  leftNode?: React.ReactNode;
-  rightNode?: React.ReactNode;
+interface HeaderProps extends ViewProps {
+  bgColor: string;
+  color: string;
+  leftIcon?: "settings" | "return" | "check";
+  onLeftPress?: () => void;
+  title?: string;
+  rightIcon?: "addperson" | "close",
+  onRightPress?: () => void;
+  hasSearchBar?: boolean;
+  searchBarBgColor?: string;
+  searchBarPhColor?: string;
+  searchBarCrColor?: string;
 }
 
-const HeaderComp: React.FC<HeaderCompProps> = ({
-  bgColor,
-  centerNode,
-  leftNode,
-  rightNode,
+const HeaderComp: React.FC<HeaderProps> = ({
+  bgColor = "#00406E",
+  color = "#F7F7F7",
+  leftIcon,
+  onLeftPress,
+  title,
+  rightIcon,
+  onRightPress,
+  hasSearchBar = false,
+  searchBarBgColor = "#075985",
+  searchBarPhColor = "#eee",
+  searchBarCrColor = "white",
+  ...rest
 }) => {
+  const HeaderStyles = styles(bgColor, color);
   return (
-    <View>
-      <SafeAreaView className={`py-3 flex flex-row ${bgColor ? bgColor : 'bg-[#00406E]'}`}>
-        <View className="my-auto basis-1/4 pl-4 flex flex-row justify-start">{leftNode}</View>
-        <View className="my-auto basis-2/4 flex flex-row justify-center">{centerNode}</View>
-        <View className="my-auto basis-1/4 pr-4 flex flex-row justify-end">{rightNode}</View>
-      </SafeAreaView>
+    <View style={{ backgroundColor: bgColor }} className="w-full px-4 py-4" {...rest}>
+      <View className="flex flex-row">
+        <View className="w-1/4 my-auto flex flex-row justify-start">
+          {leftIcon && <TouchableOpacity onPress={onLeftPress}>
+            <Ionicons name={
+              leftIcon === "settings"
+                ? "settings-outline"
+                : leftIcon === "return"
+                  ? "chevron-back"
+                  : "checkmark-sharp"
+            } size={22} color={color} />
+          </TouchableOpacity>}
+        </View>
+        <View className="w-2/4 my-auto flex flex-row justify-center">
+          <Text style={HeaderStyles.title}>{title}</Text>
+        </View>
+        <View className="w-1/4 my-auto flex flex-row justify-end">
+          {rightIcon && <TouchableOpacity onPress={onRightPress}>
+            <MaterialIcons name={rightIcon === "addperson" ? "person-add-alt" : "close"} size={22} color={color} />
+          </TouchableOpacity>}
+        </View>
+      </View>
+      {hasSearchBar && <View className="mt-3"><SearchBoxComp bgColor={searchBarBgColor} phColor={searchBarPhColor} crColor={searchBarCrColor} /></View>}
     </View>
+
   );
 }
 
