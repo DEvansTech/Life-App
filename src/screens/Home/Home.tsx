@@ -47,7 +47,7 @@ const HomeScreen = ({ navigation, route }: any) => {
           <Ionicons name="chevron-up" size={24} color="#AAAAAA" />
         </TouchableOpacity>
         {section.type === "groups" && <CardComp
-          icon={<Image className="rounded-full" width={48} height={48} source={{ uri: "" }} />}
+          icon={<Image className="rounded-full" width={48} height={48} source={require("@Assets/img/create_group.png")} />}
           title={
             <Text style={{ fontSize: 14, fontWeight: "600", color: "#707071", lineHeight: 22 }}>
               Create Group

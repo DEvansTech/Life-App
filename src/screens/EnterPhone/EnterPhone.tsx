@@ -6,7 +6,8 @@ import {
   View,
   SafeAreaView,
   KeyboardAvoidingView,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
 import { Routes } from "@Navigators/routes";

@@ -13,7 +13,8 @@ import {
   Button,
   Pressable,
   KeyboardAvoidingView,
-  StatusBar
+  StatusBar,
+  Platform
 } from "react-native";
 import Modal from "react-native-modal";
 import Feather from "react-native-vector-icons/Feather";
@@ -31,6 +32,8 @@ import TakePhotoComp from "@Components/TakePhoto";
 import ParticipantsModalComp from "@Components/ParticipantsModal/ParticipantsModal";
 import { SimpleGrid } from "react-native-super-grid";
 import SuccessModalComp from "@Components/SuccessModal/SuccessModal";
+import useAuth from "@Hooks/useAuth";
+import { uploadFileToStorage } from "@Redux/storage";
 
 const allFriends = [{
   id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -92,6 +95,8 @@ const allFriends = [{
 }]
 
 const CreateGroupScreen = ({ navigation, route }: any) => {
+  const { register, authData } = useAuth();
+  const [avatar, setAvatar] = useState(authData?.avatar || "");
   const [groupName, setGroupName] = useState<string>('');
   const [isParticipantsModalVisible, setParticipantsModalVisible] = useState<boolean>(false);
   const [isSuccessModalVisible, setSuccessModalVisible] = useState<boolean>(false);
@@ -100,6 +105,13 @@ const CreateGroupScreen = ({ navigation, route }: any) => {
   const [participants, setParticipants] = useState<string[]>([]);
 
   const [expanded, setExpanded] = useState(true);
+
+  const handleUploadAvatar = async (uri: string) => {
+    const filename = uri.substring(uri.lastIndexOf('/') + 1);
+    const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
+    const storedUrl = await uploadFileToStorage(filename, uploadUri, 'user');
+    setAvatar(storedUrl);
+  }
 
   const renderItem = ({ item }: any) => {
     return (

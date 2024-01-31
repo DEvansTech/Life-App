@@ -53,22 +53,10 @@ const VerifyOTPScreen = ({ navigation, route }: any) => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <HeaderComp
-        bgColor={"white"}
-        left={(
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons
-              name="chevron-back-outline"
-              size={28}
-              color="#58575D"
-            />
-          </TouchableOpacity>
-        )}
-        center={
-          <Text className="font-poppins text-[#58575D] text-[17px] font-semibold leading-[26px]">OTP Verification</Text>
-        }
-        right={(
-          <></>
-        )}
+        bgColor="white"
+        color="black"
+        leftIcon="return"
+        title="OTP Verification"
       />
       <SafeAreaView className="w-full h-full">
         <View

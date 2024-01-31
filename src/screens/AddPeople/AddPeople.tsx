@@ -78,24 +78,32 @@ const AddPeopleScreen = ({ navigation, route }: any) => {
 
   const renderListHeader = () => {
     return (
-      // <View className="bg-[#F4F4F4] py-[10]">
-      //   <CardComp
-      //     icon={<View><Image width={48} height={48} source={require("@Assets/img/add-user.png")}></Image></View>}
-      //     title="Auto-Add Friends"
-      //     summary="Auto-add contacts as friend"
-      //     rightNode={
-      //       <TouchableOpacity className="bg-primary px-2 py-1 rounded-sm">
-      //         <Text className="text-white text-[12px] font-poppins">Allow</Text>
-      //       </TouchableOpacity>
-      //     } />
-      //   <View className="my-2 mx-3 border-t border-gray-200"></View>
-      //   <CardComp
-      //     onClick={() => navigation.navigate(Routes.CreateGroup)}
-      //     icon={<View><Image width={48} height={48} source={require("@Assets/img/group-gray.png")}></Image></View>}
-      //     title="Create group"
-      //     summary="Create group for you and friends" />
-      // </View>
-      null
+      <View className="bg-[#F4F4F4] py-[10]">
+        <CardComp
+          icon={<View><Image width={48} height={48} source={require("@Assets/img/add-user.png")}></Image></View>}
+          title={
+            <Text style={{ fontSize: 14, fontWeight: "600", color: "#707071", lineHeight: 22 }}>
+              Auto-Add Friends
+            </Text >
+          }
+          summary={<Text style={{ fontSize: 12, fontWeight: "300", color: "#707071", lineHeight: 14 }}>Auto-add contacts as friend</Text >}
+          rightNode={
+            <TouchableOpacity className="bg-primary px-2 py-1 rounded-sm">
+              <Text className="text-white text-[12px] font-poppins">Allow</Text>
+            </TouchableOpacity>
+          } />
+        <View className="my-2 mx-3 border-t border-gray-200"></View>
+        <CardComp
+          onClick={() => navigation.navigate(Routes.CreateGroup)}
+          icon={<View><Image width={48} height={48} source={require("@Assets/img/group-gray.png")}></Image></View>}
+          title={
+            <Text style={{ fontSize: 14, fontWeight: "600", color: "#707071", lineHeight: 22 }}>
+              Create Group
+            </Text >
+          }
+          summary={<Text style={{ fontSize: 12, fontWeight: "300", color: "#707071", lineHeight: 14 }}>Create group for you and friends</Text >}
+        />
+      </View>
     );
   };
   const renderSectionHeader = ({ section }: any) => {
