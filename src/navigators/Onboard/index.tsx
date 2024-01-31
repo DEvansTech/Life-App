@@ -9,6 +9,7 @@ import EnterEmailAndPassword from "@Screens/EnterEmailAndPassword";
 import RegisterSuccessScreen from "@Screens/RegisterSuccess";
 import DisplayNameAndAvatarScreen from "@Screens/DisplayNameAndAvatar";
 import BottomTabNav from "@Navigators/BottomTab";
+import RegisterProcessScreen from "@Screens/RegisterProcess";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ const OnboardStackNav: React.FC = () => {
       <Stack.Screen name={Routes.VerifyOTP} component={VerifyOTPScreen} />
       <Stack.Screen name={Routes.EnterEmailAndPassword} component={EnterEmailAndPassword} />
       <Stack.Screen name={Routes.DisplayNameAndAvatar} component={DisplayNameAndAvatarScreen} />
+      <Stack.Screen name={Routes.RegisterProcess} component={RegisterProcessScreen} />
       <Stack.Screen name={Routes.RegisterSuccess} component={RegisterSuccessScreen} />
       <Stack.Screen name={Routes.BottomTabNav} component={BottomTabNav} />
     </Stack.Navigator>

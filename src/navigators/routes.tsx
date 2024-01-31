@@ -6,6 +6,7 @@ export const Routes = {
   VerifyOTP: "VerifyOTPScreen",
   EnterEmailAndPassword: "EnterEmailAndPasswordScreen",
   DisplayNameAndAvatar: "DisplayNameAndAvatarScreen",
+  RegisterProcess: "RegisterProcessScreen",
   RegisterSuccess: "RegisterSuccessScreen",
   BottomTabNav: "BottomTabNavigator",
 

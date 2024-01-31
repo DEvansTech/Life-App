@@ -1,26 +1,55 @@
-import useAuth from "@Hooks/useAuth";
-import { Routes } from "@Navigators/routes";
-import React, { useEffect } from "react";
-import { Button, View } from "react-native";
+import { CommonActions } from "@react-navigation/native";
+import React from "react";
+import {
+  View,
+  Text,
+  Image,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 
-const RegisterSuccessScreen = ({ navigation, route }: any) => {
-  const phoneNum = route.params.phone;
-  const code = route.params.code;
-  const { signIn, authData } = useAuth();
-  useEffect(() => {
-    if (authData !== undefined) {
-      navigation.navigate(Routes.BottomTabNav);
-    }
-  }, [authData])
+export const RegisterSuccessScreen = ({ navigation }: any) => {
   return (
-    <View>
-      <Button
-        onPress={() => { signIn(phoneNum, code) }}
-        title="Continue to the app"
-        accessibilityLabel="Navigate to Home"
-      />
-    </View>
+    <SafeAreaView>
+      <View className="w-full h-full flex flex-col items-center justify-between">
+        <View className="items-center mt-[190]">
+          <Image className="w-[171px] h-[171px]" source={require("../../assets/img/app-icon.png")} />
+
+          <Text
+            style={{ fontFamily: "Poppins" }}
+            className="mt-20 text-center text-zinc-600 text-[17px] font-semibold leading-snug"
+          >
+            Hello <Text className="text-primary-color ">Jonathan Doe</Text>
+          </Text>
+          <Text
+            style={{ fontFamily: "Poppins_600SemiBold" }}
+            className="mt-2 text-center text-sm text-zinc-600 leading-snug"
+          >
+            You sucessfully updated all {"\n"} information
+          </Text>
+        </View>
+        <View className="pb-12">
+          <TouchableOpacity
+            onPress={() => {
+              navigation.dispatch(
+                CommonActions.reset({
+                  index: 0,
+                  routes: [{ name: 'Tabs' }]
+                })
+              )
+            }}
+          >
+            <View className="w-[307px] h-[37px] flex items-center justify-center bg-primary-color rounded-[5px]">
+              <Text className="text-center text-neutral-50 text-[13px] font-semibold font-['Poppins'] leading-snug">
+                Continue to the app
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </SafeAreaView>
   );
-}
+};
+
 
 export default RegisterSuccessScreen;
