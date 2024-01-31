@@ -35,7 +35,7 @@ export const RegisterProcessDeactivated = ({navigation} : any) => {
       password: true,
     },
     {
-      label: "retype your password",
+      label: "Retype your password",
       placeholder: " *  *  *  *  *  *  *",
       password: true,
     },
@@ -52,9 +52,8 @@ export const RegisterProcessDeactivated = ({navigation} : any) => {
             {/* input */}
             {inputValues.map((input) => {
               return (
-                <View className="w-full">
+                <View className="w-full" key={input.label}>
                   <FieldInput
-                    key={input.label}
                     label={input.label}
                     placeholder={input.placeholder}
                     password={input.password}

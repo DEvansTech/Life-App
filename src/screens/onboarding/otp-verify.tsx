@@ -42,7 +42,7 @@ export const OtpVerify = ({ navigation }: any) => {
       setTimeout(resolve, 2000)
     })
 
-    if (verificationCode === '005959') {
+    if (verificationCode === '123456') {
       //setIsVerified(true);
       return true;
     } else {
