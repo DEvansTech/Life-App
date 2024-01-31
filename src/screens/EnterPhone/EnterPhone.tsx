@@ -12,15 +12,36 @@ import SelectDropdown from "react-native-select-dropdown";
 import { Routes } from "@Navigators/routes";
 import styles from "./styles";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import useAuth from "@Hooks/useAuth";
 
 const countries = [{
-  title: "USA"
+  title: "USA", code: "+1"
 }, {
-  title: "JPN",
+  title: "JPN", code: "+81"
 }];
 
 const EnterPhoneScreen = ({ navigation }: any) => {
+  const { signInWithPhoneNumber } = useAuth();
+  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
   const [phoneNum, setPhoneNum] = useState("");
+
+  const verifyPhoneFormat = (phone: string) => {
+    var regexp = /^\+[0-9]?()[0-9](\s|\S)(\d[0-9]{8,16})$/
+    return regexp.test(phone);
+  }
+
+  const handleGettingOTP = async () => {
+    const totalNumber = selectedCountry.code + phoneNum;
+    if (verifyPhoneFormat(totalNumber)) {
+      try {
+        await signInWithPhoneNumber(totalNumber);
+        navigation.navigate(Routes.VerifyOTP, { phone: totalNumber });
+      } catch (error) {}
+    } else {
+
+    }
+  }
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -42,7 +63,7 @@ const EnterPhoneScreen = ({ navigation }: any) => {
                   <SelectDropdown
                     data={countries}
                     onSelect={(selectedItem, index) => {
-                      console.log(selectedItem, index);
+                      setSelectedCountry(selectedItem);
                     }}
                     defaultButtonText={"USA"}
                     buttonTextAfterSelection={(selectedItem, index) => {
@@ -82,7 +103,7 @@ const EnterPhoneScreen = ({ navigation }: any) => {
               </Text>
             </View>
 
-            <TouchableOpacity onPress={() => navigation.navigate(Routes.VerifyOTP, { phone: phoneNum })}>
+            <TouchableOpacity onPress={handleGettingOTP}>
               <View className="w-[307px] mt-2 h-[37px] flex items-center justify-center bg-primary rounded-[5px]">
                 <Text className="text-center text-neutral-50 text-[13px] font-semibold font-poppins leading-snug">
                   Get OTP

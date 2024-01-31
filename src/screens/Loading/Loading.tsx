@@ -11,8 +11,10 @@ const LoadingScreen = ({ navigation }: any) => {
   useEffect(() => {
     console.log(authData);
     if (!loading) {
-      if (authData || authData !== undefined) navigation.navigate(Routes.BottomTabNav);
-      else navigation.navigate(Routes.Landing);
+      if (authData) {
+        if (authData.email) navigation.navigate(Routes.BottomTabNav);
+        else navigation.navigate(Routes.RegisterProcess);
+      } else navigation.navigate(Routes.Landing);
     }
   }, [authData, loading]);
 
