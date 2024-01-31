@@ -7,13 +7,13 @@ import CardComp from "@Components/Card";
 import styles from "./styles";
 import PersonBubble from "@Components/PersonBubble";
 
-interface SuccessModalProps {
+interface GroupSuccessModalProps {
   visible: boolean,
   setVisible: Dispatch<SetStateAction<boolean>>,
   onOK: () => {}
 }
 
-const SuccessModalComp: React.FC<SuccessModalProps> = ({
+const GroupSuccessModalComp: React.FC<GroupSuccessModalProps> = ({
   visible,
   setVisible,
   onOK
@@ -35,4 +35,4 @@ const SuccessModalComp: React.FC<SuccessModalProps> = ({
   );
 }
 
-export default SuccessModalComp;
+export default GroupSuccessModalComp;

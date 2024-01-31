@@ -31,7 +31,7 @@ import { Routes } from "@Navigators/routes";
 import TakePhotoComp from "@Components/TakePhoto";
 import ParticipantsModalComp from "@Components/ParticipantsModal/ParticipantsModal";
 import { SimpleGrid } from "react-native-super-grid";
-import SuccessModalComp from "@Components/SuccessModal/SuccessModal";
+import SuccessModalComp from "@Components/GroupSuccessModal/GroupSuccessModal";
 import useAuth from "@Hooks/useAuth";
 import { uploadFileToStorage } from "@Redux/storage";
 

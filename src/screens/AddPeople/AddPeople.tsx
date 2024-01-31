@@ -15,6 +15,9 @@ import { Routes } from "@Navigators/routes";
 import CardComp from "@Components/Card";
 import styles from "./styles";
 import PersonCardComp from "@Components/PersonCard";
+import FriendAcceptComp from "@Components/FriendAcceptModal";
+import FriendAcceptModalComp from "@Components/FriendAcceptModal";
+import FriendSuccessModalComp from "@Components/FriendSuccessModal";
 
 const sections = [{
   title: "Official Account Recommendations",
@@ -72,6 +75,12 @@ const AddPeopleScreen = ({ navigation, route }: any) => {
   const [isSuccessModalVisible, setSuccessModalVisible] = useState(false);
 
   useEffect(() => {
+    setRequireModalVisible(false);
+    setSuccessModalVisible(false);
+    setSelectedFriend(null);
+  }, [])
+
+  useEffect(() => {
     if (selectedFriend) setRequireModalVisible(true);
     else setRequireModalVisible(false);
   }, [selectedFriend])
@@ -82,7 +91,7 @@ const AddPeopleScreen = ({ navigation, route }: any) => {
         <CardComp
           icon={<View><Image width={48} height={48} source={require("@Assets/img/add-user.png")}></Image></View>}
           title={
-            <Text style={{ fontSize: 14, fontWeight: "600", color: "#707071", lineHeight: 22 }}>
+            <Text style={{ fontSize: 14, fontWeight: "600", color: "#2A5C81", lineHeight: 22 }}>
               Auto-Add Friends
             </Text >
           }
@@ -97,7 +106,7 @@ const AddPeopleScreen = ({ navigation, route }: any) => {
           onClick={() => navigation.navigate(Routes.CreateGroup)}
           icon={<View><Image width={48} height={48} source={require("@Assets/img/group-gray.png")}></Image></View>}
           title={
-            <Text style={{ fontSize: 14, fontWeight: "600", color: "#707071", lineHeight: 22 }}>
+            <Text style={{ fontSize: 14, fontWeight: "600", color: "#2A5C81", lineHeight: 22 }}>
               Create Group
             </Text >
           }
@@ -118,23 +127,6 @@ const AddPeopleScreen = ({ navigation, route }: any) => {
   }
   const renderItem = ({ section: { title }, item }: any) => {
     return (
-      // <View className="pb-3">
-      //   <CardComp
-      //     icon={<View><Image className="rounded-full" width={item.size} height={item.size} source={{ uri: item.icon }} /></View>}
-      //     title={item.title}
-      //     summary={item.comment}
-      //     rightNode={
-      //       <TouchableOpacity
-      //         className="my-auto"
-      //         onPress={() => {
-      //           setSelectedFriend(item.title);
-      //         }}
-      //       >
-      //         <MaterialIcons name="person-add-alt" size={20} color="#6B95BB" />
-      //       </TouchableOpacity>
-      //     }
-      //   />
-      // </View>
       <PersonCardComp
         avatar={item.avatar}
         name={item.name}
@@ -154,6 +146,7 @@ const AddPeopleScreen = ({ navigation, route }: any) => {
         leftIcon="settings"
         title="Home"
         rightIcon="close"
+        onRightPress={() => navigation.goBack()}
       />
       <View className="w-full flex flex-row justify-between px-20 py-4 border-t border-[#2A5C81] bg-[#00406E]">
         <TouchableOpacity className="items-center" onPress={() => navigation.navigate(Routes.IDScan)}>
@@ -185,60 +178,27 @@ const AddPeopleScreen = ({ navigation, route }: any) => {
       />
 
       <View style={styles.container}>
-        <Modal
-          style={styles.centerModal}
-          isVisible={isRequireModalVisible}
-          onBackdropPress={() => setSelectedFriend(null)}
-          useNativeDriver
-        >
-          <View style={styles.contentModal}>
-            <Image
-              className="rounded-full my-5"
-              width={70}
-              height={70}
-              source={{ uri: "https://s3-alpha-sig.figma.com/img/05f5/3e01/83c1ab3c4a7a680b17ca861ce53e0acd?Expires=1707696000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=aB7Gdq-daEeAtjyzR3FHFQRaW6CJXayKZbSItimsv-3pfCtqYNXe5GE84d9h-Iz~B1Mwi6plv484BuemJEPMLhS1Kx7GJoER9taBEC5M6KDpiIN8J7lPP2x2bGHFLEFlua4CytTXVNBTy1errOxsXYpxHUlV22OevBcEvDWgCihS0Eh13DzwlQvgT2AVwvPP5MWOnlggk7DEMeUhFVmKt8lh0AfexthW9qoJGcvmU26OXeO5wwILOlRcMK33e7ai4O~d6Rq4fnotP-wMjIptPsUvDRFfmVKzb80PBs4U9oIuqU4q5s~Qww6hG2OfloMjAnrelvLIU0ox-oHT1Ys9qg__" }}
-            />
-            <Text className="font-poppins text-lg mx-auto text-center mb-4">
-              Do you want to add <Text className="font-bold text-primary">{selectedFriend}</Text> your friend list?
-            </Text>
-            <View className="flex flex-row justify-between w-full">
-              <TouchableOpacity className="bg-[#E5E5E5] px-6 rounded-lg" onPress={() => {
-                setRequireModalVisible(false);
-                setSelectedFriend(null);
-              }}>
-                <Text className="mx-auto my-2 text-[#212121] text-lg font-bold">Decline</Text>
-              </TouchableOpacity>
-              <TouchableOpacity className="bg-primary px-6 rounded-lg" onPress={() => {
-                setRequireModalVisible(false);
-                setSuccessModalVisible(true);
-              }}>
-                <Text className="mx-auto my-2 text-[#fff] text-lg font-bold">Accept</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </Modal>
-        <Modal style={styles.bottomSheet} isVisible={isSuccessModalVisible} useNativeDriver>
-          <View style={styles.contentSheet}>
-            <HeaderComp
-              bgColor="white"
-              color="black"
-              rightIcon="close"
-              onRightPress={() => setSuccessModalVisible(false)}
-            />
-            <Image
-              className="my-6 rounded-full"
-              width={87}
-              height={87}
-              source={{ uri: "https://s3-alpha-sig.figma.com/img/05f5/3e01/83c1ab3c4a7a680b17ca861ce53e0acd?Expires=1707696000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=aB7Gdq-daEeAtjyzR3FHFQRaW6CJXayKZbSItimsv-3pfCtqYNXe5GE84d9h-Iz~B1Mwi6plv484BuemJEPMLhS1Kx7GJoER9taBEC5M6KDpiIN8J7lPP2x2bGHFLEFlua4CytTXVNBTy1errOxsXYpxHUlV22OevBcEvDWgCihS0Eh13DzwlQvgT2AVwvPP5MWOnlggk7DEMeUhFVmKt8lh0AfexthW9qoJGcvmU26OXeO5wwILOlRcMK33e7ai4O~d6Rq4fnotP-wMjIptPsUvDRFfmVKzb80PBs4U9oIuqU4q5s~Qww6hG2OfloMjAnrelvLIU0ox-oHT1Ys9qg__" }}
-            />
-            <Text className="text-black text-xl font-bold">{selectedFriend}</Text>
-            <Text className="text-[#707071] font-bold mb-10">9876543210</Text>
-            <Text className="font-bold text-lg mb-10">Successfully added to your friend list</Text>
-            <TouchableOpacity className="mx-auto w-2/4 rounded-lg mb-5 bg-primary py-4" onPress={() => navigation.navigate(Routes.ChatStackNav)}>
-              <Text className="text-lg text-white mx-auto text-center">Start Chat</Text>
-            </TouchableOpacity>
-          </View>
-        </Modal>
+        <FriendAcceptModalComp
+          visible={isRequireModalVisible}
+          setVisible={setRequireModalVisible}
+          onDecline={() => {
+            setRequireModalVisible(false);
+            setSelectedFriend(null);
+          }}
+          onAccept={() => {
+            setRequireModalVisible(false);
+            setSuccessModalVisible(true);
+          }}
+        />
+        <FriendSuccessModalComp
+          visible={isSuccessModalVisible}
+          setVisible={setSuccessModalVisible}
+          onOK={() => {
+            setSelectedFriend(null);
+            setSuccessModalVisible(false);
+            navigation.navigate(Routes.ChatStackNav);
+          }}
+        />
       </View>
     </SafeAreaView>
   );
