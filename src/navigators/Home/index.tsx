@@ -11,6 +11,7 @@ import HomeScreen from "@Screens/Home";
 import AddPeopleScreen from "@Screens/AddPeople";
 import CreateGroupScreen from "@Screens/CreateGroup";
 import IDScanScreen from "@Screens/IDScan";
+import SearchPeopleScreen from "@Screens/SearchPeople";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ const HomeStackNav: React.FC = () => {
       <Stack.Screen name={Routes.AddPeople} component={AddPeopleScreen} />
       <Stack.Screen name={Routes.CreateGroup} component={CreateGroupScreen} />
       <Stack.Screen name={Routes.IDScan} component={IDScanScreen} />
+      <Stack.Screen name={Routes.Search} component={SearchPeopleScreen} />
     </Stack.Navigator>
   );
 }

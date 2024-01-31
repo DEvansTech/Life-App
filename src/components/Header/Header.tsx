@@ -13,6 +13,7 @@ interface HeaderProps extends ViewProps {
   title?: string;
   rightIcon?: "addperson" | "close",
   onRightPress?: () => void;
+  middleLayer?: React.ReactNode;
   hasSearchBar?: boolean;
   searchBarBgColor?: string;
   searchBarPhColor?: string;
@@ -27,6 +28,7 @@ const HeaderComp: React.FC<HeaderProps> = ({
   title,
   rightIcon,
   onRightPress,
+  middleLayer,
   hasSearchBar = false,
   searchBarBgColor = "#075985",
   searchBarPhColor = "#eee",
@@ -57,6 +59,7 @@ const HeaderComp: React.FC<HeaderProps> = ({
           </TouchableOpacity>}
         </View>
       </View>
+      {middleLayer}
       {hasSearchBar && <View className="mt-3"><SearchBoxComp bgColor={searchBarBgColor} phColor={searchBarPhColor} crColor={searchBarCrColor} /></View>}
     </View>
 
