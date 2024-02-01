@@ -144,28 +144,29 @@ const AddPeopleScreen = ({ navigation, route }: any) => {
         title="Home"
         rightIcon="close"
         onRightPress={() => navigation.goBack()}
+        middleLayer={
+          <View className="mt-3 w-full flex flex-row justify-between px-20 pt-4 mb-1 border-t border-[#2A5C81] bg-[#00406E]">
+            <TouchableOpacity className="items-center" onPress={() => navigation.navigate(Routes.IDScan)}>
+              <MaterialIcons name="qr-code-2" size={40} color="#96B4D1" />
+              <Text
+                className="text-slate-400 text-xs font-light font-poppins leading-snug"
+              >
+                QR Code
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity className="items-center" onPress={() => navigation.navigate(Routes.Search)}>
+              <MaterialIcons name="search" size={40} color="#96B4D1" />
+              <Text
+                style={{ fontFamily: "Poppins_300Light" }}
+                className="text-slate-400 text-xs font-light font-poppins leading-snug"
+                onPress={() => navigation.navigate("Search")}
+              >
+                Search
+              </Text>
+            </TouchableOpacity>
+          </View>
+        }
       />
-      <View className="w-full flex flex-row justify-between px-20 py-4 border-t border-[#2A5C81] bg-[#00406E]">
-        <TouchableOpacity className="items-center" onPress={() => navigation.navigate(Routes.IDScan)}>
-          <MaterialIcons name="qr-code-2" size={40} color="#96B4D1" />
-          <Text
-            className="text-slate-400 text-xs font-light font-poppins leading-snug"
-          >
-            QR Code
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity className="items-center" onPress={() => navigation.navigate(Routes.Search)}>
-          <MaterialIcons name="search" size={40} color="#96B4D1" />
-          <Text
-            style={{ fontFamily: "Poppins_300Light" }}
-            className="text-slate-400 text-xs font-light font-poppins leading-snug"
-            onPress={() => navigation.navigate("Search")}
-          >
-            Search
-          </Text>
-        </TouchableOpacity>
-      </View>
-
       <SectionList
         ListHeaderComponent={renderListHeader}
         stickySectionHeadersEnabled={false}
